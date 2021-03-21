@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:id="@+id/web_search_line"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <EditText
+            android:id="@+id/wb_search_edit"
+            android:layout_weight="2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="请输入网点简称"
+            android:textSize="20dp"
+            android:imeOptions="actionDone"/>
+        <Button
+            android:id="@+id/wb_search_bt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="搜索"
+            android:textSize="20dp"/>
+    </LinearLayout>
+    <TextView
+        android:id="@+id/wb_text"
+        android:layout_below="@+id/web_search_line"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:text="单击查看网点详情，长按可删除该网点！"
+        android:textColor="@color/black"/>
+
+    <GridView
+        android:id="@+id/wb_list"
+        android:layout_below="@+id/wb_text"
+        android:layout_above="@+id/wb_add_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:columnWidth="100dp"
+        android:minHeight="100dp"
+        android:horizontalSpacing="20dp"
+        android:verticalSpacing="50dp"
+        android:numColumns="3"
+        android:padding="10dp"
+        android:stretchMode="columnWidth"
+        />
+
+    <Button
+        android:id="@+id/wb_add_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:textSize="30sp"
+        android:text="添加新的网点"
+        android:layout_alignParentBottom="true"></Button>
+
+</RelativeLayout>

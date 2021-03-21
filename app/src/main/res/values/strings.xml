@@ -1,0 +1,51 @@
+<resources>
+    <string name="app_name">快易佳货运</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">快易佳货运系统</string>
+    <string name="nav_header_subtitle">cs.cqu.edu.cn</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">帮助</string>
+
+    <string name="menu_order">订单管理</string>
+    <string name="menu_person">人员管理</string>
+    <string name="menu_profit">收益管理</string>
+    <string name="menu_carManage">车辆管理</string>
+    <string name="menu_webBranch">网点管理</string>
+    <string name="menu_zhuangchema">装车码</string>
+    <string name="menu_scanload">扫码装车</string>
+    <string name="menu_scanfache">扫码发车</string>
+    <string name="menu_scandownload">扫码卸货</string>
+    <string name="menu_fenrun">分润系统</string>
+    <string name="menu_yunjia">运价系统</string>
+    <string name="menu_notification">消息推送</string>
+
+
+
+    <string name="tab_text_1">已完成</string>
+    <string name="tab_text_2">进行中</string>
+    <string name="tab_text_3">代收款</string>
+    <string name="tab_text_4">扫描不全</string>
+    <string name="tab_text_5">滞留订单</string>
+
+    <string-array name="area">
+        <item>南坪</item>
+        <item>沙坪坝</item>
+        <item>武隆</item>
+        <item>北碚</item>
+    </string-array>
+
+    <string-array name="sad">
+        <item>行车记录仪</item>
+        <item>火花塞</item>
+        <item>座椅靠垫</item>
+        <item>转向盘</item>
+    </string-array>
+
+    <string-array name="choose">
+        <item>南坪</item>
+        <item>沙坪坝</item>
+        <item>武隆</item>
+        <item>北碚</item>
+    </string-array>
+</resources>

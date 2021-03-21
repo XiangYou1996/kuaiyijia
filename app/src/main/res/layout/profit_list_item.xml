@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <LinearLayout
+        android:id="@+id/pli_line1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/plist_item_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:text="姓名"
+            android:layout_weight="1"
+            android:textColor="@color/black"/>
+        <TextView
+            android:id="@+id/plist_item_station"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:text="岗位"
+            android:layout_weight="1"
+            android:textColor="@color/black"/>
+        <TextView
+            android:id="@+id/plist_item_profit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:text="收益"
+            android:layout_weight="1"
+            android:textColor="@color/black"/>
+    </LinearLayout>
+</RelativeLayout>

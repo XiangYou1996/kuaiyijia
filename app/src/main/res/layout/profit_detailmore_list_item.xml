@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <TextView
+        android:id="@+id/pd_station"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:text="开单人:"
+        android:textColor="#000"
+        android:textSize="18sp"/>
+    <TextView
+        android:id="@+id/pd_profit_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="150dp"
+        android:layout_toRightOf="@+id/pd_station"
+        android:text="收益："
+        android:textColor="#000"
+        android:textSize="18sp"/>
+    <TextView
+        android:id="@+id/pd_profit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="150dp"
+        android:layout_alignParentRight="true"
+        android:text="000元"
+        android:textColor="#000"
+        android:textSize="18sp"/>
+</RelativeLayout>

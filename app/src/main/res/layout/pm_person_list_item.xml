@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <TextView
+        android:id="@+id/pm_staff_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="zhangsan"
+        android:layout_gravity="center"
+        android:textSize="20dp"
+        android:layout_weight="1"/>
+    <TextView
+        android:id="@+id/pm_staff_station"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="kaidanren"
+        android:textSize="20dp"
+        android:layout_gravity="center"
+        android:layout_weight="1"/>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical">
+        <Button
+            android:id="@+id/pm_staff_modify"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="修改"
+            android:layout_gravity="center"/>
+        <Button
+            android:id="@+id/pm_staff_delete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="删除"/>
+    </LinearLayout>
+</LinearLayout>

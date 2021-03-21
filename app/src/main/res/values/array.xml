@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="carType">
+        <item>小货车</item>
+        <item>大货车</item>
+        <item>卡车</item>
+    </string-array>
+
+    <string-array name="StationType">
+        <item>开单人</item>
+        <item>运货人</item>
+        <item>接单人</item>
+    </string-array>
+</resources>

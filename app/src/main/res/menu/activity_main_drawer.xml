@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_order"
+            android:icon="@drawable/icon_order"
+            android:title="@string/menu_order" />
+        <item
+            android:id="@+id/nav_person"
+            android:icon="@drawable/icon_person"
+            android:title="@string/menu_person" />
+        <item
+            android:id="@+id/nav_webBranch"
+            android:icon="@drawable/icon_webbranch"
+            android:title="@string/menu_webBranch" />
+
+        <item
+            android:id="@+id/nav_carManage"
+            android:icon="@drawable/ic_menu_car"
+            android:title="@string/menu_carManage"
+            />
+
+        <item
+            android:id="@+id/nav_profit"
+            android:icon="@drawable/icon_profit"
+            android:title="@string/menu_profit"
+            />
+        <item
+            android:id="@+id/nav_zhuangchema"
+            android:icon="@drawable/icon_code"
+            android:title="@string/menu_zhuangchema"
+            />
+        <item
+            android:id="@+id/nav_scanzhuangche"
+            android:icon="@drawable/icon_loadcar"
+            android:title="@string/menu_scanload"
+            />
+        <item
+            android:id="@+id/nav_scanfache"
+            android:icon="@drawable/icon_fache"
+            android:title="@string/menu_scanfache"
+            />
+        <item
+            android:id="@+id/nav_scandownload"
+            android:icon="@drawable/icon_download"
+            android:title="@string/menu_scandownload"
+            />
+        <item
+            android:id="@+id/nav_fenrun"
+            android:icon="@drawable/icon_fenrun"
+            android:title="@string/menu_fenrun"
+            />
+        <item
+            android:id="@+id/nav_yunjia"
+            android:icon="@drawable/icon_yunjia"
+            android:title="@string/menu_yunjia"
+            />
+        <item
+            android:id="@+id/nav_notification"
+            android:icon="@drawable/icon_notification"
+            android:title="@string/menu_notification"
+            />
+    </group>
+</menu>
+

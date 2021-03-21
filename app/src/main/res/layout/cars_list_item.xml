@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:background="#d3d7d4"
+ >
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="8">
+        <TextView
+            android:id="@+id/car_manage_num"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="车牌号："
+            android:textSize="18sp"
+            android:textColor="@color/black"/>
+        <TextView
+            android:id="@+id/car_manage_type"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="车辆类型："
+            android:textSize="18sp"
+            android:textColor="@color/black"/>
+        <TextView
+            android:id="@+id/car_manage_vol"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="货箱长宽高："
+            android:textSize="18sp"
+            android:textColor="@color/black"/>
+        <TextView
+            android:id="@+id/car_manage_load"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="载重量："
+            android:textSize="18sp"
+            android:textColor="@color/black"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/car_manage_detail_bt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="查看详情"
+            android:textSize="15sp"
+            android:background="#f2eada"
+            android:layout_marginRight="5dp"/>
+    </LinearLayout>
+
+
+</LinearLayout>
