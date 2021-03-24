@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,10 +20,8 @@ import androidx.fragment.app.Fragment;
 
 import com.example.kuaiyijia.Adapter.PersonListAdapter;
 import com.example.kuaiyijia.Database.Database;
-import com.example.kuaiyijia.Entity.CarListItem;
 import com.example.kuaiyijia.Entity.ListItems;
 import com.example.kuaiyijia.Entity.PersonListItem;
-import com.example.kuaiyijia.MainActivity;
 import com.example.kuaiyijia.R;
 
 import java.sql.ResultSet;
@@ -49,14 +46,14 @@ public class PersonManageFragment extends Fragment implements View.OnClickListen
                 case 1040:
                     personListItems.clear();
                     ListItems<PersonListItem> listItems = (ListItems<PersonListItem>) msg.getData().getSerializable("all_person");
-                    Log.i(TAG, "handleMessage: 1040 "+listItems.size());
                     for (int i=0; i< listItems.size(); i++){
                         String ID = listItems.get(i).getPerson_ID();
                         String Name = listItems.get(i).getPerson_name();
                         String Tel = listItems.get(i).getPerson_tel();
                         String  WebBranch = listItems.get(i).getPerson_webBranch();
+                        String StationID = listItems.get(i).getPerson_sation_ID();
                         String Station = listItems.get(i).getPerson_sation();
-                        person = new PersonListItem(ID,Name,Tel,WebBranch,Station);
+                        person = new PersonListItem(ID,Name,Tel,WebBranch,StationID,Station);
                         personListItems.add(person);
                     }
                     //  adapter
@@ -104,22 +101,31 @@ public class PersonManageFragment extends Fragment implements View.OnClickListen
                 try {
                     while (rs1.next()) {
                             //添加
-                        onePerson[0] = new PersonListItem(rs1.getString("EM_ID"),rs1.getString("EM_NAME"), rs1.getString("MTEL"),rs1.getString("HYBID"),"");
+                        onePerson[0] = new PersonListItem(rs1.getString("EM_ID"),rs1.getString("EM_NAME"), rs1.getString("MTEL"),rs1.getString("HYBID"),"","");
                         alist.add(onePerson[0]);
                     }
-                    /// 找岗位
+                    /// 2  找岗位
+//                    List<String> web_ID = new ArrayList<>();
                     for (int i = 0; i < alist.size() ; i ++){
                         ResultSet rs2 =  Database.SelectFromData("*","PUB_EMETYPE","EM_ID",alist.get(i).getPerson_ID());
                         if (rs2.next()){
                             String station_id = rs2.getString("ET_ID");
+                            alist.get(i).setPerson_sation_ID(station_id);
                             ResultSet rs3 = Database.SelectFromData("*","PUB_TMSETYPE","ET_ID",station_id);
                             if (rs3.next()){
                                 alist.get(i).setPerson_sation(rs3.getString("ET_NAME"));
                             }
+                        }
 
+                    }
+                    // 3 找网点名字简称
+                    for (int j=0;j < alist.size(); j++){
+
+                        ResultSet rs4 = Database.SelectFromData("*","PUB_HYB","HYBID",alist.get(j).getPerson_webBranch());
+                        if (rs4.next()){
+                            alist.get(j).setPerson_webBranch(rs4.getString("WDJC"));
                         }
                     }
-
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }
@@ -169,13 +175,5 @@ public class PersonManageFragment extends Fragment implements View.OnClickListen
         }
 
     }
-
-    @Override
-    public void onResume() {
-        Log.i(TAG, "onResume: PersonManageFragment");
-//        initData();
-        super.onResume();
-    }
-
 
 }

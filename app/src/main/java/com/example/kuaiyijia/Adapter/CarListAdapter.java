@@ -90,12 +90,13 @@ public class CarListAdapter extends BaseAdapter implements View.OnClickListener 
             public void onClick(View v) {
                 // 跳转到 车辆详情 并可以修改
                 Intent detail_intent = new Intent(context, CarDetailActivity.class);
-                car = lcontentList.get(position);
-                Bundle bundle = new Bundle();
-                bundle.putParcelable("detail",car);
-                detail_intent.putExtras(bundle);
-                context.startActivity(detail_intent);
-
+                if (lcontentList.size()>0){
+                    car = lcontentList.get(position);
+                    Bundle bundle = new Bundle();
+                    bundle.putParcelable("detail",car);
+                    detail_intent.putExtras(bundle);
+                    context.startActivity(detail_intent);
+                }
             }
         });
         return convertView;

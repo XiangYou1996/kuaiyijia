@@ -2,6 +2,7 @@ package com.example.kuaiyijia.ui.webBranchManage;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -21,9 +22,8 @@ import com.amap.api.location.AMapLocationClientOption;
 import com.amap.api.location.AMapLocationListener;
 import com.example.kuaiyijia.Database.Database;
 import com.example.kuaiyijia.Entity.Location;
-import com.example.kuaiyijia.MainActivity;
+import com.example.kuaiyijia.ui.MainActivity;
 import com.example.kuaiyijia.R;
-import com.example.kuaiyijia.Tools.GaoDeLocation;
 
 
 public class WebBranchAddActivity extends AppCompatActivity implements View.OnClickListener {
@@ -55,6 +55,7 @@ public class WebBranchAddActivity extends AppCompatActivity implements View.OnCl
                             aMapLocation.getCountry(),aMapLocation.getProvince(),aMapLocation.getCity(),aMapLocation.getStreet(),
                             aMapLocation.getStreetNum(),aMapLocation.getCityCode(),aMapLocation.getAdCode());
                     wb_concretAddress.setText(aMapLocation.getAddress());
+                    Log.i(TAG, "onLocationChanged: "+wb_concretAddress.getText().toString());
                     mapLocationClient.stopLocation();
                 }else {
                     Log.e("MapError", "error code "+ aMapLocation.getErrorCode()+", error info:" +aMapLocation.getErrorInfo() );
@@ -87,6 +88,8 @@ public class WebBranchAddActivity extends AppCompatActivity implements View.OnCl
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        // 设置只能竖屏使用
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         setContentView(R.layout.activity_web_branch_add);
         initView();
     }
@@ -109,7 +112,6 @@ public class WebBranchAddActivity extends AppCompatActivity implements View.OnCl
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.wb_wb_location_bt:
-                Log.i("Location", "location: begin");
                 Toast.makeText(getApplicationContext(),"请稍等，正在获取您的位置~",Toast.LENGTH_LONG).show();
                 startClient(getApplicationContext());
                 break;
@@ -126,12 +128,12 @@ public class WebBranchAddActivity extends AppCompatActivity implements View.OnCl
         // 获取该条记录的值
         String name = "'"+ wb_wb_name.getText().toString() +"'";
         String name_abbreviation = "'"+ wb_wb_abbreviation.getText().toString() +"'";
-        String tel =  wb_wb_tel.getText().toString();
+        String tel = "'"+ wb_wb_tel.getText().toString()+"'";
         String personName = "'"+  wb_wb_person_name.getText().toString() +"'";
-        String personTel =  wb_wb_person_tel.getText().toString();
+        String personTel =  "'"+ wb_wb_person_tel.getText().toString()+"'";
         String concretAddress = "'"+ wb_concretAddress.getText().toString() +"'";
         //这里默认所属物流Id 是1
-        String [] names = {"HYBNAME","C_ID","DQ_CODE","HYBTEL","HYBLXR","HYBLXDH","HYBADDR"};
+        String [] names = {"HYBNAME","C_ID","WDJC","HYBTEL","HYBLXR","HYBLXDH","HYBADDR"};
         String [] values = {name,"1",name_abbreviation,tel,personName,personTel,concretAddress};
 
         // 开启 线程访问数据库

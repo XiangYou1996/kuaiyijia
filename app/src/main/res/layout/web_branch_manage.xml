@@ -54,10 +54,10 @@
         android:id="@+id/wb_add_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"
+        android:background="@drawable/shape_353b50_view"
         android:textSize="30sp"
         android:text="添加新的网点"
+        android:textColor="#FFF"
         android:layout_alignParentBottom="true"></Button>
 
 </RelativeLayout>

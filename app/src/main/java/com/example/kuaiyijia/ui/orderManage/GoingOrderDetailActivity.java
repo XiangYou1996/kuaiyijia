@@ -1,6 +1,7 @@
 package com.example.kuaiyijia.ui.orderManage;
 
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -10,6 +11,7 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.kuaiyijia.Entity.OrderItem;
+import com.example.kuaiyijia.ui.MainActivity;
 import com.example.kuaiyijia.R;
 
 public class GoingOrderDetailActivity extends AppCompatActivity implements View.OnClickListener {
@@ -30,10 +32,12 @@ public class GoingOrderDetailActivity extends AppCompatActivity implements View.
     private EditText going_mail_fess;
     private TextView going_addition;
     private Button print;
-
+    private Button back_bt;
     @Override
     public void onCreate( Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        // 设置只能竖屏使用
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         setContentView(R.layout.order_going_detail);
         initUI();
         initData();
@@ -78,20 +82,26 @@ public class GoingOrderDetailActivity extends AppCompatActivity implements View.
         going_to_service_way = (TextView) findViewById(R.id.going_to_service_way);
         going_mail_fess = (EditText) findViewById(R.id.going_mail_fess);
         going_addition = (TextView) findViewById(R.id.going_addition);
+        back_bt = (Button) findViewById(R.id.backtolast);
         print = (Button) findViewById(R.id.print);
         print.setOnClickListener(this);
         confirm = findViewById(R.id.going_confirm);
         confirm.setOnClickListener(this);
+        back_bt.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()){
+
+            case R.id.print:
+                break;
             case R.id.going_confirm:
                 // 如果没有任何改变
-                finish();
-                break;
-            case R.id.print:
+            case R.id.backtolast:
+                Intent mIntent = new Intent(GoingOrderDetailActivity.this, MainActivity.class);
+                mIntent.putExtra("id",1);
+                startActivity(mIntent);
                 break;
         }
     }

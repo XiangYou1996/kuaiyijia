@@ -4,7 +4,6 @@
     android:shape="rectangle">
     <!--设置背景色-->
     <!-- 设置透明背景色 -->
-
     <solid android:color="#E2E3E4" />
     <!--设置圆角-->
     <corners android:radius="50px" />

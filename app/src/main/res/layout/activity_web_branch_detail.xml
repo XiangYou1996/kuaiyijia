@@ -4,7 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-
+    <Button
+        android:id="@+id/backtolast"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="25dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#333333"
+        android:drawableLeft="@drawable/icon_back"
+        />
     <LinearLayout
         android:id="@+id/web_branch_addition"
         android:layout_alignParentStart="true"
@@ -49,6 +57,7 @@
             android:hint="请输入网点名称"
             android:textSize="25sp"
             android:inputType="text"
+            android:textColor="#000"
             android:imeOptions="actionNext"/>
     </LinearLayout>
     <LinearLayout
@@ -71,6 +80,7 @@
             android:hint="网点所在简称，例如：江北"
             android:textSize="25sp"
             android:inputType="text"
+            android:textColor="#000"
             android:imeOptions="actionNext"/>
     </LinearLayout>
     <LinearLayout
@@ -92,6 +102,7 @@
             android:layout_height="wrap_content"
             android:hint="请输入电话号码"
             android:textSize="25sp"
+            android:textColor="#000"
             android:inputType="number"
             android:imeOptions="actionNext"/>
     </LinearLayout>
@@ -115,6 +126,7 @@
             android:hint="请输入联系人姓名"
             android:textSize="25sp"
             android:inputType="text"
+            android:textColor="#000"
             android:imeOptions="actionNext"/>
     </LinearLayout>
     <LinearLayout
@@ -137,6 +149,7 @@
             android:hint="请输入联系人电话"
             android:textSize="25sp"
             android:inputType="number"
+            android:textColor="#000"
             android:imeOptions="actionNext"/>
     </LinearLayout>
 
@@ -164,6 +177,7 @@
             android:hint="请输入详细地址"
             android:textSize="25sp"
             android:layout_width="250dp"
+            android:textColor="#000"
             android:layout_height="match_parent"
             android:inputType="textMultiLine"
             android:gravity="left|top"
@@ -183,8 +197,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="修改"
-            android:textSize="25dp"
-            android:background="#00ff00"
+            android:textSize="25sp"
+            android:background="#FB684C"
+            android:textColor="#FCFCFC"
             android:layout_weight="1"/>
         <Button
             android:id="@+id/wb_detail_delete"
@@ -192,7 +207,8 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
             android:text="删除"
-            android:textSize="25dp"
+            android:textSize="25sp"
+            android:textColor="#FCFCFC"
             android:background="#ff0000"
             android:layout_weight="1"/>/>
         <Button
@@ -203,6 +219,7 @@
             android:layout_marginRight="5dp"
             android:text="确认"
             android:background="#0000ff"
+            android:textColor="#FCFCFC"
             android:textSize="25dp"
 
             android:layout_weight="1"/>/>

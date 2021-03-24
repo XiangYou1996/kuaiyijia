@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -22,6 +23,7 @@ import com.example.kuaiyijia.R;
 import java.util.List;
 
 public class StationModifyActivity extends AppCompatActivity implements View.OnClickListener {
+
     private EditText station_modify_name;
     private CheckBox checkBox1;
     private CheckBox checkBox2;
@@ -35,6 +37,7 @@ public class StationModifyActivity extends AppCompatActivity implements View.OnC
     private CheckBox checkBox10;
     private StationListItem station;
     private Button station_modify_cf_bt;
+    private Button back_bt;
     private List<CheckBox> checkBoxes = null;
     private  StringBuilder authority_code = new StringBuilder("0000000000");
     // checkBox 的监听对象
@@ -147,6 +150,8 @@ public class StationModifyActivity extends AppCompatActivity implements View.OnC
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        // 设置只能竖屏使用
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         setContentView(R.layout.activity_station_modify);
         initView();
         initData();
@@ -174,10 +179,11 @@ public class StationModifyActivity extends AppCompatActivity implements View.OnC
         checkBox8.setOnCheckedChangeListener(checkBoxes_listener);
         checkBox9.setOnCheckedChangeListener(checkBoxes_listener);
         checkBox10.setOnCheckedChangeListener(checkBoxes_listener);
-
+        back_bt = (Button) findViewById(R.id.backtolast);
 
         station_modify_cf_bt = (Button) findViewById(R.id.station_modify_cf_bt);
         station_modify_cf_bt.setOnClickListener(this);
+        back_bt.setOnClickListener(this);
     }
     public void initData (){
         Intent mIntent = getIntent();
@@ -222,6 +228,9 @@ public class StationModifyActivity extends AppCompatActivity implements View.OnC
             case R.id.station_modify_cf_bt:
                 updateStationtoDatabase();
                 break;
+            case R.id.backtolast:
+                finish();
+                break;
         }
     }
 
@@ -230,7 +239,6 @@ public class StationModifyActivity extends AppCompatActivity implements View.OnC
         String station_name = "'"+station_modify_name.getText().toString()+"'";
         // 权限编码
         String code = String.valueOf(authority_code);
-        Log.i("TAG", "addStationToDatabase: "+authority_code);
         // 开启线程插入数据
         String ID = "ET_ID";
         int ID_value = Integer.valueOf(station.getET_ID());

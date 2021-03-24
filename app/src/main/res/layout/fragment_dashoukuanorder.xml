@@ -13,8 +13,8 @@
             android:background="@drawable/edit_box_style"
             android:layout_gravity="center"
             android:layout_weight="2"
-            android:hint="请输入搜索内容"
-            android:textSize="25dp"
+            android:hint="请输入搜索内容(地址)"
+            android:textSize="25sp"
             android:layout_marginLeft="10dp"
             />
         <Button
@@ -24,8 +24,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:textSize="20dp"
+            android:textSize="20sp"
             android:text="搜索"
+            android:background="@drawable/small_button_style"
             android:textColor="#000000"/>
     </LinearLayout>
     <LinearLayout

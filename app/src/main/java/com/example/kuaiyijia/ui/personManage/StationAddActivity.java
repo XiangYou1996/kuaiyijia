@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -35,6 +36,7 @@ public class StationAddActivity extends AppCompatActivity implements View.OnClic
     private CheckBox checkBox10;
     private Button station_add_cf_bt;
     private  StringBuilder authority_code = new StringBuilder("0000000000");
+    private Button back_bt;
     // checkBox 的监听对象
     private CompoundButton.OnCheckedChangeListener checkBoxes_listener = new CompoundButton.OnCheckedChangeListener() {
         @Override
@@ -146,6 +148,8 @@ public class StationAddActivity extends AppCompatActivity implements View.OnClic
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        // 设置只能竖屏使用
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         setContentView(R.layout.activity_station_add);
         initView();
     }
@@ -173,9 +177,10 @@ public class StationAddActivity extends AppCompatActivity implements View.OnClic
         checkBox8.setOnCheckedChangeListener(checkBoxes_listener);
         checkBox9.setOnCheckedChangeListener(checkBoxes_listener);
         checkBox10.setOnCheckedChangeListener(checkBoxes_listener);
-
+        back_bt = (Button) findViewById(R.id.backtolast);
         station_add_cf_bt = (Button) findViewById(R.id.station_add_cf_bt);
         station_add_cf_bt.setOnClickListener(this);
+        back_bt.setOnClickListener(this);
     }
 
     @Override
@@ -183,6 +188,9 @@ public class StationAddActivity extends AppCompatActivity implements View.OnClic
         switch (v.getId()){
             case R.id.station_add_cf_bt:
                 addStationToDatabase();
+                break;
+            case R.id.backtolast:
+                finish();
                 break;
         }
     }
@@ -192,23 +200,27 @@ public class StationAddActivity extends AppCompatActivity implements View.OnClic
         String station = "'"+station_add_name.getText().toString()+"'";
         // 权限编码
         String code = String.valueOf(authority_code);
-        Log.i("TAG", "addStationToDatabase: "+authority_code);
-        // 开启线程插入数据
-        String [] names = {"ET_ID","ET_CODE","ET_NAME"};
-        String [] values = {"4",code, station};
-        Thread thread = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                int result = Database.insertIntoDataForColumn("PUB_TMSETYPE",names,values);
-                Message message = new Message();
-                message.what = 1044;
-                Bundle bundle = new Bundle();
-                bundle.putInt("result",result);
-                message.setData(bundle);
-                mHandler.sendMessage(message);
-            }
-        });
-        thread.start();
-        thread.interrupt();
+        if (code.equals("0000000000")){
+                Toast.makeText(StationAddActivity.this,"请给该职位赋予一定的权限~",Toast.LENGTH_SHORT).show();
+        }else {
+            // 开启线程插入数据
+            String [] names = {"ET_ID","ET_CODE","ET_NAME"};
+            String [] values = {"4",code, station};
+            Thread thread = new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    int result = Database.insertIntoDataForColumn("PUB_TMSETYPE",names,values);
+                    Message message = new Message();
+                    message.what = 1044;
+                    Bundle bundle = new Bundle();
+                    bundle.putInt("result",result);
+                    message.setData(bundle);
+                    mHandler.sendMessage(message);
+                }
+            });
+            thread.start();
+            thread.interrupt();
+        }
+
     }
 }

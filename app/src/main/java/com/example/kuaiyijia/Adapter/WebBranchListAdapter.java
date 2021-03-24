@@ -11,19 +11,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
 import com.example.kuaiyijia.Database.Database;
 import com.example.kuaiyijia.Entity.WebBranchListItem;
-import com.example.kuaiyijia.MainActivity;
+import com.example.kuaiyijia.ui.MainActivity;
 import com.example.kuaiyijia.R;
 import com.example.kuaiyijia.Tools.CustomDialog;
-import com.example.kuaiyijia.ui.webBranchManage.WebBranchAddActivity;
 import com.example.kuaiyijia.ui.webBranchManage.WebBranchDetail;
-import com.example.kuaiyijia.ui.webBranchManage.WebBranchManageFragment;
 
 import java.util.List;
 
@@ -94,10 +91,10 @@ public class WebBranchListAdapter extends BaseAdapter {
         }
 
         holder.button.setText(webBranchListItem.getWebBranchJC());
+
         holder.button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.i("TAG", "onLongClick: 单击查看信息！");
                 Intent mIntent = new Intent(context, WebBranchDetail.class);
                 webBranch = adapterLists.get(position);
                 Bundle bundle = new Bundle();
@@ -109,7 +106,6 @@ public class WebBranchListAdapter extends BaseAdapter {
         holder.button.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                Log.i("TAG", "onLongClick: 长按删除！");
                 deleteWebBranch(position);
                 return true;
             }

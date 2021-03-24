@@ -1,31 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="250dp"
-    android:layout_height="150dp">
-    <TextView
-        android:id="@+id/pm_station_name"
-        android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_width="wrap_content"
+    android:background="@drawable/shape_353b50_view"
+    android:layout_marginTop="8dp">
+    <RelativeLayout
+        android:layout_marginLeft="10dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="kaidanren"
-        android:textSize="20sp"
-        android:layout_marginTop="40dp"/>
-    <LinearLayout
-        android:layout_alignParentRight="true"
-        android:layout_gravity="center"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-        <Button
-            android:id="@+id/pm_station_modify"
+        android:background="#FFF">
+        <TextView
+            android:id="@+id/pm_station_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="修改"/>
-        <Button
-            android:id="@+id/pm_stationd_delete"
+            android:text="kaidanren"
+            android:textSize="20sp"
+            android:textColor="#000"
+            android:layout_marginTop="40dp"/>
+        <LinearLayout
+            android:layout_alignParentRight="true"
+            android:layout_gravity="center"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="删除"
-            android:textColor="#FF0000"/>
-    </LinearLayout>
-</RelativeLayout>
+            android:orientation="vertical">
+            <Button
+                android:id="@+id/pm_station_modify"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="修改"/>
+            <Button
+                android:id="@+id/pm_stationd_delete"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="删除"
+                android:textColor="#FF0000"/>
+        </LinearLayout>
+    </RelativeLayout>
+</LinearLayout>

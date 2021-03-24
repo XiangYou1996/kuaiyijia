@@ -3,6 +3,15 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+    <Button
+        android:id="@+id/backtolast"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="25dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#333333"
+        android:drawableLeft="@drawable/icon_back"
+        />
     <TextView
         android:id="@+id/add_title"
         android:background="#333333"
@@ -25,7 +34,7 @@
             android:layout_height="wrap_content"
             android:text="收货单位："
             android:textSize="20sp"
-            android:textColor="#FF0000"
+            android:textColor="#000"
             android:inputType="text"/>
         <EditText
             android:id="@+id/add_re_station"
@@ -48,7 +57,7 @@
             android:layout_height="wrap_content"
             android:text="收货地址："
             android:textSize="20dp"
-            android:textColor="#FF0000"/>
+            android:textColor="#000"/>
         <EditText
             android:id="@+id/add_re_address"
             android:textSize="20sp"
@@ -71,7 +80,7 @@
             android:layout_height="wrap_content"
             android:text="收货人："
             android:textSize="20dp"
-            android:textColor="#FF0000"/>
+            android:textColor="#000"/>
         <EditText
             android:id="@+id/add_re_person"
             android:textSize="20sp"
@@ -94,7 +103,7 @@
             android:layout_height="wrap_content"
             android:text="联系电话："
             android:textSize="20dp"
-            android:textColor="#FF0000"/>
+            android:textColor="#000"/>
         <EditText
             android:id="@+id/add_re_phone"
             android:textSize="20sp"
@@ -117,7 +126,7 @@
         android:layout_height="wrap_content"
         android:text="货物件数"
         android:textSize="20dp"
-        android:textColor="#FF0000"/>
+        android:textColor="#000"/>
 
         <EditText
             android:id="@+id/add_orderNum"
@@ -141,7 +150,7 @@
             android:layout_marginLeft="10dp"
             android:text="运费"
             android:textSize="20dp"
-            android:textColor="#FF0000"/>
+            android:textColor="#000"/>
         <EditText
             android:id="@+id/add_orderfreight"
             android:background="@drawable/edit_box_style"
@@ -171,7 +180,7 @@
             android:layout_height="wrap_content"
             android:text="垫付金额"
             android:textSize="20sp"
-            android:textColor="#FF0000"/>
+            android:textColor="#000"/>
         <EditText
             android:id="@+id/add_dianfukuan"
             android:layout_weight="1"
@@ -194,7 +203,7 @@
             android:layout_marginLeft="10dp"
             android:text="代收金额"
             android:textSize="20sp"
-            android:textColor="#FF0000"/>
+            android:textColor="#000"/>
         <EditText
             android:id="@+id/add_agencyMoney"
             android:layout_weight="1"
@@ -226,7 +235,7 @@
             android:layout_height="wrap_content"
             android:text="发货单位："
             android:textSize="20dp"
-            android:textColor="#FF0000"/>
+            android:textColor="#000"/>
         <EditText
             android:id="@+id/add_to_address"
             android:textSize="20sp"
@@ -248,9 +257,9 @@
             android:layout_weight="1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="收货人："
+            android:text="发货人："
             android:textSize="20dp"
-            android:textColor="#FF0000"/>
+            android:textColor="#000"/>
         <EditText
             android:id="@+id/add_to_person"
             android:textSize="20sp"
@@ -274,7 +283,7 @@
             android:layout_height="wrap_content"
             android:text="联系方式："
             android:textSize="20dp"
-            android:textColor="#FF0000"/>
+            android:textColor="#000"/>
         <EditText
             android:id="@+id/add_to_phone"
             android:textSize="20sp"
@@ -296,7 +305,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="服务方式："
-            android:textSize="20dp"
+            android:textSize="20sp"
             android:textColor="#000000"/>
         <RadioGroup
             android:id="@+id/a_RatioGroup"

@@ -1,6 +1,7 @@
 package com.example.kuaiyijia.ui.orderManage;
 
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -37,6 +38,7 @@ public class AddOrderActivity extends AppCompatActivity implements View.OnClickL
     private RadioButton a_post;
     private RadioButton a_selfTake;
     private Button finished_confirm;
+    private Button back_bt;
     private OrderItem orderItem;
     private Handler mHandler = new Handler(){
         @Override
@@ -53,6 +55,8 @@ public class AddOrderActivity extends AppCompatActivity implements View.OnClickL
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        // 设置只能竖屏使用
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         setContentView(R.layout.order_addition);
         initView();
     }
@@ -70,11 +74,13 @@ public class AddOrderActivity extends AppCompatActivity implements View.OnClickL
         add_to_person = (EditText) findViewById(R.id.add_to_person);
         add_to_phone = (EditText) findViewById(R.id.add_to_phone);
         add_remark = (EditText) findViewById(R.id.add_remark);
+        back_bt = (Button) findViewById(R.id.backtolast);
         // ratioButton
         a_post = (RadioButton) findViewById(R.id.a_post);
         a_selfTake = (RadioButton) findViewById(R.id.a_selfTake);
         finished_confirm = findViewById(R.id.finished_confirm);
         finished_confirm.setOnClickListener(this);
+        back_bt.setOnClickListener(this);
     }
 
     @Override
@@ -109,6 +115,9 @@ public class AddOrderActivity extends AppCompatActivity implements View.OnClickL
                     }
                 });
                 dialog.show();
+                break;
+            case R.id.backtolast:
+                finish();
                 break;
         }
     }

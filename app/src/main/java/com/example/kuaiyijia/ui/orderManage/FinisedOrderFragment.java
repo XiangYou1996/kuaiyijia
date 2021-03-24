@@ -116,7 +116,6 @@ public class FinisedOrderFragment  extends Fragment implements View.OnClickListe
         finished_list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Log.i("TAG", "onItemClick: "+position);
                 Intent mIntent = new Intent(getContext(),FinishedOrderDetailedActivity.class);
                 Bundle bundle = new Bundle();
                 bundle.putParcelable("orderItem",orderItemsList.get(position));

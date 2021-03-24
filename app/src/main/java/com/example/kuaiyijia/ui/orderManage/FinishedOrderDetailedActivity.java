@@ -1,6 +1,7 @@
 package com.example.kuaiyijia.ui.orderManage;
 
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -10,6 +11,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.kuaiyijia.Entity.OrderItem;
+import com.example.kuaiyijia.ui.MainActivity;
 import com.example.kuaiyijia.R;
 
 
@@ -30,10 +32,13 @@ public class FinishedOrderDetailedActivity extends AppCompatActivity implements 
     private TextView finished_to_service_way;
     private TextView finished_addition;
     private TextView finished_to_person;
+    private Button back_bt;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        // 设置只能竖屏使用
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         setContentView(R.layout.order_finished_detailed);
         initUI();
         initData();
@@ -77,16 +82,21 @@ public class FinishedOrderDetailedActivity extends AppCompatActivity implements 
         finished_to_phone = findViewById(R.id.finished_to_phone);
         finished_to_service_way = findViewById(R.id.finished_to_service_way);
         finished_addition = findViewById(R.id.finished_addition_context);
-
+        back_bt = (Button) findViewById(R.id.backtolast);
         confirm = findViewById(R.id.finished_confirm);
         confirm.setOnClickListener(this);
+        back_bt.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.finished_confirm:
-                finish();
+            case R.id.backtolast:
+                Intent mIntent = new Intent(FinishedOrderDetailedActivity.this,MainActivity.class);
+                mIntent.putExtra("id",1);
+                startActivity(mIntent);
+                break;
         }
     }
 

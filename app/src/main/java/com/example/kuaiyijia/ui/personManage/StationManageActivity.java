@@ -1,6 +1,7 @@
 package com.example.kuaiyijia.ui.personManage;
 
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -16,7 +17,6 @@ import com.example.kuaiyijia.Adapter.StationListAdapter;
 import com.example.kuaiyijia.Database.Database;
 import com.example.kuaiyijia.Entity.ListItems;
 import com.example.kuaiyijia.Entity.StationListItem;
-import com.example.kuaiyijia.MainActivity;
 import com.example.kuaiyijia.R;
 
 import java.sql.ResultSet;
@@ -53,10 +53,13 @@ public class StationManageActivity extends AppCompatActivity implements View.OnC
         }
     };
     private ListView listView;
+    private Button back_bt;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        // 设置只能竖屏使用
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         setContentView(R.layout.activity_station_manage);
         initView();
         initData();
@@ -65,7 +68,9 @@ public class StationManageActivity extends AppCompatActivity implements View.OnC
     public void initView(){
         listView = (ListView) findViewById(R.id.pm_station_list);
         pm_station_add_bt = (Button) findViewById(R.id.pm_station_add_bt);
+        back_bt = (Button) findViewById(R.id.backtolast);
         pm_station_add_bt.setOnClickListener(this);
+        back_bt.setOnClickListener(this);
     }
 
     public void initData(){
@@ -105,6 +110,9 @@ public class StationManageActivity extends AppCompatActivity implements View.OnC
             case R.id.pm_station_add_bt:
                 Intent mIntent = new Intent(StationManageActivity.this, StationAddActivity.class);
                 startActivity(mIntent);
+                break;
+            case R.id.backtolast:
+                finish();
                 break;
         }
     }

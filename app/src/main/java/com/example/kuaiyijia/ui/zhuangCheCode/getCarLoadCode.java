@@ -2,6 +2,7 @@ package com.example.kuaiyijia.ui.zhuangCheCode;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
@@ -29,6 +30,8 @@ public class getCarLoadCode extends Activity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        // 设置只能竖屏使用
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         setContentView(R.layout.getcarloadcode);
         Intent intent = getIntent();
         mV_no = intent.getStringExtra("V_NO");

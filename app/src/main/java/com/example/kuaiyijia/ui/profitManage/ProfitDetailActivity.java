@@ -2,6 +2,7 @@ package com.example.kuaiyijia.ui.profitManage;
 
 import android.app.DatePickerDialog;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -18,12 +19,12 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.kuaiyijia.Adapter.ProfitAdapter;
 import com.example.kuaiyijia.Adapter.ProfitDetailAdapter;
 import com.example.kuaiyijia.Database.Database;
 import com.example.kuaiyijia.Entity.ListItems;
 import com.example.kuaiyijia.Entity.Profit;
 import com.example.kuaiyijia.Entity.ProfitDetailItem;
+import com.example.kuaiyijia.ui.MainActivity;
 import com.example.kuaiyijia.R;
 
 import java.sql.ResultSet;
@@ -92,15 +93,18 @@ public class ProfitDetailActivity extends AppCompatActivity implements View.OnCl
                     profit_list.setAdapter(adapter);
                     break;
             }
-            profit_detail_totalprofit.setText(String.valueOf(total_money));
+            profit_detail_totalprofit.setText(String.valueOf(total_money)+"元");
         }
     };
     private Profit lastPageProfit;
     private Button profit_detail_confirm_bt;
+    private Button back_bt;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        // 设置只能竖屏使用
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         setContentView(R.layout.activity_profit_detail);
         initView();
         initData();
@@ -161,6 +165,8 @@ public class ProfitDetailActivity extends AppCompatActivity implements View.OnCl
         profit_list = (ListView) findViewById(R.id.profit_detail_list);
         profit_detail_totalprofit = findViewById(R.id.profit_detail_totalprofit);
         profit_detail_person = findViewById(R.id.profit_detail_person);
+        back_bt = (Button) findViewById(R.id.backtolast);
+        back_bt.setOnClickListener(this);
         profit_detail_more_bt.setOnClickListener(this);
         profit_detail_today_bt.setOnClickListener(this);
         profit_detail_nmonth_bt.setOnClickListener(this);
@@ -231,7 +237,10 @@ public class ProfitDetailActivity extends AppCompatActivity implements View.OnCl
                 setDate(1);
                 break;
             case R.id.profit_detail_confirm_bt:
-                finish();
+            case R.id.backtolast:
+                Intent mIntent = new Intent(ProfitDetailActivity.this, MainActivity.class);
+                mIntent.putExtra("id",5);
+                startActivity(mIntent);
                 break;
             default:
                 break;

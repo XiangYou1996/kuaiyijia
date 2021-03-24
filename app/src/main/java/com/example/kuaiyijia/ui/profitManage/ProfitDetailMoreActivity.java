@@ -1,6 +1,7 @@
 package com.example.kuaiyijia.ui.profitManage;
 
 
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -33,6 +34,7 @@ public class ProfitDetailMoreActivity extends AppCompatActivity implements View.
     private Button profit_detail_more_confirm_bt;
     private List<ProfitDetailMoreItem> moreList = new ArrayList<>();
     private String order_id;
+    private Button back_bt;
     private Handler mHandler = new Handler(){
         @Override
         public void handleMessage(@NonNull Message msg) {
@@ -55,6 +57,8 @@ public class ProfitDetailMoreActivity extends AppCompatActivity implements View.
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        // 设置只能竖屏使用
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         setContentView(R.layout.activity_profit_order_detail);
         initView();
         initData();
@@ -63,8 +67,9 @@ public class ProfitDetailMoreActivity extends AppCompatActivity implements View.
         ordernum_title = (TextView) findViewById(R.id.ordernum_title);
         ordermore_list = (ListView) findViewById(R.id.ordermore_list);
         profit_detail_more_confirm_bt = (Button) findViewById(R.id.profit_detail_more_confirm_bt);
+        back_bt = (Button) findViewById(R.id.backtolast);
         profit_detail_more_confirm_bt.setOnClickListener(this);
-
+        back_bt.setOnClickListener(this);
     }
     public void initData(){
         ListItems<ProfitDetailMoreItem> alist = new ListItems<>();
@@ -118,6 +123,9 @@ public class ProfitDetailMoreActivity extends AppCompatActivity implements View.
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.profit_detail_more_confirm_bt:
+                finish();
+                break;
+            case R.id.backtolast:
                 finish();
                 break;
         }

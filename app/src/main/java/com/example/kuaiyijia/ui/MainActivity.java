@@ -1,10 +1,12 @@
-package com.example.kuaiyijia;
+package com.example.kuaiyijia.ui;
 
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 
+import com.example.kuaiyijia.R;
 import com.example.kuaiyijia.ui.carManage.CarManageFragment;
 import com.example.kuaiyijia.ui.personManage.PersonManageFragment;
 import com.example.kuaiyijia.ui.webBranchManage.WebBranchManageFragment;
@@ -25,17 +27,23 @@ import androidx.appcompat.widget.Toolbar;
 public class MainActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
+    private Toolbar toolbar;
+    private DrawerLayout drawer;
+    private NavigationView navigationView;
+    private NavController navController;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        // 设置只能竖屏使用
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         setContentView(R.layout.activity_main);
         // 工具栏
-        Toolbar toolbar = findViewById(R.id.toolbar);
+        toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         // 抽屉导航栏
-        DrawerLayout drawer = findViewById(R.id.drawer_layout);
-        NavigationView navigationView = findViewById(R.id.nav_view);
+        drawer = findViewById(R.id.drawer_layout);
+        navigationView = findViewById(R.id.nav_view);
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
@@ -45,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
                 .build();
         //   显示content 配置文件的内容
 
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
+        navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
 
@@ -67,30 +75,43 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onResume() {
+        super.onResume();
         int id = getIntent().getIntExtra("id",0);
         //设置展示的fragment
         switch (id){
+            case 1:
+                // 设置重新展示的界面
+                navController.navigate(R.id.nav_order);
+                NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
+                NavigationUI.setupWithNavController(navigationView, navController);
+                break;
             case 2:
                 // 设置重新展示的界面
-                // 1 先拿一个页面管理器
-                FragmentManager manager_2  =getSupportFragmentManager();
-                //2 开启一个事务处理
-                manager_2.beginTransaction().replace(R.id.nav_host_fragment,new PersonManageFragment()).commit();
+                navController.navigate(R.id.nav_person);
+                NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
+                NavigationUI.setupWithNavController(navigationView, navController);
                 break;
             case 3:
-                FragmentManager manager_3  =getSupportFragmentManager();
-                //2 开启一个事务处理
-                manager_3.beginTransaction().replace(R.id.nav_host_fragment,new WebBranchManageFragment()).commit();
+                navController.navigate(R.id.nav_webBranch);
+                NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
+                NavigationUI.setupWithNavController(navigationView, navController);
                 break;
             case 4:
                 // 设置重新展示的界面
-                // 1 先拿一个页面管理器
-                FragmentManager manager_4  =getSupportFragmentManager();
-                //2 开启一个事务处理
-                manager_4.beginTransaction().replace(R.id.nav_host_fragment,new CarManageFragment()).commit();
+                navController.navigate(R.id.nav_carManage);
+                NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
+                NavigationUI.setupWithNavController(navigationView, navController);
+                break;
+            case 5:
+                // 设置重新展示的界面
+                navController.navigate(R.id.nav_profit);
+                NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
+                NavigationUI.setupWithNavController(navigationView, navController);
+                break;
+            default:
                 break;
         }
-        super.onResume();
+
     }
 
 }

@@ -8,8 +8,10 @@
     </string-array>
 
     <string-array name="StationType">
+        <item>店长</item>
         <item>开单人</item>
         <item>运货人</item>
-        <item>接单人</item>
+        <item>搬运工</item>
+        <item>送货人(司机)</item>
     </string-array>
 </resources>

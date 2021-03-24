@@ -80,7 +80,6 @@ public class ProfitManageFragment extends Fragment implements View.OnClickListen
                 case 1061:
                     profitList.clear();
                     Profit today_profit;
-                    Log.i("", "handleMessage: ");
                     ListItems<Profit> today_listItems = (ListItems<Profit>) msg.getData().getSerializable("today_profit");
                     for (int i =0 ;i < today_listItems.size() ; i++){
                         today_profit = today_listItems.get(i);

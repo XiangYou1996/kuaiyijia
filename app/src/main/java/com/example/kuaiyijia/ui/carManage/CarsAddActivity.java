@@ -1,6 +1,7 @@
 package com.example.kuaiyijia.ui.carManage;
 
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -17,6 +18,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 
 import com.example.kuaiyijia.Database.Database;
+import com.example.kuaiyijia.ui.MainActivity;
 import com.example.kuaiyijia.R;
 
 import java.sql.ResultSet;
@@ -37,15 +39,16 @@ public class CarsAddActivity extends AppCompatActivity implements View.OnClickLi
     private int isExist = 0;
     private String[] columns;
     private String[] values;
+    private Button back_bt;
     private Handler mhandler = new Handler(){
         @Override
         public void handleMessage(@NonNull Message msg) {
             switch (msg.what){
                 case 1052:
-                    Log.e("TAG", "handleMessage: "+msg.getData().getInt("inserState"));
                     if(msg.getData().getInt("inserState") != 0){
                         Toast.makeText(CarsAddActivity.this,"添加成功！",Toast.LENGTH_LONG).show();
-                        Intent intent = new Intent(CarsAddActivity.this,CarManageFragment.class);
+                        Intent intent = new Intent(CarsAddActivity.this, MainActivity.class);
+                        intent.putExtra("id",4);
                         startActivity(intent);
                     }
                     else {
@@ -53,7 +56,6 @@ public class CarsAddActivity extends AppCompatActivity implements View.OnClickLi
                     }
                     break;
                 case 1056:
-                    Log.i("TAG", "handleMessage 1056: " + msg.getData().getInt("exist"));
                     isExist = msg.getData().getInt("exist");
                     if (isExist == 0){
                         Thread thread = new Thread(new Runnable() {
@@ -85,6 +87,8 @@ public class CarsAddActivity extends AppCompatActivity implements View.OnClickLi
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        // 设置只能竖屏使用
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         setContentView(R.layout.activity_cars_add);
         initView();
     }
@@ -99,7 +103,8 @@ public class CarsAddActivity extends AppCompatActivity implements View.OnClickLi
         car_add_car_load =  (EditText) findViewById(R.id.car_add_car_load);
         car_add_confirm_bt = (Button) findViewById(R.id.car_add_confirm_bt);
         car_add_type = (Spinner) findViewById(R.id.car_add_type);
-
+        back_bt = (Button) findViewById(R.id.backtolast);
+        back_bt.setOnClickListener(this);
         car_add_confirm_bt.setOnClickListener(this);
         car_add_type.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -120,6 +125,9 @@ public class CarsAddActivity extends AppCompatActivity implements View.OnClickLi
                 addCarInfo();
                 Log.d("car add", "success ");
                 break;
+            case R.id.backtolast:
+                finish();
+                break;
         }
     }
 
@@ -134,7 +142,7 @@ public class CarsAddActivity extends AppCompatActivity implements View.OnClickLi
         String HC_HEIGHT = car_add_car_width.getText().toString();
         String V_LOAD = car_add_car_load.getText().toString();
         columns = new String[]{"V_NO", "V_CNO", "V_TNO","VT_ID" ,"HC_LENGHT" , "HC_WIDTH" ,"HC_HEIGHT","V_LOAD"};
-        values = new String[]{V_NO,V_CNO,V_TNO,VT_ID,HC_LENGHT,HC_WIDTH,HC_HEIGHT,V_LOAD};
+        values = new String[]{"'"+V_NO+"'",V_CNO,V_TNO,VT_ID,HC_LENGHT,HC_WIDTH,HC_HEIGHT,V_LOAD};
         // 进入数据库查找是否有该车辆
         Thread thread_checkCar = new Thread(new Runnable() {
             @Override
@@ -158,8 +166,6 @@ public class CarsAddActivity extends AppCompatActivity implements View.OnClickLi
         });
         thread_checkCar.start();
         thread_checkCar.interrupt();
-        Log.e("TAG", "addCarInfo: "+V_NO );
-        // 2 无该车辆才 向数据库添加数据  -> to handler deal
 
     }
 }

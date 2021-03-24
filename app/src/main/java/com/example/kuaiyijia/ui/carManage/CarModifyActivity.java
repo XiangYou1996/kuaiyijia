@@ -2,6 +2,7 @@ package com.example.kuaiyijia.ui.carManage;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -17,9 +18,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.kuaiyijia.Database.Database;
 import com.example.kuaiyijia.Entity.CarListItem;
-import com.example.kuaiyijia.MainActivity;
+import com.example.kuaiyijia.ui.MainActivity;
 import com.example.kuaiyijia.R;
-import com.example.kuaiyijia.ui.personManage.StationManageActivity;
 
 
 public class CarModifyActivity extends AppCompatActivity implements View.OnClickListener {
@@ -37,7 +37,7 @@ public class CarModifyActivity extends AppCompatActivity implements View.OnClick
     private int tag ;
     private Toast toast ;
     private  int ModifyCarNum = 1051;
-
+    private Button back_bt;
     private Handler mHandler = new Handler(){
         @SuppressLint("HandlerLeak")
         @Override
@@ -67,7 +67,10 @@ public class CarModifyActivity extends AppCompatActivity implements View.OnClick
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        // 设置只能竖屏使用
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         setContentView(R.layout.activity_car_modify);
+
         initView();
         initData();
     }
@@ -83,7 +86,8 @@ public class CarModifyActivity extends AppCompatActivity implements View.OnClick
         car_modify_car_width = (EditText) findViewById(R.id.car_modify_car_width);
         car_modify_car_load = (EditText) findViewById(R.id.car_modify_car_load);
         car_modify_confirm_bt = (Button) findViewById(R.id.car_modify_confirm_bt);
-
+        back_bt = (Button) findViewById(R.id.backtolast);
+        back_bt.setOnClickListener(this);
         car_modify_type.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -121,6 +125,9 @@ public class CarModifyActivity extends AppCompatActivity implements View.OnClick
             case R.id.car_modify_confirm_bt:
                 // 传输数据到数据库
                 updateDataToDatabase();
+                break;
+            case R.id.backtolast:
+                finish();
                 break;
         }
 

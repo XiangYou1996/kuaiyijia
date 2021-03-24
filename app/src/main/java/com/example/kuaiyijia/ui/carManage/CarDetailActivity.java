@@ -1,6 +1,7 @@
 package com.example.kuaiyijia.ui.carManage;
 
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -15,6 +16,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.kuaiyijia.Database.Database;
 import com.example.kuaiyijia.Entity.CarListItem;
+import com.example.kuaiyijia.ui.MainActivity;
 import com.example.kuaiyijia.R;
 import com.example.kuaiyijia.Tools.CustomDialog;
 
@@ -44,16 +46,21 @@ public class CarDetailActivity extends AppCompatActivity implements View.OnClick
                     }
                     else {
                         Toast.makeText(CarDetailActivity.this,"删除成功！",Toast.LENGTH_SHORT).show();
-                        Intent mIntent = new Intent(CarDetailActivity.this, CarManageFragment.class);
+                        Intent mIntent = new Intent(CarDetailActivity.this, MainActivity.class);
+                        mIntent.putExtra("id",4);
                         startActivity(mIntent);
                     }
                     break;
             }
         }
     };
+    private Button back_bt;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        // 设置只能竖屏使用
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         setContentView(R.layout.activity_car_detail);
         initView();
         initData();
@@ -70,9 +77,10 @@ public class CarDetailActivity extends AppCompatActivity implements View.OnClick
         car_detail_car_load = (TextView) findViewById(R.id.car_detail_car_load);
         car_detail_modify_bt = (Button) findViewById(R.id.car_detail_modify_bt);
         car_detail_delete_bt = (Button) findViewById(R.id.car_detail_delete_bt);
-
+        back_bt = (Button) findViewById(R.id.backtolast);
         car_detail_modify_bt.setOnClickListener(this);
         car_detail_delete_bt.setOnClickListener(this);
+        back_bt.setOnClickListener(this);
     }
     public void initData(){
         // 获取传过来的数据  使用parcelable方式
@@ -124,6 +132,9 @@ public class CarDetailActivity extends AppCompatActivity implements View.OnClick
                     }
                 });
                 deleteDialog.show();
+                break;
+            case R.id.backtolast:
+                finish();
                 break;
             }
         }

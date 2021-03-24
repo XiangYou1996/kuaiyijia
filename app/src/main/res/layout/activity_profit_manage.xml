@@ -39,8 +39,9 @@
         android:id="@+id/profit_date_search_line"
         android:layout_below="@+id/profit_person_search_line"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:orientation="horizontal"
+        android:gravity="center"
         android:visibility="gone">
         <ImageButton
             android:id="@+id/profitbacktodate"
@@ -90,7 +91,7 @@
         <ImageButton
             android:id="@+id/profit_date_sr_bt"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:background="@drawable/profit_search" />
     </LinearLayout>
 
@@ -98,7 +99,7 @@
         android:id="@+id/profit_date_button_line"
         android:layout_below="@+id/profit_person_search_line"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:orientation="horizontal"
         android:visibility="visible">
         <Button
@@ -168,7 +169,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="20sp"
-            android:text="收益"
+            android:text="收益(元)"
             android:layout_weight="1"
             android:textColor="@color/black"/>
     </LinearLayout>

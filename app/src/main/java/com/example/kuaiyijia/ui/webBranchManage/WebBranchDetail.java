@@ -1,6 +1,7 @@
 package com.example.kuaiyijia.ui.webBranchManage;
 
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -14,7 +15,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.kuaiyijia.Database.Database;
 import com.example.kuaiyijia.Entity.WebBranchListItem;
-import com.example.kuaiyijia.MainActivity;
+import com.example.kuaiyijia.ui.MainActivity;
 import com.example.kuaiyijia.R;
 import com.example.kuaiyijia.Tools.CustomDialog;
 
@@ -24,6 +25,7 @@ public class WebBranchDetail extends AppCompatActivity implements View.OnClickLi
     private Button modify;
     private Button delete;
     private Button confirm;
+    private Button back_bt;
     private TextView wb_detail_name;
     private TextView wb_detail_abbreviation;
     private TextView wb_detail_tel;
@@ -53,6 +55,8 @@ public class WebBranchDetail extends AppCompatActivity implements View.OnClickLi
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        // 设置只能竖屏使用
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         setContentView(R.layout.activity_web_branch_detail);
         initView();
         initData();
@@ -79,9 +83,11 @@ public class WebBranchDetail extends AppCompatActivity implements View.OnClickLi
         wb_detail_person_name = (TextView) findViewById(R.id.wb_detail_person_name);
         wb_detail_person_tel = (TextView) findViewById(R.id.wb_detail_person_tel);
         wb_detail_concretAddress = (TextView) findViewById(R.id.wb_detail_concretAddress);
+        back_bt = (Button) findViewById(R.id.backtolast);
         modify.setOnClickListener(this);
         delete.setOnClickListener(this);
         confirm.setOnClickListener(this);
+        back_bt.setOnClickListener(this);
     }
 
     @Override
@@ -114,7 +120,10 @@ public class WebBranchDetail extends AppCompatActivity implements View.OnClickLi
                 dialog.show();
                 break;
             case R.id.wb_detail_confirm:
-                finish();
+            case R.id.backtolast:
+                Intent mIntent = new Intent(WebBranchDetail.this, MainActivity.class);
+                mIntent.putExtra("id",3);
+                startActivity(mIntent);
                 break;
             default:
                 break;

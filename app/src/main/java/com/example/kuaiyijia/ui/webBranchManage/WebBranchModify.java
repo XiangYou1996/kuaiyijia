@@ -2,6 +2,7 @@ package com.example.kuaiyijia.ui.webBranchManage;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -22,7 +23,7 @@ import com.amap.api.location.AMapLocationListener;
 import com.example.kuaiyijia.Database.Database;
 import com.example.kuaiyijia.Entity.Location;
 import com.example.kuaiyijia.Entity.WebBranchListItem;
-import com.example.kuaiyijia.MainActivity;
+import com.example.kuaiyijia.ui.MainActivity;
 import com.example.kuaiyijia.R;
 
 
@@ -37,7 +38,7 @@ public class WebBranchModify extends AppCompatActivity implements View.OnClickLi
     private ImageButton wb_modify_location_bt;
     private Button wb_modify_confirm;
     private WebBranchListItem webBranch;
-
+    private Button back_bt;
     private Location location;
     private AMapLocationClient mapLocationClient = null;
     private AMapLocationClientOption mLocationOption = new AMapLocationClientOption();
@@ -49,6 +50,7 @@ public class WebBranchModify extends AppCompatActivity implements View.OnClickLi
                         aMapLocation.getCountry(),aMapLocation.getProvince(),aMapLocation.getCity(),aMapLocation.getStreet(),
                         aMapLocation.getStreetNum(),aMapLocation.getCityCode(),aMapLocation.getAdCode());
                 wb_modify_concretAddress.setText(aMapLocation.getAddress());
+                Log.i("TAG", "onLocationChanged: "+aMapLocation.getAddress());
                 mapLocationClient.stopLocation();
             }
             else {
@@ -70,6 +72,7 @@ public class WebBranchModify extends AppCompatActivity implements View.OnClickLi
                         mIntent.putExtra("id",3);
                         startActivity(mIntent);
                         Toast.makeText(getApplicationContext(),"修改成功！",Toast.LENGTH_SHORT).show();
+//                        finish();
                     }
                     break;
                 default:
@@ -80,6 +83,8 @@ public class WebBranchModify extends AppCompatActivity implements View.OnClickLi
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        // 设置只能竖屏使用
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         setContentView(R.layout.activity_web_branch_modify);
         initView();
         initData();
@@ -105,20 +110,24 @@ public class WebBranchModify extends AppCompatActivity implements View.OnClickLi
         wb_modify_concretAddress = (EditText) findViewById(R.id.wb_modify_concretAddress);
         wb_modify_location_bt = (ImageButton) findViewById(R.id.wb_modify_location_bt);
         wb_modify_confirm = (Button) findViewById(R.id.wb_modify_confirm);
-
+        back_bt = (Button) findViewById(R.id.backtolast);
         wb_modify_location_bt.setOnClickListener(this);
         wb_modify_confirm.setOnClickListener(this);
+        back_bt.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.wb_modify_location_bt:
-                Toast.makeText(getApplicationContext(),"请稍等，正在获取您的位置~",Toast.LENGTH_LONG).show();
-                startClient(getApplicationContext());
+                Toast.makeText(WebBranchModify.this,"请稍等，正在获取您的位置~",Toast.LENGTH_LONG).show();
+                startClient(WebBranchModify.this);
                 break;
             case R.id.wb_modify_confirm:
                 updateWebBranch();
+                break;
+            case R.id.backtolast:
+                finish();
                 break;
             default:
                 break;
@@ -154,7 +163,7 @@ public class WebBranchModify extends AppCompatActivity implements View.OnClickLi
         // c_id 默认为1
         String  ID_name = "HYBID";
         int ID_value =Integer.valueOf(webBranch.getWebBranchID()) ;
-        String [] names = {"HYBNAME","C_ID","DQ_CODE","HYBTEL","HYBLXR","HYBLXDH","HYBADDR"};
+        String [] names = {"HYBNAME","C_ID","WDJC","HYBTEL","HYBLXR","HYBLXDH","HYBADDR"};
         String [] values = {name,"1",name_abbreviation,tel,personName,personTel,concretAddress};
         // 建立线程操作数据库
         Thread thread = new Thread(new Runnable() {

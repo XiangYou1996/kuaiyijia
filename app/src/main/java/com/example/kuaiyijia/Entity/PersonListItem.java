@@ -13,13 +13,23 @@ public class PersonListItem implements Serializable, Parcelable {
     private String person_name;
     private String person_tel;
     private String person_webBranch;
+    private String person_sation_ID;
     private String person_sation;
 
-    public PersonListItem(String person_ID, String person_name, String person_tel, String person_webBranch, String person_sation) {
+    public String getPerson_sation_ID() {
+        return person_sation_ID;
+    }
+
+    public void setPerson_sation_ID(String person_sation_ID) {
+        this.person_sation_ID = person_sation_ID;
+    }
+
+    public PersonListItem(String person_ID, String person_name, String person_tel, String person_webBranch, String person_sation_ID, String person_sation) {
         this.person_ID = person_ID;
         this.person_name = person_name;
         this.person_tel = person_tel;
         this.person_webBranch = person_webBranch;
+        this.person_sation_ID = person_sation_ID;
         this.person_sation = person_sation;
     }
 
@@ -28,6 +38,7 @@ public class PersonListItem implements Serializable, Parcelable {
         person_name = in.readString();
         person_tel = in.readString();
         person_webBranch = in.readString();
+        person_sation_ID = in.readString();
         person_sation = in.readString();
     }
 
@@ -94,6 +105,7 @@ public class PersonListItem implements Serializable, Parcelable {
         dest.writeString(person_name);
         dest.writeString(person_tel);
         dest.writeString(person_webBranch);
+        dest.writeString(person_sation_ID);
         dest.writeString(person_sation);
     }
 }

@@ -1,6 +1,5 @@
 package com.example.kuaiyijia.Adapter;
 
-import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -20,7 +19,7 @@ import androidx.annotation.NonNull;
 import com.example.kuaiyijia.Database.Database;
 import com.example.kuaiyijia.Entity.CarListItem;
 import com.example.kuaiyijia.Entity.PersonListItem;
-import com.example.kuaiyijia.MainActivity;
+import com.example.kuaiyijia.ui.MainActivity;
 import com.example.kuaiyijia.R;
 import com.example.kuaiyijia.Tools.CustomDialog;
 import com.example.kuaiyijia.ui.personManage.PersonModifyActivity;
@@ -118,7 +117,6 @@ public class PersonListAdapter extends BaseAdapter {
             @Override
             public void onClick(View v) {
                 // 跳转 人员修改
-                Log.i(TAG, "onClick: person modify");
                 Intent mIntent = new Intent(context, PersonModifyActivity.class);
                 //   传递人员信息
                 PersonListItem person = adapterLists.get(position);
@@ -132,7 +130,6 @@ public class PersonListAdapter extends BaseAdapter {
             @Override
             public void onClick(View v) {
                 //   删除人员信息
-                Log.i(TAG, "onClick:  delete?");
                 deletePersoninfo(position);
 
             }
@@ -142,7 +139,6 @@ public class PersonListAdapter extends BaseAdapter {
 
     public void deletePersoninfo(int position){
         // 弹出对话框询问是否真的删除
-        Log.i(TAG, "deletePersoninfo: ");
         CustomDialog dialog = new CustomDialog(context);
 
         dialog.setTitle("提示");
