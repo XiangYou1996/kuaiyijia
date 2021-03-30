@@ -13,10 +13,10 @@ Author by: xy
 Coding On 2021/3/18;
 */
 public class DataBaseForMultilFragment {
-    private  String user = "sa";
-    private  String password = "root123";
-    private  String DatabaseName = "CQU";
-    private  String IP = "172.20.53.32";
+    private  String user = "app";
+    private  String password = "app123456";
+    private  String DatabaseName = "HYBAPP";
+    private  String IP = "121.41.7.176";
     private  String connectDB = "jdbc:jtds:sqlserver://" + IP + ":1433/" + DatabaseName + ";useunicode=true;characterEncoding=UTF-8";
 
     private  Connection conn = null;
@@ -28,8 +28,7 @@ public class DataBaseForMultilFragment {
             //加载驱动换成这个
             Class.forName("net.sourceforge.jtds.jdbc.Driver");
             //连接数据库对象
-            con = DriverManager.getConnection(connectDB, user,
-                    password);
+            con = DriverManager.getConnection(connectDB, user, password);
         } catch (Exception e) {
         }
         return con;

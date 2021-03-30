@@ -27,7 +27,7 @@
             android:textSize="20sp"
             android:text="搜索"
             android:background="@drawable/small_button_style"
-            android:textColor="#000000"/>
+            android:textColor="@color/white"/>
     </LinearLayout>
     <LinearLayout
         android:id="@+id/am_line2"

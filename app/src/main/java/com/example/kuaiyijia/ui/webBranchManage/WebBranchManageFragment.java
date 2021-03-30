@@ -84,7 +84,6 @@ public class WebBranchManageFragment extends Fragment implements View.OnClickLis
                                 rs.getString("WDJC"),rs.getString("HYBTEL"),
                                 rs.getString("HYBLXR"),rs.getString("HYBLXDH"),rs.getString("HYBADDR"));
                         alist.add(webBranch[0]);
-                        Log.i(TAG, "run: "+alist.get(0).getWebBranchJC());
                     }
                     Message message = new Message();
                     message.what = 1030;

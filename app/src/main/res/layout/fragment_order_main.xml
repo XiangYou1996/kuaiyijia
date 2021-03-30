@@ -18,6 +18,8 @@
         android:layout_height="wrap_content"
         android:textSize="25sp"
         android:text="开单"
+        android:background="@drawable/big_button_style"
+        android:textColor="@color/white"
         android:layout_alignParentBottom="true"></Button>
 
 </RelativeLayout>

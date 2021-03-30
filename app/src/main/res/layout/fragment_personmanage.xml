@@ -15,7 +15,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="25sp"
-            android:hint="请输入员工姓名/岗位"
+            android:hint=" 请输入员工姓名/岗位"
             android:layout_weight="2"
             android:imeOptions="actionDone"/>
         <Button
@@ -23,7 +23,9 @@
             android:layout_marginRight="5dp"
             android:id="@+id/pm_search_bt"
             android:text="搜索"
-            android:textSize="25dp"
+            android:textSize="25sp"
+            android:background="@drawable/small_button_style"
+            android:textColor="@color/white"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"/>
@@ -40,8 +42,10 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"
-        android:textSize="20dp"
+        android:background="@drawable/shape_353b50_view"
+        android:textSize="20sp"
         android:text="岗位管理"
+        android:textColor="#FCFCFC"
         android:layout_alignParentBottom="true"></Button>
 
 </RelativeLayout>

@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -35,9 +36,9 @@ public class WebBranchAddActivity extends AppCompatActivity implements View.OnCl
     private EditText wb_wb_person_name;
     private EditText wb_wb_person_tel;
     private EditText wb_concretAddress;
-    private ImageButton wb_wb_location_bt;
+    private TextView wb_wb_location_bt;
     private Button wb_add_confirm;
-
+    private Button back_bt;
     private final static String TAG = "GaoDeLocation";
     // maplocationclientoption对象
     public AMapLocationClientOption mLocationOption = new AMapLocationClientOption();
@@ -101,11 +102,12 @@ public class WebBranchAddActivity extends AppCompatActivity implements View.OnCl
         wb_wb_person_name = (EditText) findViewById(R.id.wb_wb_person_name);
         wb_wb_person_tel = (EditText) findViewById(R.id.wb_wb_person_tel);
         wb_concretAddress = (EditText) findViewById(R.id.wb_concretAddress);
-        wb_wb_location_bt = (ImageButton) findViewById(R.id.wb_wb_location_bt);
+        wb_wb_location_bt = (TextView) findViewById(R.id.wb_wb_location_bt);
         wb_add_confirm = (Button) findViewById(R.id.wb_add_confirm);
-
+        back_bt = (Button) findViewById(R.id.backtolast);
         wb_wb_location_bt.setOnClickListener(this);
         wb_add_confirm.setOnClickListener(this);
+        back_bt.setOnClickListener(this);
     }
 
     @Override
@@ -115,9 +117,12 @@ public class WebBranchAddActivity extends AppCompatActivity implements View.OnCl
                 Toast.makeText(getApplicationContext(),"请稍等，正在获取您的位置~",Toast.LENGTH_LONG).show();
                 startClient(getApplicationContext());
                 break;
-            case R.id.  wb_add_confirm:
+            case R.id.wb_add_confirm:
                 // 添加 一个网点
                 addWebBranch();
+                break;
+            case R.id.backtolast:
+                finish();
                 break;
             default:
                 break;
@@ -163,7 +168,6 @@ public class WebBranchAddActivity extends AppCompatActivity implements View.OnCl
         mLocationOption.setMockEnable(true);
         //关闭缓存机制
         mLocationOption.setLocationCacheEnable(false);
-
         /*设置定位场景*/
 //        mLocationOption.setLocationPurpose();  默认无场景
         // 给客户端对象设置定位参数

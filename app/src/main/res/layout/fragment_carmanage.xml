@@ -26,6 +26,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="搜索"
+            android:background="@drawable/small_button_style"
+            android:textColor="@color/white"
             android:textSize="15sp"/>
     </LinearLayout>
     <ListView

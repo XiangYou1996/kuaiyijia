@@ -27,7 +27,8 @@
         android:layout_below="@+id/add_title"
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:background="@drawable/rectangle_textview_style">
         <TextView
             android:layout_weight="1"
             android:layout_width="wrap_content"
@@ -50,7 +51,8 @@
         android:layout_below="@+id/a_line1"
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:background="@drawable/rectangle_textview_style">
         <TextView
             android:layout_weight="1"
             android:layout_width="wrap_content"
@@ -73,7 +75,8 @@
         android:layout_below="@+id/a_line11"
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:background="@drawable/rectangle_textview_style">
         <TextView
             android:layout_weight="1"
             android:layout_width="wrap_content"
@@ -96,7 +99,8 @@
         android:layout_below="@+id/a_line2"
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:background="@drawable/rectangle_textview_style">
         <TextView
             android:layout_weight="1"
             android:layout_width="wrap_content"
@@ -120,7 +124,8 @@
         android:layout_below="@+id/a_line3"
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:background="@drawable/rectangle_textview_style">
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -174,7 +179,8 @@
         android:layout_below="@+id/a_line4"
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:background="@drawable/rectangle_textview_style">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -228,7 +234,8 @@
         android:orientation="horizontal"
         android:layout_marginTop="30dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:background="@drawable/rectangle_textview_style">
         <TextView
             android:layout_weight="1"
             android:layout_width="wrap_content"
@@ -276,6 +283,7 @@
         android:layout_below="@+id/a_line12"
         android:orientation="horizontal"
         android:layout_width="match_parent"
+        android:background="@drawable/rectangle_textview_style"
         android:layout_height="wrap_content">
         <TextView
             android:layout_weight="1"
@@ -300,6 +308,7 @@
         android:layout_below="@+id/a_line7"
         android:orientation="horizontal"
         android:layout_width="match_parent"
+        android:background="@drawable/rectangle_textview_style"
         android:layout_height="wrap_content">
         <TextView
             android:layout_width="wrap_content"
@@ -330,6 +339,7 @@
         android:id="@+id/a_line9"
         android:layout_below="@+id/a_line8"
         android:orientation="horizontal"
+        android:background="@drawable/rectangle_textview_style"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <TextView
@@ -355,7 +365,6 @@
         android:imeOptions="actionDone"
         android:hint=""/>
     <LinearLayout
-        android:padding="8dp"
         android:layout_alignParentBottom="true"
         android:orientation="horizontal"
         android:layout_width="match_parent"
@@ -367,6 +376,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="16sp"
+            android:background="@drawable/big_button_style"
+            android:textColor="@color/white"
             android:text="确认开单"></Button>
     </LinearLayout>
 

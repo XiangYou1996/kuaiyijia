@@ -21,6 +21,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.example.kuaiyijia.Database.Database;
 import com.example.kuaiyijia.R;
 
 import java.sql.ResultSet;
@@ -31,8 +32,7 @@ Author by: xy
 Coding On 2021/3/18;
 */
 public class YunJiaFragment extends Fragment {
-    private static final String TAG = "chaxun";
-
+    private static final String TAG = "Yunjia";
     private TextView marea;
     private Spinner mspinner1;
     private TextView mfreight;
@@ -99,7 +99,6 @@ public class YunJiaFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 try {
-                    Log.d(TAG, "onClick: 1");
                     handlerSearch(v);
                 }catch (SQLException throwables){
                     throwables.printStackTrace();
@@ -133,7 +132,7 @@ public class YunJiaFragment extends Fragment {
                     @Override
                     public void run() {
                         Log.d(TAG, "run: "+amendValue);
-                        int rs = database.amendFromData(tabName,"V_ID","V_NO","HC_MONEY",
+                        int rs = Database.amendFromData(tabName,"V_ID","V_NO","HC_MONEY",
                                 "V_ID2", area,things,amendValue,area2);
 
 
@@ -177,8 +176,6 @@ public class YunJiaFragment extends Fragment {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 area = getResources().getStringArray(R.array.area)[position];
 
-                Log.d(TAG, "onItemSelected: area is"+area);
-
             }
 
             @Override
@@ -190,7 +187,6 @@ public class YunJiaFragment extends Fragment {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 things = getResources().getStringArray(R.array.sad)[position];
-                Log.d(TAG, "onItemSelected: things is"+things);
             }
 
             @Override
@@ -203,7 +199,6 @@ public class YunJiaFragment extends Fragment {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 area2 = getResources().getStringArray(R.array.choose)[position];
-                Log.d(TAG, "onItemSelected: area2 is"+area2);
             }
 
             @Override
@@ -222,12 +217,10 @@ public class YunJiaFragment extends Fragment {
                 }
             }
         });
-//        System.out.println("11111111111111");
     }
 
     private void handlerSearch(View v) throws  SQLException{
-//        String area = mspinner1.getText().toString();
-//        String things = mfreight.getText().toString();
+
         if(TextUtils.isEmpty(area)){
             Toast.makeText(getContext(),"发货地不能为空",Toast.LENGTH_SHORT).show();
             return;
@@ -241,26 +234,19 @@ public class YunJiaFragment extends Fragment {
             return;
         }
         String tabName = "PUB_HAHA";
-//        String tabTopName = "V_ID";
-//        String value = "沙坪坝";
-//        String tabTopName = "V_ID";
-//        String value = "沙坪坝";
         Thread thread = new Thread(new Runnable() {
             @Override
             public void run() {
-                ResultSet rs = database.SelectFromData_2("*",tabName,"V_ID","V_NO","V_ID2",area,things,area2);
-                Log.d(TAG, "rs is ");
+                ResultSet rs = Database.SelectFromData_2("*",tabName,"V_ID","V_NO","V_ID2",area,things,area2);
                 try {
                     Message msg = new Message();
                     msg.what = 1;
                     Bundle bundle = new Bundle();
                     while (rs.next()){
-                        Log.e(TAG, "run: budnle111");
                         bundle.putString("mV_area",rs.getString("V_ID"));
                         bundle.putString("mV_things",rs.getString("V_NO"));
                         bundle.putString("mV_money",rs.getString("HC_MONEY"));
                         bundle.putString("mV_area2",rs.getString("V_ID2"));
-
                         msg.setData(bundle);
                         mHandler.sendMessage(msg);
                     }
@@ -270,6 +256,6 @@ public class YunJiaFragment extends Fragment {
             }
         });
         thread.start();
-        database.closeConnect();
+        Database.closeConnect();
     }
 }

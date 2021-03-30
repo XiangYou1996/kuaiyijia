@@ -21,7 +21,7 @@
        <EditText
            android:id="@+id/profit_search_edit"
            android:layout_width="wrap_content"
-           android:layout_height="wrap_content"
+           android:layout_height="match_parent"
            android:textSize="20sp"
            android:background="@drawable/edit_box_style"
            android:layout_weight="8"
@@ -31,8 +31,11 @@
            android:id="@+id/profit_manage_sr_bt"
            android:layout_width="wrap_content"
            android:layout_height="wrap_content"
+           android:layout_marginLeft="5dp"
+           android:background="@drawable/small_button_style"
+           android:textColor="@color/white"
            android:text="搜索"
-           android:textSize="20dp"
+           android:textSize="20sp"
            android:layout_weight="1"/>
    </LinearLayout>
     <LinearLayout

@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.kuaiyijia.Database.Database;
 import com.example.kuaiyijia.R;
 
 import java.sql.ResultSet;
@@ -138,7 +139,7 @@ public class NotificationDetail extends AppCompatActivity {
             @Override
             public void run() {
              //读取数据：生成结果集ResultSet
-                ResultSet rs = database.SelectFromData("*",tabName,"V_ID",post);
+                ResultSet rs = Database.SelectFromData("*",tabName,"V_ID",post);
                 Log.d(TAG, "RLKH is ");
                 try {
                     Message msg = new Message();
@@ -170,7 +171,7 @@ public class NotificationDetail extends AppCompatActivity {
             }
         });
         thread.start();
-        database.closeConnect();
+        Database.closeConnect();
     }
 
 

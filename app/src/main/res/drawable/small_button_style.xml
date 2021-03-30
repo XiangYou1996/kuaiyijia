@@ -4,9 +4,9 @@
     android:shape="rectangle">
     <!--设置背景色-->
     <!-- 设置透明背景色 -->
-    <solid android:color="#E2E3E4" />
+    <solid android:color="#49526B" />
     <!--设置圆角-->
-    <corners android:radius="50px" />
+    <corners android:radius="25px" />
     <!--设置边框线的宽度和颜色-->
 
 </shape>

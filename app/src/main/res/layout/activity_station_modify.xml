@@ -160,6 +160,8 @@
         android:layout_marginRight="5dp"
         android:textSize="20sp"
         android:text="添加岗位"
+        android:background="@drawable/big_button_style"
+        android:textColor="@color/white"
         android:layout_alignParentBottom="true"></Button>
 
 </RelativeLayout>

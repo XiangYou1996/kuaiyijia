@@ -19,6 +19,7 @@
     <string name="menu_fenrun">分润系统</string>
     <string name="menu_yunjia">运价系统</string>
     <string name="menu_notification">消息推送</string>
+    <string name="menu_loginout">退出登录</string>
 
 
     <string name="tab_text_1">已完成</string>
@@ -47,4 +48,6 @@
         <item>武隆</item>
         <item>北碚</item>
     </string-array>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

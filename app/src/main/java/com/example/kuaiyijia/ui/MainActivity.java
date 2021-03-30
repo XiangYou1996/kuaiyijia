@@ -1,5 +1,9 @@
 package com.example.kuaiyijia.ui;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.util.Log;
@@ -31,6 +35,18 @@ public class MainActivity extends AppCompatActivity {
     private DrawerLayout drawer;
     private NavigationView navigationView;
     private NavController navController;
+    //退出的广播频段
+    private static final String EXITACTION = "action2exit";
+
+    private ExitReceiver exitReceiver = new ExitReceiver();
+
+    class ExitReceiver extends BroadcastReceiver {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            //收到广播时，finish
+            finish();
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
                R.id.nav_order,R.id.nav_person,R.id.nav_webBranch ,R.id.nav_carManage, R.id.nav_profit,R.id.nav_zhuangchema,
-                R.id.nav_scanzhuangche,R.id.nav_scanfache,R.id.nav_scandownload,R.id.nav_fenrun,R.id.nav_yunjia,R.id.nav_notification)
+                R.id.nav_scanzhuangche,R.id.nav_scanfache,R.id.nav_scandownload,R.id.nav_fenrun,R.id.nav_yunjia,R.id.nav_notification,R.id.nav_logout)
                 .setDrawerLayout(drawer)
                 .build();
         //   显示content 配置文件的内容
@@ -56,6 +72,11 @@ public class MainActivity extends AppCompatActivity {
         navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
+
+        //界面创建时注册广播
+        IntentFilter filter = new IntentFilter();
+        filter.addAction(EXITACTION);
+        registerReceiver(exitReceiver, filter);
 
     }
 
@@ -112,6 +133,12 @@ public class MainActivity extends AppCompatActivity {
                 break;
         }
 
+    }
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        //界面销毁时解除广播
+        unregisterReceiver(exitReceiver);
     }
 
 }

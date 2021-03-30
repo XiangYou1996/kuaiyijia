@@ -20,6 +20,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.example.kuaiyijia.Database.Database;
 import com.example.kuaiyijia.R;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -113,7 +114,7 @@ public class ZhuangchemaFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Log.d(TAG, "准备生成装车码...");
-                i.putExtra("V_NO",mV_no);
+                i.putExtra("V_ID",mV_id);
                 startActivity(i);
                 Log.d(TAG, "开始跳转页面...");
             }
@@ -147,9 +148,9 @@ public class ZhuangchemaFragment extends Fragment {
             public void run() {
                 Message msgCarInfo = new Message();
                 Message msgCarIsNull = new Message();
-                ResultSet rs = database.SelectFromData("*", tabName, tabTopName, value);
+                ResultSet rs = Database.SelectFromData("*", tabName, tabTopName, value);
                 try {
-                    //对本次查询判空，传递消息出去
+                    //对本次查询判空，传递消息出去D
                     msgCarIsNull.what = 2;
                     Bundle bCarIsNull = new Bundle();
                     bCarIsNull.putBoolean("isNullResultSet",rs.isBeforeFirst());

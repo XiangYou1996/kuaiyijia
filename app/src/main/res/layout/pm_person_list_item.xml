@@ -4,46 +4,55 @@
     android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="8dp">
-    <TextView
-        android:id="@+id/pm_staff_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="zhangsan"
-        android:layout_gravity="center"
-        android:textSize="20sp"
-        android:textColor="#000"
-        android:layout_weight="1"/>
-    <TextView
-        android:id="@+id/pm_staff_station"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="kaidanren"
-        android:textSize="20sp"
-        android:textColor="#000"
-        android:layout_gravity="center"
-        android:layout_weight="1"/>
+    android:background="@drawable/shape_353b50_view">
     <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:orientation="vertical">
-        <Button
-            android:id="@+id/pm_staff_modify"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="10dp"
+        android:background="#FFF">
+        <TextView
+            android:id="@+id/pm_staff_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="修改"
-            android:textColor="#000"
-            android:background="@drawable/small_button_style"
-            android:layout_gravity="center"/>
-        <Button
-            android:layout_marginTop="10dp"
-            android:id="@+id/pm_staff_delete"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:text="zhangsan"
             android:layout_gravity="center"
-            android:textColor="#FF0000"
-            android:background="@drawable/small_button_style"
-            android:text="删除"/>
+            android:textSize="20sp"
+            android:textColor="#000"
+            android:layout_weight="1"/>
+        <TextView
+            android:id="@+id/pm_staff_station"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="kaidanren"
+            android:textSize="20sp"
+            android:textColor="#000"
+            android:layout_gravity="center"
+            android:layout_weight="1"/>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+            <Button
+                android:id="@+id/pm_staff_modify"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="修改"
+                android:textColor="#FCFCFC"
+                android:background="@drawable/shape_353b50_view"
+                android:layout_gravity="center"/>
+            <Button
+                android:layout_marginTop="10dp"
+                android:id="@+id/pm_staff_delete"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textColor="#FCFCFC"
+                android:background="@drawable/shape_353b50_view"
+                android:text="删除"
+                android:layout_marginBottom="5dp"/>
+        </LinearLayout>
     </LinearLayout>
+
 </LinearLayout>

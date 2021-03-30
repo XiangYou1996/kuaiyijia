@@ -27,6 +27,7 @@ import androidx.annotation.RequiresApi;
 import androidx.core.app.NotificationCompat;
 import androidx.fragment.app.Fragment;
 
+import com.example.kuaiyijia.Database.Database;
 import com.example.kuaiyijia.R;
 
 import java.sql.ResultSet;
@@ -231,8 +232,8 @@ public class MessageNotificationSendFragment extends Fragment {
         Thread thread = new Thread(new Runnable() {
             @Override
             public void run() {
-                ResultSet rs = database.SelectFromData_2("*",tabName,"V_ID","V_SH",post,name);
-                Log.d(TAG, "rs is ");
+                ResultSet rs = Database.SelectFromData_2("*",tabName,"V_ID","V_SH",post,name);
+
                 try {
                     Message msg = new Message();
                     msg.what = 1;
@@ -253,6 +254,6 @@ public class MessageNotificationSendFragment extends Fragment {
             }
         });
         thread.start();
-        database.closeConnect();
+        Database.closeConnect();
     }
 }

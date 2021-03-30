@@ -5,11 +5,17 @@
 
     <Button
         android:id="@+id/bt_scanCarLoad"
-        android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="30dp"
+        android:layout_marginTop="320dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="扫码装车"/>
+        android:text="扫描装车码"/>
+    <Button
+        android:id="@+id/bt_scanHuowuNum"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="380dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="扫描商品条形码"/>
 
 </RelativeLayout>

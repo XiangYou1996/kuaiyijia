@@ -19,6 +19,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.example.kuaiyijia.Database.Database;
 import com.example.kuaiyijia.R;
 
 import java.sql.ResultSet;
@@ -123,7 +124,7 @@ public class FenRunFragment extends Fragment {
                     @Override
                     public void run() {
                         Log.d(TAG, "run: "+amendValue);
-                        int rs = database.amendFromData(tabName,"V_ID","V_NAME","V_NUMBER",
+                        int rs = Database.amendFromData(tabName,"V_ID","V_NAME","V_NUMBER",
                                 post ,name,amendValue);
 
 
@@ -178,7 +179,7 @@ public class FenRunFragment extends Fragment {
         Thread thread = new Thread(new Runnable() {
             @Override
             public void run() {
-                ResultSet rs = database.SelectFromData_2("*",tabName,"V_ID","V_NAME",post,name);
+                ResultSet rs = Database.SelectFromData_2("*",tabName,"V_ID","V_NAME",post,name);
                 Log.d(TAG, "rs is ");
                 try {
                     Message msg = new Message();
@@ -200,7 +201,7 @@ public class FenRunFragment extends Fragment {
             }
         });
         thread.start();
-        database.closeConnect();
+        Database.closeConnect();
     }
 
 }

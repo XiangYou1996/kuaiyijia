@@ -40,9 +40,6 @@
         android:textColor="@color/black"
         android:background="@drawable/circle_textview_style"/>
     <TextView
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
         android:id="@+id/car_detail_plate_number"
         android:layout_below="@+id/car_detail_title"
         android:layout_width="match_parent"
@@ -55,9 +52,7 @@
         android:background="@drawable/rectangle_textview_style"
          />
     <TextView
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
+
         android:id="@+id/car_detail_id"
         android:layout_below="@+id/car_detail_plate_number"
         android:layout_width="match_parent"
@@ -69,9 +64,6 @@
         android:background="@drawable/rectangle_textview_style"
          />
     <TextView
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
         android:id="@+id/car_detail_license"
         android:layout_below="@+id/car_detail_id"
         android:layout_width="match_parent"
@@ -91,10 +83,11 @@
         android:gravity="center">
         <TextView
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:text="车辆类型"
             android:textSize="18dp"
             android:textColor="@color/black"
+            android:gravity="center"
             android:background="@drawable/rectangle_textview_style"/>
         <TextView
             android:id="@+id/car_detail_type"
@@ -113,14 +106,15 @@
         <TextView
             android:layout_marginLeft="10dp"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:text="货箱长度"
-            android:textSize="18dp"
+            android:textSize="18sp"
+            android:gravity="center"
             android:background="@drawable/rectangle_textview_style"
             android:textColor="@color/black"/>
         <TextView
             android:id="@+id/car_detail_car_lenth"
-            android:layout_width="100dp"
+            android:layout_width="80dp"
             android:layout_height="50dp"
             android:textSize="20sp"
             android:gravity="center"
@@ -140,14 +134,16 @@
         android:layout_marginTop="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center">
+        android:gravity="center"
+        android:background="@drawable/rectangle_textview_style">
         <TextView
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:text="货箱高度"
-            android:textSize="18dp"
+            android:textSize="18sp"
             android:background="@drawable/rectangle_textview_style"
-            android:textColor="@color/black"/>
+            android:textColor="@color/black"
+            android:gravity="center_vertical"/>
         <TextView
             android:id="@+id/car_detail_car_height"
             android:layout_width="100dp"
@@ -165,14 +161,15 @@
         <TextView
             android:layout_marginLeft="10dp"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:text="货箱宽度"
-            android:textSize="18dp"
+            android:textSize="18sp"
             android:background="@drawable/rectangle_textview_style"
-            android:textColor="@color/black"/>
+            android:textColor="@color/black"
+            android:gravity="center"/>
         <TextView
             android:id="@+id/car_detail_car_width"
-            android:layout_width="100dp"
+            android:layout_width="80dp"
             android:layout_height="50dp"
             android:textSize="20sp"
             android:gravity="center"
@@ -183,7 +180,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="米"
-            android:textSize="18dp"
+            android:textSize="18sp"
             android:textColor="@color/black"/>
     </LinearLayout>
     <LinearLayout
@@ -192,15 +189,16 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:gravity="center_vertical">
+        android:gravity="center_vertical"
+        android:background="@drawable/rectangle_textview_style">
         <TextView
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
+            android:layout_height="match_parent"
             android:text="  载重量  "
-            android:textSize="18dp"
+            android:textSize="18sp"
             android:background="@drawable/rectangle_textview_style"
-            android:textColor="@color/black"/>
+            android:textColor="@color/black"
+            android:gravity="center"/>
         <TextView
             android:id="@+id/car_detail_car_load"
             android:layout_width="100dp"
@@ -233,7 +231,8 @@
             android:textSize="30dp"
             android:text="修改信息"
             android:layout_weight="1"
-            android:background="@drawable/big_button_style"
+            android:textColor="#FCFCFC"
+            android:background="@drawable/small_button_style"
             ></Button>
         <Button
             android:id="@+id/car_detail_delete_bt"
@@ -243,9 +242,9 @@
             android:layout_marginRight="5dp"
             android:textSize="30dp"
             android:text="删    除"
-            android:background="@drawable/big_button_style"
+            android:background="@drawable/small_button_style"
             android:layout_weight="1"
-            android:textColor="#FF0000"/>
+            android:textColor="#E42A2A"/>
     </LinearLayout>
 
 </RelativeLayout>

@@ -11,10 +11,10 @@ import java.sql.Statement;
 
 public class Database {
     private static final String TAG = "Database";
-    private static String user = "sa";
-    private static String password = "root123";
-    private static String DatabaseName = "CQU";
-    private static String IP = "172.20.53.32";
+    private static String user = "app";
+    private static String password = "app123456";
+    private static String DatabaseName = "HYBAPP";
+    private static String IP = "121.41.7.176";
     /**
      * 连接字符串
      */
@@ -28,7 +28,7 @@ public class Database {
      *
      * @return
      */
-    private static Connection getSQLConnection() {
+    public static Connection getSQLConnection() {
         Connection con = null;
         try {
             //加载驱动换成这个
@@ -66,12 +66,55 @@ public class Database {
         }
         return i;
     }
+
+    public static int amendFromData(String tabName, String tabTopName, String tabTopName_2, String tabTopName_3, String values, String values_2, String values_3) {
+        int i = 0;
+        try {
+            if (conn == null) {
+                conn = getSQLConnection();
+                stmt = conn.createStatement();
+            }
+            if (conn == null || stmt == null) {
+                return i;
+            }
+            //String sql = "UPDATE" + tabName + "SET" + tabTopName + "WHERE" + tabTopName + "=" + values + "'";
+            String sql = "UPDATE " + tabName + " SET " + tabTopName_3+" = "+ values_3+" WHERE " + tabTopName + " = '" + values + "'" +
+                    " and " + tabTopName_2 + " = '" + values_2 + "'";
+            Log.d(TAG, "amendFromData: " + sql);
+            i = stmt.executeUpdate(sql);
+        } catch (SQLException e) {
+            e.printStackTrace();
+            Log.i("mtj", "同步数据库【" + tabName + "】失败");
+        }
+        return i;
+    }
+    public static int amendFromData(String tabName, String tabTopName, String tabTopName_2, String tabTopName_3,String tabTopName_4,
+                                    String values,String values_2,String values_3,String values_4) {
+        int i = 0;
+        try {
+            if (conn == null) {
+                conn = getSQLConnection();
+                stmt = conn.createStatement();
+            }
+            if (conn == null || stmt == null) {
+                return i;
+            }
+            //String sql = "UPDATE" + tabName + "SET" + tabTopName + "WHERE" + tabTopName + "=" + values + "'";
+            String sql = "UPDATE " + tabName + " SET " + tabTopName_3+" = "+ values_3+" WHERE " + tabTopName + " = '" + values + "'" +
+                    " and " + tabTopName_2 + " = '" + values_2 + "'" +  " and " + tabTopName_4 + " = '" + values_4 + "'";
+            Log.d(TAG, "amendFromData: " + sql);
+            i = stmt.executeUpdate(sql);
+        } catch (SQLException e) {
+            e.printStackTrace();
+            Log.i("mtj", "同步数据库【" + tabName + "】失败");
+        }
+        return i;
+    }
     public static int insertIntoDataForColumn(String tabName, String[] tabTopName, String[] values) {
         int i = 0;
         try {
             if (conn == null) {
                 conn = getSQLConnection();
-                Log.d(TAG, "insertIntoData: ");
                 stmt = conn.createStatement();
             }
             if (conn == null || stmt == null) {
@@ -87,7 +130,6 @@ public class Database {
             columns += tabTopName[tabTopName.length-1]+ ") ";
             value += values[tabTopName.length-1]+ ") ";
             String sql = "insert into " + tabName + columns + " values " + value;
-            Log.i(TAG, "insertIntoDataForColumn: sql:" + sql);
             i = stmt.executeUpdate(sql);
         } catch (SQLException e) {
             e.printStackTrace();
@@ -127,14 +169,15 @@ public class Database {
             String sql = "SELECT " + first + " FROM " + tabName + " WHERE " + tabTopName + " = '" + values + "'";
             Log.d(TAG, "sql:" + sql);
             rs = stmt.executeQuery(sql);
-            Log.d(TAG, "query successful! ");
         } catch (SQLException e) {
             e.printStackTrace();
             Log.i("mtj", "查询数据表【" + tabName + "】失败。");
         }
         return rs;
     }
-    public static ResultSet SelectFromData3(String first, String tabName, String tabTopName, String values) {
+
+    public static ResultSet SelectFromData_2(String first, String tabName, String tabTopName,
+                                             String tabTopName_2,String tabTopName_3, String values, String values_2,String values_3) {
         //int i = 0;
         ResultSet rs = null;
         try {
@@ -144,10 +187,10 @@ public class Database {
             }
             if (conn == null || stmt == null) {
             }
-            String sql = "SELECT " + first + " FROM " + tabName + " WHERE " + tabTopName + " = '" + values + "'";
+            String sql = "SELECT " + first + " FROM " + tabName + " WHERE " + tabTopName + " = '" + values + "'" +
+                    " and " + tabTopName_2 + " = '" + values_2 + "'" + " and " + tabTopName_3 + " = '" + values_3 + "'";
             Log.d(TAG, "sql:" + sql);
             rs = stmt.executeQuery(sql);
-            Log.d(TAG, "query successful! ");
         } catch (SQLException e) {
             e.printStackTrace();
             Log.i("mtj", "查询数据表【" + tabName + "】失败。");
@@ -263,7 +306,6 @@ public class Database {
      */
     public static int updateForData(String tabName, String ID_name, int ID_value,String [] tabTopName, String [] values){
         // 返回更新的结果
-        Log.d(TAG, "updateForData: entered!");
         int result = 0;
         // 拼接sql字符串
 
@@ -287,7 +329,6 @@ public class Database {
         try {
             Log.i("Database :sql ", sql);
             result = stmt.executeUpdate(sql);
-//            Log.i(TAG, "updateForData: result is "+ result);
 
         } catch (SQLException throwables) {
             throwables.printStackTrace();

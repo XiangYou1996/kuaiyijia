@@ -2,11 +2,11 @@
 <shape xmlns:android="http://schemas.android.com/apk/res/android" >
 
     <!-- 设置一个黑色边框 -->
-    <stroke android:width="5px" android:color="#000000"/>
+    <stroke android:width="3px" android:color="#000000"/>
     <!-- 渐变 -->
     <gradient
         android:angle="270"
-        android:endColor="#d3d7d4"
+        android:endColor="#F6F8F7"
         android:startColor="#ffffff" />
     <!-- 设置一下边距,让空间大一点 -->
     <padding

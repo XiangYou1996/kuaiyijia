@@ -20,7 +20,8 @@
         android:text="已完成订单详情"
         android:textColor="@color/white"
         android:textSize="25sp"
-        android:gravity="center">
+        android:gravity="center"
+        >
     </TextView>
     <TextView
         android:id="@+id/finished_re_station"
@@ -29,7 +30,8 @@
         android:layout_height="wrap_content"
         android:textColor="@color/black"
         android:textSize="20sp"
-        android:text="收货单位：">
+        android:text="收货单位："
+        android:background="@drawable/rectangle_textview_style">
     </TextView>
     <TextView
         android:id="@+id/finished_re_address"
@@ -38,7 +40,8 @@
         android:layout_height="wrap_content"
         android:textColor="@color/black"
         android:textSize="20sp"
-        android:text="收货地址：">
+        android:text="收货地址："
+        android:background="@drawable/rectangle_textview_style">
     </TextView>
     <TextView
         android:layout_marginTop="20dp"
@@ -48,7 +51,8 @@
         android:layout_height="wrap_content"
         android:textColor="@color/black"
         android:textSize="20sp"
-        android:text="收货人：">
+        android:text="收货人："
+        android:background="@drawable/rectangle_textview_style">
     </TextView>
     <TextView
         android:id="@+id/finished_re_phone"
@@ -57,14 +61,16 @@
         android:layout_height="wrap_content"
         android:textColor="@color/black"
         android:textSize="20sp"
-        android:text="收货人电话：">
+        android:text="收货人电话："
+        android:background="@drawable/rectangle_textview_style">
     </TextView>
     <LinearLayout
         android:id="@+id/finished_line1"
         android:layout_below="@+id/finished_re_phone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:background="@drawable/rectangle_textview_style">
         <TextView
             android:id="@+id/finished_itemnums"
             android:layout_width="wrap_content"
@@ -100,7 +106,8 @@
         android:layout_below="@+id/finished_line1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:background="@drawable/rectangle_textview_style">
         <TextView
             android:id="@+id/finished_dianfu"
             android:layout_width="wrap_content"
@@ -131,7 +138,8 @@
         android:layout_height="wrap_content"
         android:textColor="@color/black"
         android:textSize="20sp"
-        android:text="发货地址：">
+        android:text="发货地址："
+        android:background="@drawable/rectangle_textview_style">
     </TextView>
     <TextView
         android:layout_marginTop="20dp"
@@ -141,7 +149,8 @@
         android:layout_height="wrap_content"
         android:textColor="@color/black"
         android:textSize="20sp"
-        android:text="发货人：">
+        android:text="发货人："
+        android:background="@drawable/rectangle_textview_style">
     </TextView>
     <TextView
         android:id="@+id/finished_to_phone"
@@ -150,7 +159,8 @@
         android:layout_height="wrap_content"
         android:textColor="@color/black"
         android:textSize="20sp"
-        android:text="发货人电话：">
+        android:text="发货人电话："
+        android:background="@drawable/rectangle_textview_style">
     </TextView>
     <TextView
         android:id="@+id/finished_to_service_way"
@@ -159,7 +169,8 @@
         android:layout_height="wrap_content"
         android:textColor="@color/black"
         android:textSize="20sp"
-        android:text="服务方式：配送">
+        android:text="服务方式：配送"
+        android:background="@drawable/rectangle_textview_style">
     </TextView>
 
     <TextView
@@ -169,7 +180,8 @@
         android:layout_height="wrap_content"
         android:textColor="@color/black"
         android:textSize="20sp"
-        android:text="备注：">
+        android:text="备注："
+        android:background="@drawable/rectangle_textview_style">
     </TextView>
     <TextView
         android:layout_below="@id/finished_addition"
@@ -183,8 +195,6 @@
         android:hint="备注！！！"></TextView>
 
     <LinearLayout
-        android:layout_marginBottom="10dp"
-        android:padding="8dp"
         android:layout_alignParentBottom="true"
         android:orientation="horizontal"
         android:layout_width="match_parent"
@@ -193,6 +203,8 @@
             android:id="@+id/finished_confirm"
             android:layout_weight="1"
             android:textSize="20sp"
+            android:background="@drawable/big_button_style"
+            android:textColor="@color/white"
             android:layout_gravity="center_horizontal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

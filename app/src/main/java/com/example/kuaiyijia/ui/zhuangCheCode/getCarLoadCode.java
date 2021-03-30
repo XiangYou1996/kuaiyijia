@@ -2,7 +2,6 @@ package com.example.kuaiyijia.ui.zhuangCheCode;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.content.pm.ActivityInfo;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
@@ -23,52 +22,23 @@ public class getCarLoadCode extends Activity {
 
     private static final String TAG = "getCarLoadCode";
     private static final int REQUEST_CODE_SCAN = 0;
-    private String mV_no;
+    private String mV_id;
     private Button mBtn_ok;
     private TextView mTv_result;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        // 设置只能竖屏使用
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         setContentView(R.layout.getcarloadcode);
         Intent intent = getIntent();
-        mV_no = intent.getStringExtra("V_NO");
-        Log.d(TAG, "车牌："+mV_no);
+        mV_id = intent.getStringExtra("V_ID");
+        Log.d(TAG, "车辆ID：" + mV_id);
         Bitmap logo = BitmapFactory.decodeResource(getResources(), R.mipmap.ic_launcher);
-        Bitmap bitmap = CodeCreator.createQRCode(mV_no, 400, 400, logo);
+        //这里的mV_no是创建装车码的参数，此处使用车牌
+        Bitmap bitmap = CodeCreator.createQRCode(mV_id, 400, 400, logo);
         ImageView iv = findViewById(R.id.iv_QR);
         iv.setImageBitmap(bitmap);
 
-        mBtn_ok = findViewById(R.id.btn_ok);
-        mTv_result = findViewById(R.id.tv_result);
-
-        mBtn_ok.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                go(v);
-            }
-        });
     }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-
-        // 扫描二维码/条码回传
-        if (requestCode == REQUEST_CODE_SCAN && resultCode == RESULT_OK) {
-            if (data != null) {
-
-                String content = data.getStringExtra(Constant.CODED_CONTENT);
-                mTv_result.setText("扫描结果为：" + content);
-            }
-        }
-    }
-
-    public void go(View view) {
-        Intent intent = new Intent(new Intent(this, CaptureActivity.class));
-        startActivityForResult(intent, REQUEST_CODE_SCAN);
-    }
-
 }
+

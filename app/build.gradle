@@ -39,9 +39,12 @@ dependencies {
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0'
     implementation files('libs\\jtds1.3.1.jar')
     implementation files('libs\\AMap2DMap_6.0.0_AMapSearch_7.7.0_AMapLocation_5.2.0_20201027.jar')
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
     /*添加依赖*/
     implementation 'com.github.yuzhiqiang1993:zxing:2.2.8'
+    //获取权限，自动弹出确认框
+    implementation 'com.mylhyl:acp:1.2.0'
 }

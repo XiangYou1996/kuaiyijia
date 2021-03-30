@@ -77,4 +77,10 @@
         android:label="@string/menu_notification"
         tools:layout="@layout/fragment_notification_send"
         />
+    <fragment
+        android:id="@+id/nav_logout"
+        android:name="com.example.kuaiyijia.ui.LoginRegister.LogoutFragment"
+        android:label="@string/menu_loginout"
+        tools:layout="@layout/fragment_logout"
+        />
 </navigation>

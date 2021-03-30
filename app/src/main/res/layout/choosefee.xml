@@ -10,5 +10,7 @@
         android:layout_marginBottom="30dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="扫描商品条码"/>
+        android:text="扫描商品条码"
+        android:background="@drawable/small_button_style"
+        android:textColor="@color/white"/>
 </RelativeLayout>

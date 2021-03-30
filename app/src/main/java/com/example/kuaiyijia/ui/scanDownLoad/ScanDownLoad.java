@@ -11,13 +11,17 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.example.kuaiyijia.Database.Database;
 import com.example.kuaiyijia.R;
+import com.example.kuaiyijia.Tools.Constants;
+import com.example.kuaiyijia.Tools.utility;
 import com.yzq.zxinglibrary.android.CaptureActivity;
 import com.yzq.zxinglibrary.common.Constant;
 
@@ -68,20 +72,36 @@ public class ScanDownLoad  extends Fragment {
                     break;
                 case 2 :
                     //接收修改订单状态后的结果
-                    mUpdateResult = msg.getData().getInt("updateResulat");
+                    mUpdateResult = msg.getData().getInt("updateResult");
                     Log.i("lgq","id: "+ mUpdateResult);
                     if (mUpdateResult == 1) {
                         Log.d(TAG, "run: 返回值为1");
                         Toast.makeText(getContext(), "修改订单状态成功..", Toast.LENGTH_SHORT).show();
+                        Message msgInfoOrderStatus = new Message();
+                        mHandler.sendMessage(utility.getInfo(msgInfoOrderStatus,3, Constants.TABNAME_orders,Constants.TABTOPNAME_order_number,mResultScan,"mOrderStatus", Constants.TABTOPNAME_order_status));
                     }
                     else {
                         Toast.makeText(getContext(), "修改订单状态失败..", Toast.LENGTH_SHORT).show();
+                    }
+                    break;
+                case 3 :
+                    mOrderNum = mResultScan;
+                    mOrderStatus = msg.getData().getString("mOrderStatus");//接受msg传递过来的参数
+                    Log.i("lgq","订单状态: "+ mOrderStatus);
+                    mTvOrderNum.setText("订单号：" + mOrderNum);
+                    if (mOrderStatus == "5") {
+                        mTvOrderStatus.setText("订单状态：完成");
                     }
                     break;
 
             }
         }
     };
+    private TextView mTvOrderStatus;
+    private TextView mTvOrderNum;
+    private String mOrderNum;
+    private String mOrderStatus;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -92,54 +112,29 @@ public class ScanDownLoad  extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         mBtScanUnload = getActivity().findViewById(R.id.bt_scanUnload);
+        mTvOrderNum = getActivity().findViewById(R.id.tv_order_num);
+        mTvOrderStatus = getActivity().findViewById(R.id.tv_order_status);
 
         mBtScanUnload.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //先扫码，判断是否是订单码
                 scan(v);
-                if (mResultScan != null) {
-                    //进入数据库查询是否是订单码
-                    //注意：此处表名等数据库相关数据名称为参考keg_logistic库中数据
-                    //     之后需做相应修改。
-
-                    String tabName = "orders";
-                    String tabTopName = "order_number";
-                    String value = mResultScan;
-                    new Thread(new Runnable() {
-                        @Override
-                        public void run() {
-                            Message msgIsOrderNum = new Message();
-                            ResultSet rs = database.SelectFromData("*", tabName, tabTopName, value);
-                            try {
-                                msgIsOrderNum.what = 1;
-                                Bundle bundleIsOrderNum = new Bundle();
-                                bundleIsOrderNum.putBoolean("isOrderNum", rs.isBeforeFirst());
-                                msgIsOrderNum.setData(bundleIsOrderNum);
-                                mHandler.sendMessage(msgIsOrderNum);
-
-                            } catch (SQLException e) {
-                                e.printStackTrace();
-                            }
-                        }
-                    }).start();
-                    //database.closeConnect();
-                }
             }
         });
     }
     //如果是订单码，就要修改订单状态
     public void updateOrderStatus() {
         String TabName = "orders";
-        String ID_name = "order_status";
-        int ID_value = 5;
+        String ID_name = "order_number";
+        int ID_value = Integer.parseInt(mResultScan);
 
-        String[] columns = {"order_number"};
-        String[] values = {mResultScan};
+        String[] columns = {"order_status"};
+        String[] values = {"5"};
         new Thread(new Runnable() {
             @Override
             public void run() {
-                int result = database.updateForData(TabName, ID_name, ID_value, columns, values);
+                int result = Database.updateForData(TabName, ID_name, ID_value, columns, values);
                 Message msgResultOfUpdate = new Message();
                 msgResultOfUpdate.what = 2;
                 Bundle bundle = new Bundle();
@@ -148,7 +143,6 @@ public class ScanDownLoad  extends Fragment {
                 mHandler.sendMessage(msgResultOfUpdate);
             }
         }).start();
-        //database.closeConnect();
 
     }
 
@@ -165,6 +159,31 @@ public class ScanDownLoad  extends Fragment {
             if (data != null) {
 
                 mResultScan = data.getStringExtra(Constant.CODED_CONTENT);
+
+                //进入数据库查询是否是订单码
+                //注意：此处表名等数据库相关数据名称为参考keg_logistic库中数据
+                //     之后需做相应修改。
+
+                String tabName = "orders";
+                String tabTopName = "order_number";
+                String value = mResultScan;
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Message msgIsOrderNum = new Message();
+                        ResultSet rs = Database.SelectFromData("*", tabName, tabTopName, value);
+                        try {
+                            msgIsOrderNum.what = 1;
+                            Bundle bundleIsOrderNum = new Bundle();
+                            bundleIsOrderNum.putBoolean("isOrderNum", rs.isBeforeFirst());
+                            msgIsOrderNum.setData(bundleIsOrderNum);
+                            mHandler.sendMessage(msgIsOrderNum);
+
+                        } catch (SQLException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }).start();
 
             }
         }

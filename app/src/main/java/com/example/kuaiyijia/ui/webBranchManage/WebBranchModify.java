@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -35,7 +36,7 @@ public class WebBranchModify extends AppCompatActivity implements View.OnClickLi
     private EditText wb_modify_person_name;
     private EditText wb_modify_person_tel;
     private EditText wb_modify_concretAddress;
-    private ImageButton wb_modify_location_bt;
+    private TextView wb_modify_location_bt;
     private Button wb_modify_confirm;
     private WebBranchListItem webBranch;
     private Button back_bt;
@@ -108,7 +109,7 @@ public class WebBranchModify extends AppCompatActivity implements View.OnClickLi
         wb_modify_person_name = (EditText) findViewById(R.id.wb_modify_person_name);
         wb_modify_person_tel = (EditText) findViewById(R.id.wb_modify_person_tel);
         wb_modify_concretAddress = (EditText) findViewById(R.id.wb_modify_concretAddress);
-        wb_modify_location_bt = (ImageButton) findViewById(R.id.wb_modify_location_bt);
+        wb_modify_location_bt = (TextView) findViewById(R.id.wb_modify_location_bt);
         wb_modify_confirm = (Button) findViewById(R.id.wb_modify_confirm);
         back_bt = (Button) findViewById(R.id.backtolast);
         wb_modify_location_bt.setOnClickListener(this);
