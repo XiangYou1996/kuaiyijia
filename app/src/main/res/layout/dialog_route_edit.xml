@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+    <LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:background="@drawable/white_color_shape"
+        android:orientation="vertical">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_dialog_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="15dp"
+            android:gravity="center"
+            android:text="线路添加"
+            android:textColor="@color/color_333"
+            android:textSize="18sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginEnd="40dp"
+            android:layout_marginBottom="10dp"
+            android:orientation="horizontal">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="发站"
+                android:textColor="@color/color_333"
+                android:textSize="14sp" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/et_start"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:background="@drawable/shape_666_bg_4"
+                android:hint="请输入始发点"
+                android:inputType="text"
+                android:textColor="@color/color_333"
+                android:textColorHint="#999999"
+                android:textSize="12sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:layout_marginEnd="40dp"
+            android:layout_marginBottom="25dp"
+            android:orientation="horizontal">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="到站"
+                android:textColor="@color/color_333"
+                android:textSize="14sp" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/et_end"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:background="@drawable/shape_666_bg_4"
+                android:hint="请输入到站点"
+                android:inputType="text"
+                android:textColor="@color/color_333"
+                android:textColorHint="#999999"
+                android:textSize="12sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
+            android:orientation="horizontal"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp">
+
+<!--            <Button-->
+<!--                android:id="@+id/btn_left"-->
+<!--                style="@style/Widget.MaterialComponents.Button.UnelevatedButton"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginEnd="7dp"-->
+<!--                android:layout_weight="1"-->
+<!--                android:gravity="center"-->
+<!--                android:insetLeft="0dp"-->
+<!--                android:insetTop="0dp"-->
+<!--                android:insetRight="0dp"-->
+<!--                android:insetBottom="0dp"-->
+<!--                android:text="取消"-->
+<!--                android:textColor="#666666"-->
+<!--                android:textSize="16sp"-->
+<!--                app:backgroundTint="#F4F4F4"-->
+<!--                app:backgroundTintMode="add"-->
+<!--                app:cornerRadius="6dp" />-->
+
+<!--            <Button-->
+<!--                android:id="@+id/btn_right"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginStart="7dp"-->
+<!--                android:layout_weight="1"-->
+<!--                android:backgroundTint="#FB684C"-->
+<!--                android:gravity="center"-->
+<!--                android:insetLeft="0dp"-->
+<!--                android:insetTop="0dp"-->
+<!--                android:insetRight="0dp"-->
+<!--                android:insetBottom="0dp"-->
+<!--                android:text="确定"-->
+<!--                android:textColor="#FCFCFC"-->
+<!--                android:textSize="16sp"-->
+<!--                app:cornerRadius="6dp" />-->
+
+        </LinearLayout>
+
+    </LinearLayout>
+

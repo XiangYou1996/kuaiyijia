@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+    <RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#F4F4F4">
+    <Button
+        android:id="@+id/backtolast"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="25dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#333333"
+        android:drawableLeft="@drawable/icon_back"
+        />
+    <TextView
+        android:id="@+id/add_title"
+        android:background="#333333"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:text="添加订单"
+        android:textColor="@color/white"
+        android:textSize="25dp"
+        android:gravity="center">
+    </TextView>
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_tip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="28dp"
+            android:layout_marginTop="10dp"
+            android:layout_below="@+id/add_title"
+            android:layout_marginBottom="10dp"
+            android:text="长按可删除班次"
+            android:textColor="#666666"
+            android:textSize="12sp" />
+    <View
+        android:layout_below="@+id/tv_tip"
+        android:layout_above="@+id/bancilist"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/black" />
+        <ListView
+            android:id="@+id/bancilist"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/tv_add_time"
+            android:layout_below="@+id/tv_tip"
+            tools:itemCount="20"
+            tools:listitem="@layout/item_time_table" />
+
+        <Button
+            android:id="@+id/tv_add_time"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_alignParentBottom="true"
+            android:backgroundTint="@color/like_color"
+            android:gravity="center"
+            android:insetLeft="0dp"
+            android:insetTop="0dp"
+            android:insetRight="0dp"
+            android:insetBottom="0dp"
+            android:text="添加班次"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            app:cornerRadius="0dp"
+            app:icon="@mipmap/ic_add"
+            app:iconGravity="textStart"
+            app:iconPadding="10dp"
+            app:iconTint="@color/white" />
+
+    </RelativeLayout>

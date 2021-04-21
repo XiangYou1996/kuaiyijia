@@ -11,11 +11,12 @@ import java.sql.Statement;
 
 public class Database {
     private static final String TAG = "Database";
-    private static String user = "app";
-    private static String password = "app123456";
-    private static String DatabaseName = "HYBAPP";
-    private static String IP = "121.41.7.176";
+    private static String user = DataBaseConfig.user;
+    private static String password = DataBaseConfig.password;
+    private static String DatabaseName = DataBaseConfig.DatabaseName;
+    private static String IP = DataBaseConfig.IP;
     /**
+     *
      * 连接字符串
      */
     private static String connectDB = "jdbc:jtds:sqlserver://" + IP + ":1433/" + DatabaseName + ";useunicode=true;characterEncoding=UTF-8";
@@ -130,6 +131,7 @@ public class Database {
             columns += tabTopName[tabTopName.length-1]+ ") ";
             value += values[tabTopName.length-1]+ ") ";
             String sql = "insert into " + tabName + columns + " values " + value;
+            Log.i("mtj", sql);
             i = stmt.executeUpdate(sql);
         } catch (SQLException e) {
             e.printStackTrace();

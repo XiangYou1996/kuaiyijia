@@ -29,6 +29,11 @@
             android:title="@string/menu_profit"
             />
         <item
+            android:id="@+id/nav_route"
+            android:icon="@drawable/ic_menu_route"
+            android:title="@string/menu_route"
+            />
+        <item
             android:id="@+id/nav_zhuangchema"
             android:icon="@drawable/icon_code"
             android:title="@string/menu_zhuangchema"

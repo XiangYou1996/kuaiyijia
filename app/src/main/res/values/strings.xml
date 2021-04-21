@@ -20,7 +20,7 @@
     <string name="menu_yunjia">运价系统</string>
     <string name="menu_notification">消息推送</string>
     <string name="menu_loginout">退出登录</string>
-
+    <string name="menu_route">线路管理</string>
 
     <string name="tab_text_1">已完成</string>
     <string name="tab_text_2">进行中</string>

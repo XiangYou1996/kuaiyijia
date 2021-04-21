@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,10 +16,10 @@ import androidx.annotation.NonNull;
 
 import com.example.kuaiyijia.Database.Database;
 import com.example.kuaiyijia.Entity.WebBranchListItem;
-import com.example.kuaiyijia.ui.MainActivity;
+import com.example.kuaiyijia.UI.MainActivity;
 import com.example.kuaiyijia.R;
-import com.example.kuaiyijia.Tools.CustomDialog;
-import com.example.kuaiyijia.ui.webBranchManage.WebBranchDetail;
+import com.example.kuaiyijia.Utils.CustomDialog;
+import com.example.kuaiyijia.UI.webBranchManage.WebBranchDetail;
 
 import java.util.List;
 
@@ -114,7 +113,6 @@ public class WebBranchListAdapter extends BaseAdapter {
     }
 
     private void deleteWebBranch(int position) {
-        Log.i("TAG", "deleteWebBranch: entered");
         WebBranchListItem webBranch  = adapterLists.get(position);
         // 先弹出确认对话框
         CustomDialog dialog = new CustomDialog(context);

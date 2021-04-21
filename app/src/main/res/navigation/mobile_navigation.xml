@@ -7,79 +7,84 @@
 
     <fragment
         android:id="@+id/nav_order"
-        android:name="com.example.kuaiyijia.ui.orderManage.OrderManageFragment"
+        android:name="com.example.kuaiyijia.UI.orderManage.OrderManageFragment"
         android:label="@string/menu_order"
         tools:layout="@layout/order_item" />
 
     <fragment
         android:id="@+id/nav_person"
-        android:name="com.example.kuaiyijia.ui.personManage.PersonManageFragment"
+        android:name="com.example.kuaiyijia.UI.personManage.PersonManageFragment"
         android:label="@string/menu_person"
         tools:layout="@layout/fragment_personmanage" />
 
     <fragment
         android:id="@+id/nav_webBranch"
-        android:name="com.example.kuaiyijia.ui.webBranchManage.WebBranchManageFragment"
+        android:name="com.example.kuaiyijia.UI.webBranchManage.WebBranchManageFragment"
         android:label="@string/menu_webBranch"
         tools:layout="@layout/web_branch_manage" />
 
     <fragment
         android:id="@+id/nav_carManage"
-        android:name="com.example.kuaiyijia.ui.carManage.CarManageFragment"
+        android:name="com.example.kuaiyijia.UI.carManage.CarManageFragment"
         android:label="@string/menu_carManage"
         tools:layout="@layout/fragment_carmanage"/>
 
     <fragment
         android:id="@+id/nav_profit"
-        android:name="com.example.kuaiyijia.ui.profitManage.ProfitManageFragment"
+        android:name="com.example.kuaiyijia.UI.profitManage.ProfitManageFragment"
         android:label="@string/menu_profit"
         tools:layout="@layout/activity_profit_manage"
         />
     <fragment
+        android:id="@+id/nav_route"
+        android:name="com.example.kuaiyijia.UI.routeManage.RouteManageFragment"
+        android:label="@string/menu_route"
+        tools:layout="@layout/fragment_route_manage"/>
+    <fragment
         android:id="@+id/nav_zhuangchema"
-        android:name="com.example.kuaiyijia.ui.zhuangCheCode.ZhuangchemaFragment"
+        android:name="com.example.kuaiyijia.UI.zhuangCheCode.ZhuangchemaFragment"
         android:label="@string/menu_zhuangchema"
         tools:layout="@layout/zhuangchema"
         />
     <fragment
         android:id="@+id/nav_scanzhuangche"
-        android:name="com.example.kuaiyijia.ui.scanZhuangChe.ScanZhuangCheFragment"
+        android:name="com.example.kuaiyijia.UI.scanZhuangChe.ScanZhuangCheFragment"
         android:label="@string/menu_scanload"
         tools:layout="@layout/scancarload"
         />
     <fragment
         android:id="@+id/nav_scanfache"
-        android:name="com.example.kuaiyijia.ui.scanFaChe.ScanFaChe"
+        android:name="com.example.kuaiyijia.UI.scanFaChe.ScanFaChe"
         android:label="@string/menu_scanfache"
         tools:layout="@layout/scancargo"
         />
     <fragment
         android:id="@+id/nav_scandownload"
-        android:name="com.example.kuaiyijia.ui.scanDownLoad.ScanDownLoad"
+        android:name="com.example.kuaiyijia.UI.scanDownLoad.ScanDownLoad"
         android:label="@string/menu_scandownload"
         tools:layout="@layout/scanunload"
         />
     <fragment
         android:id="@+id/nav_fenrun"
-        android:name="com.example.kuaiyijia.ui.fenRun.FenRunFragment"
+        android:name="com.example.kuaiyijia.UI.fenRun.FenRunFragment"
         android:label="@string/menu_fenrun"
         tools:layout="@layout/fragment_fenrun"
         />
     <fragment
         android:id="@+id/nav_yunjia"
-        android:name="com.example.kuaiyijia.ui.yunJIa.YunJiaFragment"
+        android:name="com.example.kuaiyijia.UI.yunJIa.YunJiaFragment"
         android:label="@string/menu_yunjia"
         tools:layout="@layout/fragment_yunjia"
         />
     <fragment
         android:id="@+id/nav_notification"
-        android:name="com.example.kuaiyijia.ui.notification.MessageNotificationSendFragment"
+        android:name="com.example.kuaiyijia.UI.notification.MessageNotificationSendFragment"
         android:label="@string/menu_notification"
         tools:layout="@layout/fragment_notification_send"
         />
     <fragment
         android:id="@+id/nav_logout"
-        android:name="com.example.kuaiyijia.ui.LoginRegister.LogoutFragment"
+        android:name="com.example.kuaiyijia.UI.LoginRegister.LogoutFragment"
         android:label="@string/menu_loginout"
         tools:layout="@layout/fragment_logout"
         />

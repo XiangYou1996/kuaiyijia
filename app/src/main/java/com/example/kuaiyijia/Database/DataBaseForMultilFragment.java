@@ -13,12 +13,12 @@ Author by: xy
 Coding On 2021/3/18;
 */
 public class DataBaseForMultilFragment {
-    private  String user = "app";
-    private  String password = "app123456";
-    private  String DatabaseName = "HYBAPP";
-    private  String IP = "121.41.7.176";
+    private static final String TAG = "DatabaseMutilFragment";
+    private static String user = DataBaseConfig.user;
+    private static String password = DataBaseConfig.password;
+    private static String DatabaseName = DataBaseConfig.DatabaseName;
+    private static String IP = DataBaseConfig.IP;
     private  String connectDB = "jdbc:jtds:sqlserver://" + IP + ":1433/" + DatabaseName + ";useunicode=true;characterEncoding=UTF-8";
-
     private  Connection conn = null;
     private  Statement stmt = null;
 
@@ -32,6 +32,25 @@ public class DataBaseForMultilFragment {
         } catch (Exception e) {
         }
         return con;
+    }
+    public ResultSet SelectFromAllData(String first, String tabName) {
+        ResultSet rs = null;
+        try {
+            if (conn == null) {
+                conn = getSQLConnection();
+                stmt = conn.createStatement();
+            }
+            if (conn == null || stmt == null) {
+            }
+            String sql = "SELECT " + first + " FROM " + tabName ;
+            Log.d("TAG", "sql:" + sql);
+            rs = stmt.executeQuery(sql);
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            Log.i("mtj", "查询数据表【" + tabName + "】失败。");
+        }
+        return rs;
     }
     public ResultSet SelectFromData(String first, String tabName, String tabTopName, String values) {
         //int i = 0;

@@ -15,9 +15,10 @@ public class WebBranchListItem implements Parcelable {
     private String Cantact ; 
     private String CantactTel;
     private String DetailAddress;
+    private String CID;
 
     public WebBranchListItem(String webBranchID, String webBranchName, String webBranchJC, 
-                             String HYTel, String cantact, String cantactTel, String detailAddress) {
+                             String HYTel, String cantact, String cantactTel, String detailAddress,String cid) {
         WebBranchID = webBranchID;
         WebBranchName = webBranchName;
         WebBranchJC = webBranchJC;
@@ -25,6 +26,15 @@ public class WebBranchListItem implements Parcelable {
         Cantact = cantact;
         CantactTel = cantactTel;
         DetailAddress = detailAddress;
+        CID = cid;
+    }
+
+    public String getCID() {
+        return CID;
+    }
+
+    public void setCID(String CID) {
+        this.CID = CID;
     }
 
     protected WebBranchListItem(Parcel in) {
@@ -35,6 +45,7 @@ public class WebBranchListItem implements Parcelable {
         Cantact = in.readString();
         CantactTel = in.readString();
         DetailAddress = in.readString();
+        CID = in.readString();
     }
 
     public static final Creator<WebBranchListItem> CREATOR = new Creator<WebBranchListItem>() {
@@ -119,5 +130,6 @@ public class WebBranchListItem implements Parcelable {
         dest.writeString(Cantact);
         dest.writeString(CantactTel);
         dest.writeString(DetailAddress);
+        dest.writeString(CID);
     }
 }

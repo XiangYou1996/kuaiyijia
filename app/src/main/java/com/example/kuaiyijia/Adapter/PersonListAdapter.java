@@ -19,10 +19,10 @@ import androidx.annotation.NonNull;
 import com.example.kuaiyijia.Database.Database;
 import com.example.kuaiyijia.Entity.CarListItem;
 import com.example.kuaiyijia.Entity.PersonListItem;
-import com.example.kuaiyijia.ui.MainActivity;
+import com.example.kuaiyijia.UI.MainActivity;
 import com.example.kuaiyijia.R;
-import com.example.kuaiyijia.Tools.CustomDialog;
-import com.example.kuaiyijia.ui.personManage.PersonModifyActivity;
+import com.example.kuaiyijia.Utils.CustomDialog;
+import com.example.kuaiyijia.UI.personManage.PersonModifyActivity;
 
 
 import java.util.List;

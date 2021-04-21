@@ -33,48 +33,49 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/ic_defalut"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Kuaiyijia">
-        <activity android:name=".ui.LoginRegister.LoginActivity">
+        <activity android:name=".UI.LoginRegister.AddFreightActivity"></activity>
+        <activity android:name=".UI.LoginRegister.BindingFreightActivity" />
+        <activity android:name=".UI.LoginRegister.RegisterActivity" />
+        <activity android:name=".UI.routeManage.BanciActivity" />
+        <activity android:name=".UI.indexPage.IndexActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
+        <activity android:name=".UI.LoginRegister.LoginActivity" />
         <service android:name="com.amap.api.location.APSService" />
-
         <meta-data
             android:name="com.amap.api.v2.apikey"
-            android:value="bfed2f23de7d8ac0c891b9b6aeb84c8d"></meta-data>
+            android:value="bfed2f23de7d8ac0c891b9b6aeb84c8d" />
 
-        <activity android:name=".ui.personManage.StationModifyActivity" />
-        <activity android:name=".ui.personManage.StationAddActivity" />
-        <activity android:name=".ui.carManage.CarDetailActivity" />
-        <activity android:name=".ui.carManage.CarModifyActivity" />
-        <activity android:name=".ui.carManage.CarsAddActivity" />
-        <activity android:name=".ui.personManage.StationManageActivity" />
-        <activity android:name=".ui.personManage.PersonModifyActivity" />
-        <activity android:name=".ui.webBranchManage.WebBranchAddActivity" />
-        <activity android:name=".ui.webBranchManage.WebBranchDetail" />
-        <activity android:name=".ui.webBranchManage.WebBranchModify" />
-        <activity android:name=".ui.profitManage.ProfitDetailMoreActivity" />
-        <activity android:name=".ui.profitManage.ProfitDetailActivity" />
-        <activity android:name=".ui.orderManage.AddOrderActivity" />
-        <activity android:name=".ui.orderManage.FinishedOrderDetailedActivity" />
-        <activity android:name=".ui.orderManage.GoingOrderDetailActivity" />
+        <activity android:name=".UI.personManage.StationModifyActivity" />
+        <activity android:name=".UI.personManage.StationAddActivity" />
+        <activity android:name=".UI.carManage.CarDetailActivity" />
+        <activity android:name=".UI.carManage.CarModifyActivity" />
+        <activity android:name=".UI.carManage.CarsAddActivity" />
+        <activity android:name=".UI.personManage.StationManageActivity" />
+        <activity android:name=".UI.personManage.PersonModifyActivity" />
+        <activity android:name=".UI.webBranchManage.WebBranchAddActivity" />
+        <activity android:name=".UI.webBranchManage.WebBranchDetail" />
+        <activity android:name=".UI.webBranchManage.WebBranchModify" />
+        <activity android:name=".UI.profitManage.ProfitDetailMoreActivity" />
+        <activity android:name=".UI.profitManage.ProfitDetailActivity" />
+        <activity android:name=".UI.orderManage.AddOrderActivity" />
+        <activity android:name=".UI.orderManage.FinishedOrderDetailedActivity" />
+        <activity android:name=".UI.orderManage.GoingOrderDetailActivity" />
         <activity
-            android:name=".ui.MainActivity"
-            android:launchMode="singleTask"
+            android:name=".UI.MainActivity"
             android:label="@string/app_name"
-            android:theme="@style/Theme.Kuaiyijia.NoActionBar">
-
-        </activity>
-        <activity android:name=".ui.zhuangCheCode.getCarLoadCode" />
+            android:launchMode="singleTask"
+            android:theme="@style/Theme.Kuaiyijia.NoActionBar" />
+        <activity android:name=".UI.zhuangCheCode.getCarLoadCode" />
     </application>
 
 </manifest>

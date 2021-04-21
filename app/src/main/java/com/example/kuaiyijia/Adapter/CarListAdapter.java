@@ -12,7 +12,7 @@ import android.widget.TextView;
 
 import com.example.kuaiyijia.Entity.CarListItem;
 import com.example.kuaiyijia.R;
-import com.example.kuaiyijia.ui.carManage.CarDetailActivity;
+import com.example.kuaiyijia.UI.carManage.CarDetailActivity;
 
 
 import java.util.List;

@@ -108,13 +108,13 @@
                 android:textColor="#444444"
                 android:textSize="16sp" />
 
-            <androidx.appcompat.widget.AppCompatTextView
+            <TextView
                 android:id="@+id/tv_to_register"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:text="去注册"
                 android:textColor="#FF6238"
-                android:textSize="16sp"/>
+                android:textSize="16sp" />
 
         </LinearLayout>
 </RelativeLayout>

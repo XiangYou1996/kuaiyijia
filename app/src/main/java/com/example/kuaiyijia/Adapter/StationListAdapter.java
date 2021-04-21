@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,13 +16,11 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 
 import com.example.kuaiyijia.Database.Database;
-import com.example.kuaiyijia.Entity.ListItems;
-import com.example.kuaiyijia.Entity.PersonListItem;
 import com.example.kuaiyijia.Entity.StationListItem;
 import com.example.kuaiyijia.R;
-import com.example.kuaiyijia.Tools.CustomDialog;
-import com.example.kuaiyijia.ui.personManage.StationManageActivity;
-import com.example.kuaiyijia.ui.personManage.StationModifyActivity;
+import com.example.kuaiyijia.Utils.CustomDialog;
+import com.example.kuaiyijia.UI.personManage.StationManageActivity;
+import com.example.kuaiyijia.UI.personManage.StationModifyActivity;
 
 import java.util.List;
 
