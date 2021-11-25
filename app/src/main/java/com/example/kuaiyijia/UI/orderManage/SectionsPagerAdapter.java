@@ -30,10 +30,10 @@ public class SectionsPagerAdapter extends FragmentStatePagerAdapter {
         Fragment fragment =  new FinisedOrderFragment();;
         switch (position){
             case 0:
-                fragment = new FinisedOrderFragment();
+                fragment = new GoingOrderFragment();
                 break;
             case 1 :
-                fragment = new GoingOrderFragment();
+                fragment = new FinisedOrderFragment();
                 break;
             case 2:
                 fragment = new DaishoukuanOrderFragment();

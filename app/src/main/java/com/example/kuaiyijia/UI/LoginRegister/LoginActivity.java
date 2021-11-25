@@ -20,7 +20,9 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.kuaiyijia.Database.DataBaseForMultilFragment;
 import com.example.kuaiyijia.Database.Database;
+import com.example.kuaiyijia.Entity.UserEntity;
 import com.example.kuaiyijia.R;
 import com.example.kuaiyijia.UI.MainActivity;
 import com.example.kuaiyijia.Utils.BaseActivity;
@@ -32,6 +34,7 @@ import java.util.List;
 
 public class LoginActivity extends BaseActivity implements View.OnClickListener {
 
+    private UserEntity user = new UserEntity();
     private EditText et_phone;
     private EditText et_pwd;
     private TextView login_bt;
@@ -52,7 +55,10 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
                             editor.putString("Password",et_pwd.getText().toString());
                             editor.commit();
                         }
-                         navigateWithDestroyBefore(MainActivity.class,Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                        Bundle bundle = new Bundle();
+                        bundle.putSerializable("user",user);
+                        navigateToWithData(MainActivity.class,bundle);
+                        finish();
                     }
                     else if (msg.arg1 ==1){
                         Toast.makeText(LoginActivity.this,"密码错误~",Toast.LENGTH_SHORT).show();
@@ -81,7 +87,14 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
     }
 
     private void initData() {
+
         sp = getSharedPreferences("userinfo",MODE_PRIVATE);
+        // 注册的话
+        if (sp.getBoolean("IsRegister",false)){
+            et_phone.setText(sp.getString("register_account",""));
+            et_pwd.setText(sp.getString("register_password",""));
+        }
+        // 登录的话
         if (sp.getBoolean("IsRemember",false)){
             et_phone.setText(sp.getString("Account",""));
             et_pwd.setText(sp.getString("Password",""));
@@ -90,8 +103,10 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
                 auto_login.setChecked(true);
                 Intent mIntent = new Intent(LoginActivity.this, MainActivity.class);
                 startActivity(mIntent);
+                finish();
             }
         }
+
     }
 
     @SuppressLint("WrongConstant")
@@ -128,11 +143,14 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
             public void run() {
                 Message message = new Message();
                 message.what = 100;
-                ResultSet rs = Database.SelectFromData("*","Users","account",phone);
+                DataBaseForMultilFragment dataBase= new DataBaseForMultilFragment();
+                ResultSet rs = dataBase.SelectFromData("*","Users","account",phone);
                 try {
                     if (rs.next()){
                         if (rs.getString("password").equals(pwd)){
                             message.arg1 = 0;
+                            user.setAccount(phone);
+                            user.setPassword(pwd);
                         }
                         else {
                             message.arg1 = 1;
@@ -201,4 +219,14 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
         }
     }
 
+/*    @Override
+    protected void onResume() {
+        super.onResume();
+        //  注册后 用户和密码的初始化
+        user = (UserEntity) getIntent().getExtras().getSerializable("user");
+        if(user != null){
+            et_phone.setText(user.getAccount());
+            et_pwd.setText(user.getPassword());
+        }
+    }*/
 }

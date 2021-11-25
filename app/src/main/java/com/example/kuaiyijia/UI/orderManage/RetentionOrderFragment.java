@@ -11,7 +11,11 @@ import android.widget.ListView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import com.chad.library.adapter.base.BaseQuickAdapter;
+import com.chad.library.adapter.base.BaseViewHolder;
 import com.example.kuaiyijia.Adapter.OrderListAdapter;
 import com.example.kuaiyijia.Database.DataBaseForMultilFragment;
 import com.example.kuaiyijia.Entity.ListItems;
@@ -30,7 +34,7 @@ Coding On 2021/3/16;
 */
 public class RetentionOrderFragment  extends Fragment {
     private ReentrantLock lock = new ReentrantLock();
-    private ListView retention_list;
+    private RecyclerView retention_rv;
     private List<OrderItem> retentionList =new ArrayList<>();
     private Handler mHandler = new Handler(){
         @Override
@@ -42,8 +46,10 @@ public class RetentionOrderFragment  extends Fragment {
                     for (int i=0;i<listItems.size();i++){
                         retentionList.add(listItems.get(i));
                     }
-                    OrderListAdapter adapter = new OrderListAdapter(getContext(),retentionList,3);
-                    retention_list.setAdapter(adapter);
+/*                    OrderListAdapter adapter = new OrderListAdapter(getContext(),retentionList,3);
+                    retention_list.setAdapter(adapter);*/
+                    RentionOrderAdapter adapter = new RentionOrderAdapter(retentionList);
+                    retention_rv.setAdapter(adapter);
                     break;
             }
         }
@@ -103,6 +109,25 @@ public class RetentionOrderFragment  extends Fragment {
     }
 
     private void initView() {
-        retention_list = getActivity().findViewById(R.id.retention_list);
+        retention_rv = getActivity().findViewById(R.id.rentionorder_rv);
+        retention_rv.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL,false));
+    }
+
+    static class RentionOrderAdapter extends BaseQuickAdapter<OrderItem, BaseViewHolder> {
+
+        public RentionOrderAdapter(@Nullable List<OrderItem> data) {
+            super(R.layout.order_item_retention,data);
+        }
+
+        @Override
+        protected void convert(@NonNull BaseViewHolder helper, OrderItem item) {
+            helper.addOnClickListener(R.id.order_ll);
+            helper.setText(R.id.tv_order_num,"No.Ps"+item.getID());
+            helper.setText(R.id.tv_start_address,item.getSend_address());
+            helper.setText(R.id.tv_end_address,item.getReceive_address());
+            helper.setText(R.id.tv_num,item.getItem_nums());
+            helper.setText(R.id.tv_money,item.getDaishou_money());
+
+        }
     }
 }

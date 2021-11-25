@@ -39,8 +39,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="删除"
-                android:background="@drawable/small_button_style"
-                android:textColor="#FF0000"/>
+                android:background="@drawable/shape_d85a2a_btn"
+                android:textColor="@color/white"/>
         </LinearLayout>
     </RelativeLayout>
 </LinearLayout>

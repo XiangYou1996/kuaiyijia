@@ -72,7 +72,7 @@ public class OrderListAdapter extends BaseAdapter {
             if (adpterType == 2){
                 convertView = inflater.inflate(R.layout.order_item_scanlack, null);
                 holder.num_item = (TextView) convertView.findViewById(R.id.num_item);
-                holder.lack_items = (TextView) convertView.findViewById(R.id.sl_num);
+/*                holder.lack_items = (TextView) convertView.findViewById(R.id.sl_num);*/
             }
             if (adpterType == 3){
                 convertView = inflater.inflate(R.layout.order_item_retention, null);

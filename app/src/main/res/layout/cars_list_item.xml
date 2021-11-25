@@ -58,9 +58,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="查看详情"
-                android:textSize="15sp"
-                android:background="#FB684C"
+                android:background="@drawable/small_button_style"
+                android:drawablePadding="6dp"
+                android:gravity="center"
+                android:textAppearance="?android:attr/textAppearanceButton"
                 android:textColor="#FCFCFC"
+                android:textSize="12sp"
                 android:layout_marginRight="5dp"/>
         </LinearLayout>
     </LinearLayout>

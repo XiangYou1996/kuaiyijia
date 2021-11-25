@@ -6,25 +6,41 @@
     <Button
         android:id="@+id/backtolast"
         android:layout_marginLeft="5dp"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="5dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="#333333"
+        android:background="#D85A2A"
         android:drawableLeft="@drawable/icon_back"
         />
     <TextView
         android:id="@+id/add_title"
-        android:background="#333333"
+        android:background="#D85A2A"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="60dp"
         android:text="添加订单"
         android:textColor="@color/white"
-        android:textSize="25dp"
+        android:textSize="20sp"
         android:gravity="center">
     </TextView>
+    <View
+        android:id="@+id/view1"
+        android:layout_below="@+id/add_title"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@color/white"/>
+    <TextView
+        android:layout_below="@+id/view1"
+        android:id="@+id/tv_add_title"
+        android:text="订单信息填写"
+        android:textColor="@color/white"
+        android:textSize="25sp"
+        android:background="#D85A2A"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
     <LinearLayout
         android:id="@+id/a_line1"
-        android:layout_below="@+id/add_title"
+        android:layout_marginTop="@dimen/dp_10"
+        android:layout_below="@+id/tv_add_title"
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -36,6 +52,7 @@
             android:text="收货单位："
             android:textSize="20sp"
             android:textColor="#000"
+
             android:inputType="text"/>
         <EditText
             android:id="@+id/add_re_station"
@@ -43,6 +60,7 @@
             android:layout_weight="9"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:background="@drawable/edit_box_style"
             android:hint="请输入收货单位"
             android:imeOptions="actionNext"/>
     </LinearLayout>
@@ -68,6 +86,7 @@
             android:layout_height="wrap_content"
             android:hint="请输入收货地址"
             android:inputType="text"
+            android:background="@drawable/edit_box_style"
             android:imeOptions="actionNext"/>
     </LinearLayout>
     <LinearLayout
@@ -81,7 +100,7 @@
             android:layout_weight="1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="收货人："
+            android:text="收货人：    "
             android:textSize="20dp"
             android:textColor="#000"/>
         <EditText
@@ -92,6 +111,7 @@
             android:layout_height="wrap_content"
             android:hint="请输入收货人名字"
             android:inputType="text"
+            android:background="@drawable/edit_box_style"
             android:imeOptions="actionNext"/>
     </LinearLayout>
     <LinearLayout
@@ -105,14 +125,15 @@
             android:layout_weight="1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="联系电话："
-            android:textSize="20dp"
+            android:text="联系电话： "
+            android:textSize="20sp"
             android:textColor="#000"/>
         <EditText
             android:id="@+id/add_re_phone"
             android:textSize="20sp"
             android:layout_weight="9"
             android:textColor="#000"
+            android:background="@drawable/edit_box_style"
             android:inputType="number"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -249,6 +270,7 @@
             android:textColor="#000"
             android:layout_weight="9"
             android:inputType="text"
+            android:background="@drawable/edit_box_style"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:hint="请输入发货单位"
@@ -259,7 +281,8 @@
         android:layout_below="@+id/a_line6"
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:background="@drawable/rectangle_textview_style">
         <TextView
             android:layout_weight="1"
             android:layout_width="wrap_content"
@@ -273,6 +296,7 @@
             android:textColor="#000"
             android:layout_weight="9"
             android:inputType="text"
+            android:background="@drawable/edit_box_style"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:hint="请输入收货人名字"
@@ -297,6 +321,7 @@
             android:textSize="20sp"
             android:textColor="#000"
             android:layout_weight="9"
+            android:background="@drawable/edit_box_style"
             android:inputType="number"
             android:imeOptions="actionNext"
             android:layout_width="wrap_content"
@@ -353,15 +378,15 @@
     <EditText
         android:id="@+id/add_remark"
         android:layout_marginTop="10dp"
-        android:layout_marginLeft="25dp"
-        android:layout_marginRight="25dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
         android:layout_below="@+id/a_line9"
         android:background="@drawable/edit_box_style"
         android:textSize="20sp"
         android:layout_weight="9"
         android:inputType="textMultiLine"
         android:layout_width="match_parent"
-        android:layout_height="80sp"
+        android:layout_height="100sp"
         android:imeOptions="actionDone"
         android:hint=""/>
     <LinearLayout
@@ -375,8 +400,8 @@
             android:layout_gravity="center_horizontal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="16sp"
-            android:background="@drawable/big_button_style"
+            android:textSize="20sp"
+            android:backgroundTint="#FB684C"
             android:textColor="@color/white"
             android:text="确认开单"></Button>
     </LinearLayout>

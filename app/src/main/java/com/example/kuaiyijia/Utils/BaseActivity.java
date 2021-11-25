@@ -10,6 +10,8 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.kuaiyijia.UI.FreightBinding.BindingFreightActivity;
+
 /*
 Author by: xy
 Coding On 2021/4/16;
@@ -61,7 +63,6 @@ public abstract class BaseActivity extends AppCompatActivity {
         Toast.makeText(mContext,msg,Toast.LENGTH_SHORT).show();
         Looper.loop();
     }
-
 
 
 }

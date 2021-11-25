@@ -7,7 +7,7 @@
     <Button
         android:id="@+id/backtolast"
         android:layout_marginLeft="5dp"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="5dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="#333333"
@@ -17,7 +17,7 @@
         android:id="@+id/cars_modify"
         android:layout_alignParentStart="true"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="60dp"
         android:orientation="vertical"
         android:background="#333333"
         android:gravity="center"
@@ -26,7 +26,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="车辆信息修改"
-            android:textSize="30dp"
+            android:textSize="20sp"
             android:textColor="@color/white" />
     </LinearLayout>
     <TextView
@@ -39,6 +39,7 @@
         android:background="@drawable/circle_textview_style"
         android:textColor="@color/black"/>
     <EditText
+        android:layout_marginTop="5dp"
         android:id="@+id/car_modify_plate_number"
         android:layout_below="@+id/car_modify_title"
         android:layout_width="match_parent"
@@ -51,6 +52,7 @@
         android:background="@drawable/edit_box_style"/>
     <EditText
         android:id="@+id/car_modify_id"
+        android:layout_marginTop="2dp"
         android:layout_below="@+id/car_modify_plate_number"
         android:layout_width="match_parent"
         android:layout_height="50dp"
@@ -62,6 +64,7 @@
         android:background="@drawable/edit_box_style"/>
     <EditText
         android:id="@+id/car_modify_license"
+        android:layout_marginTop="2dp"
         android:layout_below="@+id/car_modify_id"
         android:layout_width="match_parent"
         android:layout_height="50dp"
@@ -75,6 +78,7 @@
         android:id="@+id/car_modify_line1"
         android:layout_below="@+id/car_modify_license"
         android:layout_marginTop="10dp"
+
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/rectangle_textview_style">
@@ -82,25 +86,26 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:gravity="center"
-            android:text="车辆类型"
+            android:text="车辆类型:"
             android:textSize="18dp"
             android:textColor="@color/black"
             android:background="@drawable/rectangle_textview_style"/>
+
         <Spinner
             android:id="@+id/car_modify_type"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:spinnerMode="dropdown"
-            android:entries="@array/carType"
+            android:layout_width="100dp"
+            android:layout_height="13dp"
             android:layout_gravity="center"
+            android:layout_marginLeft="2dp"
+            android:entries="@array/carType"
             android:gravity="center"
-            />
+            android:spinnerMode="dropdown" />
         <TextView
             android:layout_marginLeft="18dp"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:gravity="center"
-            android:text="货箱长度"
+            android:text="货箱长度:"
             android:textSize="18dp"
             android:background="@drawable/rectangle_textview_style"
             android:textColor="@color/black"/>
@@ -109,6 +114,8 @@
             android:layout_width="80dp"
             android:layout_height="50dp"
             android:textSize="18dp"
+
+            android:layout_marginLeft="2dp"
             android:inputType="number"
             android:text="15"
             android:imeOptions="actionDone"
@@ -131,7 +138,7 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:gravity="center"
-            android:text="货箱高度"
+            android:text="货箱高度:"
             android:textSize="18dp"
             android:background="@drawable/rectangle_textview_style"
             android:textColor="@color/black"/>
@@ -140,6 +147,7 @@
             android:layout_width="100dp"
             android:layout_height="50dp"
             android:textSize="18dp"
+            android:layout_marginLeft="2dp"
             android:inputType="number"
             android:text="15"
             android:imeOptions="actionDone"
@@ -155,7 +163,7 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:gravity="center"
-            android:text="货箱宽度"
+            android:text="货箱宽度:"
             android:textSize="18dp"
             android:background="@drawable/rectangle_textview_style"
             android:textColor="@color/black"/>
@@ -165,6 +173,7 @@
             android:layout_height="50dp"
             android:textSize="18dp"
             android:inputType="number"
+            android:layout_marginLeft="2dp"
             android:text="15"
             android:imeOptions="actionDone"
             android:background="@drawable/edit_box_style"/>
@@ -186,8 +195,8 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:gravity="center"
-            android:text="  载重量  "
-            android:textSize="18dp"
+            android:text="  载重量:  "
+            android:textSize="18sp"
             android:background="@drawable/rectangle_textview_style"
             android:textColor="@color/black"/>
         <EditText
@@ -197,6 +206,7 @@
             android:textSize="18dp"
             android:text="5000"
             android:inputType="number"
+            android:layout_marginLeft="2dp"
             android:imeOptions="actionDone"
             android:background="@drawable/edit_box_style"/>
         <TextView
@@ -212,8 +222,9 @@
         android:id="@+id/car_modify_confirm_bt"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="30sp"
+        android:textSize="20sp"
         android:text="确认修改"
+        android:textColor="@color/white"
         android:background="@drawable/big_button_style"
         android:layout_alignParentBottom="true"></Button>
 

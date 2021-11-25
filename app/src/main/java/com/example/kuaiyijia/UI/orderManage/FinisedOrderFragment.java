@@ -14,12 +14,17 @@ import android.widget.ListView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import com.chad.library.adapter.base.BaseQuickAdapter;
+import com.chad.library.adapter.base.BaseViewHolder;
 import com.example.kuaiyijia.Adapter.OrderListAdapter;
 import com.example.kuaiyijia.Database.DataBaseForMultilFragment;
 import com.example.kuaiyijia.Entity.ListItems;
 import com.example.kuaiyijia.Entity.OrderItem;
 import com.example.kuaiyijia.R;
+import com.example.kuaiyijia.Utils.BaseFragment;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -30,7 +35,7 @@ import java.util.List;
 Author by: xy
 Coding On 2021/3/16;
 */
-public class FinisedOrderFragment  extends Fragment implements View.OnClickListener {
+public class FinisedOrderFragment  extends BaseFragment  {
     private List<OrderItem> orderItemsList = new ArrayList<>();
 
     private Handler mHandler = new Handler(){
@@ -43,26 +48,26 @@ public class FinisedOrderFragment  extends Fragment implements View.OnClickListe
                     for (int i = 0;i<listItems.size();i++){
                         orderItemsList.add(listItems.get(i));
                     }
-                    ListView finished_list = getActivity().findViewById(R.id.finished_list);
-
-                    OrderListAdapter adapter = new OrderListAdapter(getContext(),orderItemsList,0);
-                    if (finished_list != null) {
-                        finished_list.setAdapter(adapter);
-                        finished_list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                            @Override
-                            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                                Intent mIntent = new Intent(getContext(), FinishedOrderDetailedActivity.class);
-                                Bundle bundle = new Bundle();
-                                bundle.putParcelable("orderItem", orderItemsList.get(position));
-                                mIntent.putExtras(bundle);
-                                startActivity(mIntent);
+                    FinishedOrderAdapter adapter = new FinishedOrderAdapter(orderItemsList);
+                    adapter.setOnItemChildClickListener(new BaseQuickAdapter.OnItemChildClickListener() {
+                        @Override
+                        public void onItemChildClick(BaseQuickAdapter adapter, View view, int position) {
+                            switch (view.getId()){
+                                case R.id.order_ll:
+                                    Bundle bundle = new Bundle();
+                                    bundle.putParcelable("orderItem", orderItemsList.get(position));
+                                    navigateToWithData(FinishedOrderDetailedActivity.class,bundle);
+                                    break;
                             }
-                        });
-                    }
+                        }
+                    });
+                    finished_list.setAdapter(adapter);
                     break;
             }
         }
     };
+    private RecyclerView finished_list;
+    private Button finished_order_button;
 
     @Nullable
     @Override
@@ -112,17 +117,40 @@ public class FinisedOrderFragment  extends Fragment implements View.OnClickListe
     }
 
     private void initView() {
-        Button finished_order_button = getActivity().findViewById(R.id.finished_order_button);
-        finished_order_button.setOnClickListener(this);
+        finished_list = getActivity().findViewById(R.id.finished_rv);
+        finished_list.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL,false));
+        finished_order_button = getActivity().findViewById(R.id.finished_order_bt);
+        finished_order_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                switch (v.getId()){
+                    case R.id.finished_order_bt:
+                        Intent mIntent = new Intent(getContext(),AddOrderActivity.class);
+                        startActivity(mIntent);
+                        break;
+            }
+        }
+        });
     }
 
-    @Override
-    public void onClick(View v) {
-        switch (v.getId()){
-            case R.id.finished_order_button:
-                Intent mIntent = new Intent(getContext(),AddOrderActivity.class);
-                startActivity(mIntent);
-                break;
+
+
+    static class FinishedOrderAdapter extends BaseQuickAdapter<OrderItem, BaseViewHolder> {
+
+        public FinishedOrderAdapter(@Nullable List<OrderItem> data) {
+            super(R.layout.item_order,data);
+        }
+
+        @Override
+        protected void convert(@NonNull BaseViewHolder helper, OrderItem item) {
+            helper.addOnClickListener(R.id.order_ll);
+            helper.setText(R.id.tv_order_num,"No.Ps"+item.getID());
+            helper.setText(R.id.tv_start_address,item.getSend_address());
+            helper.setText(R.id.tv_end_address,item.getReceive_address());
+            helper.setText(R.id.tv_num,item.getItem_nums());
+            helper.setText(R.id.tv_money,item.getDaishou_money());
+            helper.setVisible(R.id.btn_scan,false);
         }
     }
+
 }

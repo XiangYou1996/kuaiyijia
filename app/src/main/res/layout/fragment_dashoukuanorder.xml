@@ -103,13 +103,11 @@
         android:layout_height="wrap_content"></ListView>
     <TextView
         android:id="@+id/am_totalmoney"
-        android:padding="10dp"
+        android:background="@drawable/rectangle_textview_style"
         android:layout_alignParentBottom="true"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textColor="@color/black"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
         android:gravity="center"
         android:textSize="25sp"
         android:text="收款共计：123456元"/>

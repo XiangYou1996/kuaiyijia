@@ -1,9 +1,13 @@
-package com.example.kuaiyijia.UI.LoginRegister;
+package com.example.kuaiyijia.UI.FreightBinding;
 
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -16,16 +20,17 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
-import com.example.kuaiyijia.Adapter.BanciAdapter;
 import com.example.kuaiyijia.Database.DataBaseConfig;
 import com.example.kuaiyijia.Database.DataBaseForMultilFragment;
 import com.example.kuaiyijia.Database.DataBaseMethods;
 import com.example.kuaiyijia.Database.Database;
+import com.example.kuaiyijia.Entity.LineEntity;
 import com.example.kuaiyijia.Entity.UserEntity;
 import com.example.kuaiyijia.Entity.WebBranchListItem;
 import com.example.kuaiyijia.R;
+import com.example.kuaiyijia.UI.LoginRegister.LoginActivity;
 import com.example.kuaiyijia.UI.MainActivity;
-import com.example.kuaiyijia.UI.routeManage.BanciActivity;
+import com.example.kuaiyijia.UI.PersoninfoModify.PersoninfoActivity;
 import com.example.kuaiyijia.Utils.BaseActivity;
 import com.example.kuaiyijia.Utils.CustomDialog;
 
@@ -42,6 +47,8 @@ public class BindingFreightActivity extends BaseActivity implements View.OnClick
     private UserEntity user;
     private SharedPreferences sp;
     private TextView bt_addhyb;
+    private Button backtolast;
+    boolean checkTag = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +60,7 @@ public class BindingFreightActivity extends BaseActivity implements View.OnClick
     private void initData() {
         // 注册页面传过来的个人信息
         user = (UserEntity) getIntent().getExtras().getSerializable("user");
+
         // 弹出所有的货运部，可进行查找
         displayAllFreight();
     }
@@ -62,6 +70,17 @@ public class BindingFreightActivity extends BaseActivity implements View.OnClick
         Thread thread = new Thread(new Runnable() {
             @Override
             public void run() {
+                //获取用户生成的ID
+                ResultSet rs2 = Database.SelectFromData(DataBaseConfig.UserPriID,DataBaseConfig.UserTableName,DataBaseConfig.UserAccount,user.getAccount());
+                try {
+                    while (rs2.next()){
+                        String id = rs2.getString(DataBaseConfig.UserPriID);
+                        user.setUserID(id);
+                    }
+
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
                 //
                 DataBaseForMultilFragment database = new DataBaseForMultilFragment();
                 ResultSet rs = database.SelectFromAllData("*", DataBaseConfig.WebBranchTableName);
@@ -72,6 +91,7 @@ public class BindingFreightActivity extends BaseActivity implements View.OnClick
                                 rs.getString(DataBaseConfig.WebBranchCantactTel),rs.getString(DataBaseConfig.WebBranchDetailAddress),rs.getString(DataBaseConfig.WebBranchCID));
                         adpterLists.add(wb);
                     }
+
                     // 主线程操作界面
                     runOnUiThread(new Runnable() {
                         @Override
@@ -100,23 +120,53 @@ public class BindingFreightActivity extends BaseActivity implements View.OnClick
     private void bindFreight(int position) {
          // 确认对话框
         // 先弹出确认对话框
+
         CustomDialog dialog = new CustomDialog(BindingFreightActivity.this);
         dialog.setTitle("提示");
         dialog.setMessage("您确认要绑定该货运部吗？");
         dialog.setConfirm("确认", new CustomDialog.IOnConfirmListener() {
             @Override
             public void onConfirm(CustomDialog dialog) {
-                // 完善 user 信息
-                user.setHYB_ID(adpterLists.get(position).getWebBranchID());
-                user.setC_ID(adpterLists.get(position).getCID());
-                // 插入数据
-                String [] names = {DataBaseConfig.UserHYBID,DataBaseConfig.UserCID};
-                String [] values = {user.getHYB_ID(),user.getC_ID()};
-                DataBaseMethods.updateById(DataBaseConfig.UserTableName,DataBaseConfig.UserPriID,user.getUserID(),names,values);
-                showToast("绑定成功~");
-                // 开始跳转到主功能页面
-                int flag =Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK;
-                navigateWithDestroyBefore(LoginActivity.class ,flag);
+                // 填写后六位电话号码的弹框
+                LayoutInflater layoutInflater = LayoutInflater.from(BindingFreightActivity.this); // 创建视图容器并设置上下文
+                View view = layoutInflater.inflate(R.layout.phone_number_editbox,null); // 获取list_item布局文件的视图
+                new AlertDialog.Builder(BindingFreightActivity.this).setView(view).setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                            EditText phone_number_edit = view.findViewById(R.id.phone_number);
+                            String hyb_tel = adpterLists.get(position).getCantactTel();
+
+                            if (hyb_tel.length() > 6){
+                                String tel_6 = hyb_tel.substring(hyb_tel.length()-6,hyb_tel.length());
+                                String input = phone_number_edit.getText().toString();
+
+                                if (input.equals(tel_6)){
+                                    // 通过验证后 在写入
+                                    // 完善 user 信息
+                                    user.setHYB_ID(adpterLists.get(position).getWebBranchID());
+                                    user.setC_ID(adpterLists.get(position).getCID());
+                                    // 插入数据
+                                    String [] names = {DataBaseConfig.UserHYBID,DataBaseConfig.UserCID};
+                                    String [] values = {user.getHYB_ID(),user.getC_ID()};
+                                    DataBaseMethods.updateById(DataBaseConfig.UserTableName,DataBaseConfig.UserPriID,user.getUserID(),names,values);
+                                    showToast("绑定成功~");
+                                    // 开始跳转到主功能页面
+                                    /*                int flag =Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK;*/
+                                    Bundle bundle = new Bundle();
+                                    bundle.putSerializable("user",user);
+                                    navigateToWithData(MainActivity.class,bundle );
+                                    finish();
+                                }
+                                else {
+                                    showToast("电话验证失败，请重新操作！");
+
+                                }
+                            }
+                            else {
+                            }
+                    }
+                }).setNegativeButton("取消", null).show();
+
             }
         });
         dialog.setCancel("取消", new CustomDialog.IOnCancelListener() {
@@ -132,8 +182,10 @@ public class BindingFreightActivity extends BaseActivity implements View.OnClick
         rv = findViewById(R.id.freight_rv);
         bt_search = findViewById(R.id.tv_search);
         bt_addhyb = findViewById(R.id.tv_add_hyb);
+        backtolast = findViewById(R.id.backtolast);
         bt_search.setOnClickListener(this);
         bt_addhyb.setOnClickListener(this);
+        backtolast.setOnClickListener(this);
 
     }
 
@@ -153,6 +205,13 @@ public class BindingFreightActivity extends BaseActivity implements View.OnClick
                 bundle.putSerializable("user",user);
                 navigateToWithData(AddFreightActivity.class,bundle);
                 break;
+            case R.id.backtolast:
+                Bundle bundle1 = new Bundle();
+                bundle1.putSerializable("user",user);
+                navigateToWithData(MainActivity.class,bundle1);
+                finish();
+                break;
+
         }
     }
 

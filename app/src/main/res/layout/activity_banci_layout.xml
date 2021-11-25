@@ -10,7 +10,7 @@
     <Button
         android:id="@+id/backtolast"
         android:layout_marginLeft="5dp"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="5dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="#333333"
@@ -20,10 +20,10 @@
         android:id="@+id/add_title"
         android:background="#333333"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:text="添加订单"
+        android:layout_height="60dp"
+        android:text="添加班次"
         android:textColor="@color/white"
-        android:textSize="25dp"
+        android:textSize="20sp"
         android:gravity="center">
     </TextView>
         <androidx.appcompat.widget.AppCompatTextView

@@ -7,7 +7,7 @@
     <Button
         android:id="@+id/backtolast"
         android:layout_marginLeft="5dp"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="5dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="#333333"
@@ -17,7 +17,7 @@
         android:id="@+id/cars_add"
         android:layout_alignParentStart="true"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="60dp"
         android:orientation="vertical"
         android:background="#333333"
         android:gravity="center"
@@ -26,7 +26,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="车辆添加"
-            android:textSize="30sp"
+            android:textSize="20sp"
             android:textColor="@color/white" />
     </LinearLayout>
     <TextView
@@ -43,6 +43,7 @@
         android:layout_below="@+id/car_add_title"
         android:layout_width="match_parent"
         android:layout_height="50dp"
+        android:layout_marginTop="5dp"
         android:hint="车牌号"
         android:textSize="18sp"
         android:inputType="text"
@@ -55,6 +56,7 @@
         android:layout_height="50dp"
         android:hint="车辆识别号"
         android:textSize="18dp"
+        android:layout_marginTop="2dp"
         android:inputType="text"
         android:imeOptions="actionNext"
         android:background="@drawable/edit_box_style"/>
@@ -64,6 +66,7 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:hint="行驶证号"
+        android:layout_marginTop="2dp"
         android:textSize="18dp"
         android:inputType="text"
         android:imeOptions="actionNext"
@@ -87,6 +90,7 @@
             android:id="@+id/car_add_type"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="2dp"
             android:spinnerMode="dropdown"
             android:entries="@array/carType"
             android:layout_gravity="center"
@@ -108,6 +112,7 @@
             android:layout_width="80dp"
             android:layout_height="50dp"
             android:textSize="18dp"
+            android:layout_marginLeft="2dp"
             android:inputType="number"
             android:imeOptions="actionNext"
             android:background="@drawable/edit_box_style"/>
@@ -139,6 +144,7 @@
             android:layout_height="50dp"
             android:textSize="18dp"
             android:inputType="number"
+            android:layout_marginLeft="2dp"
             android:imeOptions="actionNext"
             android:background="@drawable/edit_box_style"/>
         <TextView
@@ -164,6 +170,7 @@
             android:layout_height="match_parent"
             android:inputType="number"
             android:imeOptions="actionNext"
+            android:layout_marginLeft="2dp"
             android:background="@drawable/edit_box_style"
             android:textSize="18dp"
             />
@@ -196,6 +203,7 @@
             android:textSize="18sp"
             android:inputType="number"
             android:imeOptions="actionDone"
+            android:layout_marginLeft="2dp"
             android:background="@drawable/edit_box_style"/>
         <TextView
             android:layout_marginLeft="10dp"
@@ -210,9 +218,7 @@
         android:id="@+id/car_add_confirm_bt"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"
-        android:textSize="30dp"
+        android:textSize="20sp"
         android:text="确认添加"
         android:textColor="#FCFCFC"
         android:background="@drawable/big_button_style"

@@ -38,8 +38,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Kuaiyijia">
-        <activity android:name=".UI.LoginRegister.AddFreightActivity"></activity>
-        <activity android:name=".UI.LoginRegister.BindingFreightActivity" />
+        <activity android:name=".UI.PersoninfoModify.PersoninfoActivity"></activity>
+        <activity android:name=".UI.FreightBinding.AddFreightActivity" />
+        <activity android:name=".UI.FreightBinding.BindingFreightActivity" />
         <activity android:name=".UI.LoginRegister.RegisterActivity" />
         <activity android:name=".UI.routeManage.BanciActivity" />
         <activity android:name=".UI.indexPage.IndexActivity">
@@ -50,7 +51,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".UI.LoginRegister.LoginActivity" />
+
         <service android:name="com.amap.api.location.APSService" />
+
         <meta-data
             android:name="com.amap.api.v2.apikey"
             android:value="bfed2f23de7d8ac0c891b9b6aeb84c8d" />

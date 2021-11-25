@@ -35,7 +35,8 @@
         android:layout_below="@+id/pm_search_line"
         android:layout_above="@+id/pm_station_manage_bt"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:padding="@dimen/dp_10"/>
     <Button
         android:id="@+id/pm_station_manage_bt"
         android:layout_width="match_parent"

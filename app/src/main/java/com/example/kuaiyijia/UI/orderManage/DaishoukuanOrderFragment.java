@@ -7,6 +7,7 @@ import android.os.Message;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -22,6 +23,7 @@ import com.example.kuaiyijia.Database.DataBaseForMultilFragment;
 import com.example.kuaiyijia.Entity.ListItems;
 import com.example.kuaiyijia.Entity.OrderItem;
 import com.example.kuaiyijia.R;
+import com.example.kuaiyijia.Utils.BaseFragment;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -33,7 +35,7 @@ import java.util.concurrent.locks.ReentrantLock;
 Author by: xy
 Coding On 2021/3/16;
 */
-public class DaishoukuanOrderFragment extends Fragment implements View.OnClickListener {
+public class DaishoukuanOrderFragment extends BaseFragment implements View.OnClickListener {
     private ReentrantLock lock = new ReentrantLock();
     private EditText am_search_et;
     private Button am_search_bt;
@@ -55,6 +57,15 @@ public class DaishoukuanOrderFragment extends Fragment implements View.OnClickLi
                     }
                     OrderListAdapter adapter = new OrderListAdapter(getContext(),daishouList,1);
                     am_list.setAdapter(adapter);
+                    am_list.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+                        @Override
+                        public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                            Bundle bundle = new Bundle();
+                            bundle.putParcelable("orderItem", daishouList.get(position));
+                            navigateToWithData(GoingOrderDetailActivity.class,bundle);
+                            return true;
+                        }
+                    });
                     setTotalMoney();
                     break;
             }

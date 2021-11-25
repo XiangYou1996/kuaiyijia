@@ -33,7 +33,10 @@ public class DataBaseConfig {
     public static String BanciHYBID = "HYBID";
     public static String BanciSTIME = "B_STIME";
 
-    // 订单相关信息
+    /* 订单相关信息*/
+    public static String OrderTableName = "orders";
+    public static String OrderPriID = "id";
+    public static String OrderNumber = "order_number";
     // 车辆相关信息
     /*网点、货运部相关信息*/
     public static String WebBranchTableName = "PUB_HYB";

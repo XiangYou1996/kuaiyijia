@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -14,31 +12,33 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
+            android:background="@drawable/rectangle_textview_style"
             android:gravity="center">
 
             <TextView
+                android:id="@+id/area"
                 android:layout_width="80dp"
                 android:layout_height="wrap_content"
-                android:id="@+id/area"
-                android:textColor="#44BDBD"
+                android:layout_weight="1"
                 android:text="发货地:"
-                android:textSize="20sp">
-            </TextView>
+                android:textColor="#44BDBD"
+                android:textSize="20sp"></TextView>
             <Spinner
                 android:id="@+id/spinner1"
                 android:layout_width="100dp"
                 android:layout_height="64dp"
                 android:entries="@array/area"
+                android:layout_weight="1"
                 android:spinnerMode="dialog"
                 android:gravity="center"/>
-
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="80dp"
                 android:layout_height="wrap_content"
-                android:layout_margin="15dp"
+
                 android:textColor="#44BDBD"
                 android:id="@+id/freight"
-                android:text="配件"
+                android:layout_weight="1"
+                android:text="配件:"
                 android:textSize="20sp">
 
             </TextView>
@@ -47,44 +47,50 @@
                 android:layout_width="100dp"
                 android:layout_height="64dp"
                 android:entries="@array/sad"
+                android:layout_weight="1"
                 android:spinnerMode="dialog"/>
         </LinearLayout>
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_gravity="center_vertical">
-
+            android:background="@drawable/rectangle_textview_style">
             <TextView
                 android:layout_width="80dp"
                 android:layout_height="wrap_content"
                 android:id="@+id/area_2"
                 android:textColor="#44BDBD"
-                android:text="收货地"
+                android:text="收货地:     "
+                android:layout_centerVertical="true"
+                android:layout_weight="1"
                 android:textSize="20sp">
             </TextView>
             <Spinner
                 android:id="@+id/spinner3"
+                android:layout_toRightOf="@+id/area_2"
                 android:layout_width="100dp"
                 android:layout_height="64dp"
+                android:layout_weight="1"
                 android:entries="@array/choose"
                 android:spinnerMode="dialog"/>
-            <Button
-                android:id="@+id/search"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="50dp"
-                android:layout_marginTop="10dp"
-                android:text="搜索"
-                ></Button>
 
-        </LinearLayout>
+                <Button
+                    android:id="@+id/search"
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:text="搜索"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentRight="true"
+                    android:textColor="@color/white"
+                    android:background="@drawable/shape_d85a2a_btn"
+                    ></Button>
+        </RelativeLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
+            android:background="@drawable/rectangle_textview_style"
             android:orientation="horizontal">
 
             <LinearLayout
@@ -116,18 +122,14 @@
                 </TextView>
             </LinearLayout>
 
-
-
-
         </LinearLayout>
-
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
+            android:background="@drawable/rectangle_textview_style"
             android:orientation="horizontal">
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -138,7 +140,6 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="40dp"
                     android:id="@+id/info_freight"
-
                     android:textSize="20dp">
                 </TextView>
             </LinearLayout>
@@ -152,29 +153,12 @@
                     android:layout_width="120dp"
                     android:layout_height="wrap_content"
                     android:background="#00000000"
-
                     android:id="@+id/info_money"
                     android:textSize="20dp">
                 </Button>
             </LinearLayout>
 
-
-
-
         </LinearLayout>
 
-
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="10dp" />
-
-
-
-
-    </LinearLayout>
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>
+</LinearLayout>

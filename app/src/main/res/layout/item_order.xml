@@ -10,11 +10,13 @@
         app:cardPreventCornerOverlap="true">
 
         <LinearLayout
+
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
             <LinearLayout
+                android:id="@+id/order_ll"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/shape_49526b_bg_6"
@@ -101,7 +103,7 @@
                     <androidx.appcompat.widget.AppCompatTextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="货运数量"
+                        android:text="货运数量 × "
                         android:textColor="@color/white"
                         android:textSize="14sp" />
 
@@ -110,7 +112,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text=" × 3件"
+                        android:text="3件"
                         android:textColor="@color/white"
                         android:textSize="14sp" />
 
@@ -156,14 +158,14 @@
                 </LinearLayout>
 
                 <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/btn"
+                    android:id="@+id/btn_scan"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:backgroundTint="#FB684C"
                     android:drawableStart="@mipmap/ic_scan"
                     android:drawablePadding="6dp"
                     android:gravity="center"
-                    android:text="确认收货"
+                    android:text="快捷收货"
                     android:textAppearance="?android:attr/textAppearanceButton"
                     android:textColor="#FCFCFC"
                     android:textSize="12sp" />

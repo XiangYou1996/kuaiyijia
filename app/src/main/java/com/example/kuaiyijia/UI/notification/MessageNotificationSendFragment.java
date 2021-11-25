@@ -78,7 +78,7 @@ public class MessageNotificationSendFragment extends Fragment {
         public void handleMessage(Message msg) {
             switch(msg.what){
                 case 1 :
-//                    System.out.println("3333333");
+
                     mV_ID = msg.getData().getString("mV_ID");//接受msg传递过来的参数
                     mV_FA = msg.getData().getString("mV_FA");//接受msg传递过来的参数
                     mV_SH = msg.getData().getString("mV_SH");//接受msg传递过来的参数

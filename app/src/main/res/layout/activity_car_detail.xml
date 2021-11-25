@@ -7,7 +7,7 @@
     <Button
         android:id="@+id/backtolast"
         android:layout_marginLeft="5dp"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="5dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="#333333"
@@ -18,7 +18,7 @@
         android:id="@+id/cars_detail"
         android:layout_alignParentStart="true"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="60dp"
         android:orientation="vertical"
         android:background="#333333"
         android:gravity="center"
@@ -27,7 +27,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="车辆信息详情"
-            android:textSize="30sp"
+            android:textSize="20sp"
             android:textColor="@color/white" />
     </LinearLayout>
     <TextView
@@ -44,23 +44,24 @@
         android:layout_below="@+id/car_detail_title"
         android:layout_width="match_parent"
         android:layout_height="50dp"
+        android:layout_marginTop="5dp"
         android:hint=""
         android:textColor="@color/black"
         android:text="车牌号:渝AF6666"
         android:gravity="center_vertical"
-        android:textSize="25sp"
+        android:textSize="20sp"
         android:background="@drawable/rectangle_textview_style"
          />
     <TextView
-
         android:id="@+id/car_detail_id"
         android:layout_below="@+id/car_detail_plate_number"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:hint="车辆识别号"
         android:text="车辆识别号:6666"
+        android:layout_marginTop="2dp"
         android:textColor="@color/black"
-        android:textSize="25sp"
+        android:textSize="20sp"
         android:background="@drawable/rectangle_textview_style"
          />
     <TextView
@@ -71,7 +72,8 @@
         android:hint="行驶证号"
         android:text="行驶证号:6666"
         android:textColor="@color/black"
-        android:textSize="25sp"
+        android:layout_marginTop="2dp"
+        android:textSize="20sp"
         android:background="@drawable/rectangle_textview_style"
          />
     <LinearLayout
@@ -80,11 +82,12 @@
         android:layout_marginTop="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@drawable/rectangle_textview_style"
         android:gravity="center">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:text="车辆类型"
+            android:text="车辆类型:"
             android:textSize="18dp"
             android:textColor="@color/black"
             android:gravity="center"
@@ -107,7 +110,7 @@
             android:layout_marginLeft="10dp"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:text="货箱长度"
+            android:text="货箱长度:"
             android:textSize="18sp"
             android:gravity="center"
             android:background="@drawable/rectangle_textview_style"
@@ -139,7 +142,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:text="货箱高度"
+            android:text="货箱高度:"
             android:textSize="18sp"
             android:background="@drawable/rectangle_textview_style"
             android:textColor="@color/black"
@@ -162,7 +165,7 @@
             android:layout_marginLeft="10dp"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:text="货箱宽度"
+            android:text="货箱宽度:"
             android:textSize="18sp"
             android:background="@drawable/rectangle_textview_style"
             android:textColor="@color/black"
@@ -194,7 +197,8 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:text="  载重量  "
+            android:layout_marginLeft="5dp"
+            android:text="  载重量:  "
             android:textSize="18sp"
             android:background="@drawable/rectangle_textview_style"
             android:textColor="@color/black"
@@ -228,7 +232,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
-            android:textSize="30dp"
+            android:textSize="20sp"
             android:text="修改信息"
             android:layout_weight="1"
             android:textColor="#FCFCFC"
@@ -240,11 +244,11 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
-            android:textSize="30dp"
+            android:textSize="20sp"
             android:text="删    除"
-            android:background="@drawable/small_button_style"
+            android:background="@drawable/shape_d85a2a_btn"
             android:layout_weight="1"
-            android:textColor="#E42A2A"/>
+            android:textColor="@color/white"/>
     </LinearLayout>
 
 </RelativeLayout>

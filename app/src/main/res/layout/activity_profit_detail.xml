@@ -7,7 +7,7 @@
     <Button
         android:id="@+id/backtolast"
         android:layout_marginLeft="5dp"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="5dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="#333333"
@@ -21,7 +21,7 @@
             android:id="@+id/profit_detail"
             android:layout_alignParentStart="true"
             android:layout_width="match_parent"
-            android:layout_height="100dp"
+            android:layout_height="60dp"
             android:orientation="vertical"
             android:background="#333333"
             android:gravity="center"
@@ -35,12 +35,13 @@
                 android:textColor="@color/white" />
         </LinearLayout>
         <LinearLayout
+            android:background="@drawable/rectangle_textview_style"
             android:id="@+id/profit_date_search_line"
             android:layout_below="@+id/profit_detail"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:orientation="horizontal"
-            android:visibility="gone">
+            android:visibility="visible">
             <ImageButton
                 android:id="@+id/profitbacktodate"
                 android:layout_width="wrap_content"
@@ -55,17 +56,12 @@
             <TextView
                 android:id="@+id/profit_date_begin"
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:textColor="#000000"
                 android:textSize="18sp"
                 android:layout_weight="1"
                 android:gravity="center"
                 android:background="@drawable/edit_box_style"/>
-            <ImageButton
-                android:id="@+id/profit_date_begin_bt"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/profit_calender"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -75,17 +71,12 @@
             <TextView
                 android:id="@+id/profit_date_end"
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:textColor="#000000"
                 android:textSize="18sp"
                 android:gravity="center"
                 android:layout_weight="1"
                 android:background="@drawable/edit_box_style"/>
-            <ImageButton
-                android:id="@+id/profit_date_end_bt"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/profit_calender"/>
             <ImageButton
                 android:id="@+id/profit_date_sr_bt"
                 android:layout_width="wrap_content"
@@ -103,7 +94,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="本日"
-                android:textSize="15dp"
+                android:textSize="15sp"
                 android:layout_weight="1"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
@@ -113,7 +104,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="本月"
-                android:textSize="15dp"
+                android:textSize="15sp"
                 android:layout_weight="1"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
@@ -123,7 +114,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="上月"
-                android:textSize="15dp"
+                android:textSize="15sp"
                 android:layout_weight="1"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
@@ -133,7 +124,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="更多"
-                android:textSize="15dp"
+                android:textSize="15sp"
                 android:layout_weight="1"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
@@ -141,6 +132,7 @@
 
         </LinearLayout>
         <LinearLayout
+            android:background="@drawable/circle_textview_style"
             android:id="@+id/profit_detail_line2"
             android:layout_below="@+id/profit_date_button_line"
             android:layout_width="match_parent"
@@ -197,6 +189,7 @@
     </LinearLayout>
 
     <RelativeLayout
+        android:background="@drawable/rectangle_textview_style"
         android:id="@+id/profit_detail_line3"
         android:layout_above="@+id/profit_detail_confirm_bt"
         android:layout_width="match_parent"

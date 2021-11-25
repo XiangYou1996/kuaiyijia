@@ -23,6 +23,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="搜索"
+            android:textColor="@color/white"
+            android:textSize="15sp"
             android:background="@drawable/big_button_style"/>
 
 
@@ -62,6 +64,8 @@
                 android:layout_centerInParent="true"
                 android:layout_alignParentRight="true"
                 android:text="生成装车码"
+                android:textColor="@color/white"
+                android:textSize="15sp"
                 android:background="@drawable/small_button_style"/>
         </RelativeLayout>
     </LinearLayout>

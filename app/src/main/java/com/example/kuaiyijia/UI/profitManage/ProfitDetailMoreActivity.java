@@ -74,7 +74,6 @@ public class ProfitDetailMoreActivity extends AppCompatActivity implements View.
     public void initData(){
         ListItems<ProfitDetailMoreItem> alist = new ListItems<>();
         order_id = getIntent().getStringExtra("order_id");
-        Log.i("TAG", "initData: order_id is"+order_id);
         // 开启线程查找数据
         Thread thread = new Thread(new Runnable() {
             @Override

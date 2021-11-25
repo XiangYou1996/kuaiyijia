@@ -38,7 +38,7 @@ import java.util.List;
 public class ProfitManageFragment extends Fragment implements View.OnClickListener {
 
     private EditText profit_search_edit;
-    private Button profit_manage_sr_bt;
+    private TextView profit_manage_sr_bt;
     private Button profit_detail_today_bt;
     private Button profit_detail_nmonth_bt;
     private Button profit_detail_lmonth_bt;
@@ -46,8 +46,6 @@ public class ProfitManageFragment extends Fragment implements View.OnClickListen
     private LinearLayout profit_date_button_line;
     private LinearLayout profit_date_search_line;
     private ImageButton profitbacktodate;
-    private ImageButton profit_date_begin_bt;
-    private ImageButton profit_date_end_bt;
     private ImageButton profit_date_sr_bt;
     private DatePickerDialog dialog_pickDate;
     private final Calendar calendar = Calendar.getInstance();
@@ -180,7 +178,7 @@ public class ProfitManageFragment extends Fragment implements View.OnClickListen
 
     public  void initView(){
         profit_search_edit = (EditText) getActivity().findViewById(R.id.profit_search_edit);
-        profit_manage_sr_bt = (Button) getActivity().findViewById(R.id.profit_manage_sr_bt);
+        profit_manage_sr_bt = (TextView) getActivity().findViewById(R.id.profit_manage_sr_bt);
         profit_detail_today_bt = (Button) getActivity().findViewById(R.id.profit_detail_today_bt);
         profit_detail_nmonth_bt = (Button) getActivity().findViewById(R.id.profit_detail_nmonth_bt);
         profit_detail_lmonth_bt = (Button) getActivity().findViewById(R.id.profit_detail_lmonth_bt);
@@ -196,14 +194,16 @@ public class ProfitManageFragment extends Fragment implements View.OnClickListen
         profit_detail_lmonth_bt.setOnClickListener(this);
         // more 里面的
         profitbacktodate = (ImageButton) getActivity().findViewById(R.id.profitbacktodate);
-        profit_date_begin_bt = (ImageButton) getActivity().findViewById(R.id.profit_date_begin_bt);
-        profit_date_end_bt = (ImageButton) getActivity().findViewById(R.id.profit_date_end_bt);
+/*        profit_date_begin_bt = (ImageButton) getActivity().findViewById(R.id.profit_date_begin_bt);
+        profit_date_end_bt = (ImageButton) getActivity().findViewById(R.id.profit_date_end_bt);*/
         profit_date_sr_bt = (ImageButton) getActivity().findViewById(R.id.profit_date_sr_bt);
         profit_date_begin = (TextView) getActivity().findViewById(R.id.profit_date_begin);
         profit_date_end = (TextView) getActivity().findViewById(R.id.profit_date_end);
         profitbacktodate.setOnClickListener(this);
-        profit_date_begin_bt.setOnClickListener(this);
-        profit_date_end_bt.setOnClickListener(this);
+/*        profit_date_begin_bt.setOnClickListener(this);
+        profit_date_end_bt.setOnClickListener(this);*/
+        profit_date_begin.setOnClickListener(this);
+        profit_date_end.setOnClickListener(this);
         profit_date_sr_bt.setOnClickListener(this);
     }
 
@@ -219,10 +219,10 @@ public class ProfitManageFragment extends Fragment implements View.OnClickListen
                 profit_date_button_line.setVisibility(View.VISIBLE);
                 profit_date_search_line.setVisibility(View.GONE);
                 break;
-            case R.id.profit_date_begin_bt:
+            case R.id.profit_date_begin:
                 setDate(0);
                 break;
-            case R.id.profit_date_end_bt:
+            case R.id.profit_date_end:
                 setDate(1);
                 break;
             case R.id.profit_detail_today_bt:

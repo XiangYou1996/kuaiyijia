@@ -10,16 +10,26 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import com.chad.library.adapter.base.BaseQuickAdapter;
+import com.chad.library.adapter.base.BaseViewHolder;
 import com.example.kuaiyijia.Adapter.OrderListAdapter;
+import com.example.kuaiyijia.Database.DataBaseConfig;
 import com.example.kuaiyijia.Database.DataBaseForMultilFragment;
+import com.example.kuaiyijia.Database.Database;
 import com.example.kuaiyijia.Entity.ListItems;
 import com.example.kuaiyijia.Entity.OrderItem;
 import com.example.kuaiyijia.R;
+import com.example.kuaiyijia.Utils.BaseFragment;
+import com.yzq.zxinglibrary.android.CaptureActivity;
+import com.yzq.zxinglibrary.common.Constant;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -30,9 +40,10 @@ import java.util.List;
 Author by: xy
 Coding On 2021/3/16;
 */
-public class GoingOrderFragment extends Fragment {
+public class GoingOrderFragment extends BaseFragment {
+    private static final int REQUEST_CODE_SCAN = 0;
 //    private Button going_order_button;
-    private ListView going_order_list;
+/*    private ListView going_order_list;*/
     private List<OrderItem> orderItemList = new ArrayList<>();
     private Handler mHandler = new Handler(){
         @Override
@@ -44,26 +55,43 @@ public class GoingOrderFragment extends Fragment {
                     for (int i=0;i<listItems.size();i++){
                         orderItemList.add(listItems.get(i));
                     }
-                    going_order_list = getActivity().findViewById(R.id.going_order_list);
-                    if (going_order_list!=null){
-                        OrderListAdapter adapter = new OrderListAdapter(getContext(),orderItemList,0);
-                        going_order_list.setAdapter(adapter);
-                        going_order_list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                            @Override
-                            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                                //
-                                Intent mIntent = new Intent(getContext(),GoingOrderDetailActivity.class);
-                                Bundle bundle = new Bundle();
-                                bundle.putParcelable("orderItem",orderItemList.get(position));
-                                mIntent.putExtras(bundle);
-                                startActivity(mIntent);
+                    OrderAdapter adapter =new OrderAdapter(orderItemList);
+                    adapter.setOnItemChildClickListener(new BaseQuickAdapter.OnItemChildClickListener() {
+                        @Override
+                        public void onItemChildClick(BaseQuickAdapter adapter, View view, int position) {
+
+                            switch (view.getId()){
+                                case R.id.order_ll:
+                                    // 跳转到详情页面
+                                    Bundle bundle = new Bundle();
+                                    bundle.putParcelable("orderItem",orderItemList.get(position));
+                                    navigateToWithData(GoingOrderDetailActivity.class,bundle);
+                                    break;
+                                case R.id.btn_scan:
+                                    //  开启扫码功能
+                                    Intent intent = new Intent(new Intent(getContext(), CaptureActivity.class));
+                                    startActivityForResult(intent, REQUEST_CODE_SCAN);
+                                    break;
                             }
-                        });
+                        }
+                    });
+                    rv.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL,false));
+                    rv.setAdapter(adapter);
+                    break;
+                case 1012:
+                    if (msg.getData().getBoolean("isOrderNum") == true){
+
                     }
+                    // 弹框询问其是否确认收货
+                    // todo
+
+                    //  操作数据库，将该订单的状态
                     break;
             }
         }
     };
+    private RecyclerView rv;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -73,7 +101,7 @@ public class GoingOrderFragment extends Fragment {
     public View onCreateView(
             @NonNull LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {
-        View root = inflater.inflate(R.layout.fragment_ordergoing, container, false);;
+        View root = inflater.inflate(R.layout.fragment_order_layout, container, false);;
         return root;
     }
 
@@ -119,14 +147,73 @@ public class GoingOrderFragment extends Fragment {
     }
 
     private void initView() {
-        Button going_order_button = getActivity().findViewById(R.id.going_order_button);
-
+        Button going_order_button = getActivity().findViewById(R.id.going_order_bt);
+        rv = getActivity().findViewById(R.id.rv);
         going_order_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent mIntent = new Intent(getContext(),AddOrderActivity.class);
-                startActivity(mIntent);
+                switch (v.getId()){
+                    case R.id.going_order_bt:
+                        Intent mIntent = new Intent(getContext(),AddOrderActivity.class);
+                        startActivity(mIntent);
+                        break;
+                }
+
             }
         });
+
+
+    }
+
+    static class OrderAdapter extends BaseQuickAdapter<OrderItem, BaseViewHolder>{
+
+        public OrderAdapter(@Nullable List<OrderItem> data) {
+            super(R.layout.item_order,data);
+        }
+
+        @Override
+        protected void convert(@NonNull BaseViewHolder helper, OrderItem item) {
+            helper.addOnClickListener(R.id.order_ll);
+            helper.setText(R.id.tv_order_num,item.getID());
+            helper.setText(R.id.tv_start_address,item.getSend_address());
+            helper.setText(R.id.tv_end_address,item.getReceive_address());
+            helper.setText(R.id.tv_num,item.getItem_nums());
+            helper.setText(R.id.tv_money,item.getDaishou_money());
+            helper.addOnClickListener(R.id.btn_scan);
+        }
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        // 扫描二维码/条码回传
+        if (requestCode == REQUEST_CODE_SCAN && resultCode == getActivity().RESULT_OK){
+            if (data != null){
+                String mScanResult = data.getStringExtra(Constant.CODED_CONTENT);
+                //  在数据库中匹配是否有该订单
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Message msgIsOrderNum = new Message();
+                        ResultSet rs = Database.SelectFromData("*", DataBaseConfig.OrderTableName, DataBaseConfig.OrderNumber, mScanResult);
+                        try {
+                            msgIsOrderNum.what = 1012;
+                            Bundle bundleIsOrderNum = new Bundle();
+//                            bundleIsOrderNum.putBoolean("isOrderNum", );
+
+                            bundleIsOrderNum.putString("OrderNum",mScanResult);
+                            msgIsOrderNum.setData(bundleIsOrderNum);
+                            if (!rs.isBeforeFirst()){
+                                mHandler.sendMessage(msgIsOrderNum);
+                            }
+                        } catch (SQLException e) {
+                            e.printStackTrace();
+                        }
+
+                    }
+                }).start();
+
+            }
+        }
     }
 }

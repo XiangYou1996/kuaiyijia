@@ -24,8 +24,8 @@ public class OrderManageFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view  = inflater.inflate(R.layout.fragment_ordermanage,container,false);
         final  List<String> msubTitle = new ArrayList<>();
-        msubTitle.add("已完成");
         msubTitle.add("进行中");
+        msubTitle.add("已完成");
         msubTitle.add("代收款");
         msubTitle.add("扫描不全");
         msubTitle.add("滞留订单");

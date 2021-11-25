@@ -6,9 +6,22 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.KeyEvent;
 import android.view.Menu;
+import android.view.View;
+import android.widget.ImageView;
 
+import com.example.kuaiyijia.Adapter.RouteListAdapter;
+import com.example.kuaiyijia.Database.DataBaseConfig;
+import com.example.kuaiyijia.Database.DataBaseMethods;
+import com.example.kuaiyijia.Database.Database;
+import com.example.kuaiyijia.Entity.UserEntity;
 import com.example.kuaiyijia.R;
+import com.example.kuaiyijia.UI.FreightBinding.BindingFreightActivity;
+import com.example.kuaiyijia.UI.PersoninfoModify.PersoninfoActivity;
+import com.example.kuaiyijia.Utils.BaseActivity;
+import com.example.kuaiyijia.Utils.CustomDialog;
 import com.google.android.material.navigation.NavigationView;
 
 import androidx.navigation.NavController;
@@ -19,7 +32,9 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
-public class MainActivity extends AppCompatActivity {
+import java.sql.ResultSet;
+
+public class MainActivity extends BaseActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
 //    private Toolbar toolbar;
@@ -30,6 +45,7 @@ public class MainActivity extends AppCompatActivity {
     private static final String EXITACTION = "action2exit";
 
     private ExitReceiver exitReceiver = new ExitReceiver();
+    private UserEntity user;
 
     class ExitReceiver extends BroadcastReceiver {
         @Override
@@ -44,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         // 设置只能竖屏使用
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-        setContentView(R.layout.activity_main);
+
         // 工具栏
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -69,7 +85,86 @@ public class MainActivity extends AppCompatActivity {
         filter.addAction(EXITACTION);
         registerReceiver(exitReceiver, filter);
 
+        // 头像点击事件
+        View headview =  navigationView.getHeaderView(0);
+        ImageView img = (ImageView) headview.findViewById(R.id.imageView);
+        img.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("user",user);
+                navigateToWithData(PersoninfoActivity.class,bundle);
+                finish();
+            }
+        });
+
+        initData();
+
     }
+
+    private void initData() {
+        user = (UserEntity) getIntent().getExtras().getSerializable("user");
+
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                ResultSet rs = Database.SelectFromData("*", DataBaseConfig.UserTableName,DataBaseConfig.UserAccount,user.getAccount());
+                try {
+                    while (rs.next()){
+                        String hyb = rs.getString(DataBaseConfig.UserHYBID);
+                        String wls =rs.getString(DataBaseConfig.UserCID);
+                        if (hyb!=null){
+                            user.setHYB_ID(hyb);
+                            user.setC_ID(wls);
+                        }else{
+
+                            runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    // 弹框询问绑定货运部
+                                    queryBindingFreight();
+                                }
+                            });
+                        }
+
+                    }
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
+            }
+        });
+        thread.start();
+
+    }
+
+    public void queryBindingFreight(){
+        // 先弹出确认对话框
+        CustomDialog dialog = new CustomDialog(this);
+        dialog.setTitle("重要提示");
+        dialog.setMessage("您还未绑定货运部，是否前往绑定？");
+        dialog.setConfirm("前往绑定", new CustomDialog.IOnConfirmListener() {
+            @Override
+            public void onConfirm(CustomDialog dialog) {
+                Bundle bundle =new Bundle();
+                bundle.putSerializable("user",user);
+                navigateToWithData(BindingFreightActivity.class, bundle);
+                finish();
+            }
+        });
+        dialog.setCancel("下次再说", new CustomDialog.IOnCancelListener() {
+            @Override
+            public void onCancel(CustomDialog dialog) {
+            }
+        });
+        dialog.show();
+    }
+
+    @Override
+    protected int initLayout() {
+        return R.layout.activity_main;
+    }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -140,4 +235,23 @@ public class MainActivity extends AppCompatActivity {
         unregisterReceiver(exitReceiver);
     }
 
+    @Override
+    public void onBackPressed() {
+        // 先弹出确认对话框
+        CustomDialog dialog = new CustomDialog(this);
+        dialog.setTitle("提示");
+        dialog.setMessage("您是否要退出应用？");
+        dialog.setConfirm("是的", new CustomDialog.IOnConfirmListener() {
+            @Override
+            public void onConfirm(CustomDialog dialog) {
+                finish();
+            }
+        });
+        dialog.setCancel("取消", new CustomDialog.IOnCancelListener() {
+            @Override
+            public void onCancel(CustomDialog dialog) {
+            }
+        });
+        dialog.show();
+    }
 }

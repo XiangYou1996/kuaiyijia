@@ -11,12 +11,17 @@ import android.widget.ListView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import com.chad.library.adapter.base.BaseQuickAdapter;
+import com.chad.library.adapter.base.BaseViewHolder;
 import com.example.kuaiyijia.Adapter.OrderListAdapter;
 import com.example.kuaiyijia.Database.DataBaseForMultilFragment;
 import com.example.kuaiyijia.Entity.ListItems;
 import com.example.kuaiyijia.Entity.OrderItem;
 import com.example.kuaiyijia.R;
+import com.example.kuaiyijia.Utils.BaseFragment;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -28,9 +33,9 @@ import java.util.concurrent.locks.ReentrantLock;
 Author by: xy
 Coding On 2021/3/16;
 */
-public class ScanLackFragment extends Fragment {
+public class ScanLackFragment extends BaseFragment {
     private ReentrantLock lock = new ReentrantLock();
-    private ListView sl_list;
+    private RecyclerView sl_list;
     private List<OrderItem> sl_orderList = new ArrayList<>();
 
     private Handler mHandler = new Handler(){
@@ -43,7 +48,22 @@ public class ScanLackFragment extends Fragment {
                     for (int i=0;i<listItems.size();i++){
                         sl_orderList.add(listItems.get(i));
                     }
-                    OrderListAdapter adapter = new OrderListAdapter(getContext(),sl_orderList,2);
+//                    OrderListAdapter adapter = new OrderListAdapter(getContext(),sl_orderList,2);
+//                    sl_list.setAdapter(adapter);
+                    ScanLackOrderAdapter adapter = new ScanLackOrderAdapter(sl_orderList);
+                    adapter.setOnItemChildClickListener(new BaseQuickAdapter.OnItemChildClickListener() {
+                        @Override
+                        public void onItemChildClick(BaseQuickAdapter adapter, View view, int position) {
+                            switch(view.getId()){
+                                case R.id.btn_scan:
+                                    // Todo
+                                    break;
+                                case R.id.order_ll:
+                                    // todo
+                                    break;
+                            }
+                        }
+                    });
                     sl_list.setAdapter(adapter);
                     break;
             }
@@ -105,6 +125,28 @@ public class ScanLackFragment extends Fragment {
     }
 
     private void initView() {
-        sl_list = getActivity().findViewById(R.id.sl_list);
+        sl_list = getActivity().findViewById(R.id.finished_rv);
+        sl_list.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL,false));
     }
+
+    static class ScanLackOrderAdapter extends BaseQuickAdapter<OrderItem, BaseViewHolder> {
+
+        public ScanLackOrderAdapter(@Nullable List<OrderItem> data) {
+            super(R.layout.order_item_scanlack,data);
+        }
+
+        @Override
+        protected void convert(@NonNull BaseViewHolder helper, OrderItem item) {
+            helper.addOnClickListener(R.id.order_ll);
+            helper.setText(R.id.tv_order_num,item.getID());
+            helper.setText(R.id.tv_start_address,item.getSend_address());
+            helper.setText(R.id.tv_end_address,item.getReceive_address());
+            helper.setText(R.id.tv_num,"No.Ps"+item.getItem_nums());
+            helper.setText(R.id.tv_money,item.getDaishou_money());
+            helper.addOnClickListener(R.id.btn_scan);
+            int num = Integer.valueOf(item.getItem_nums()) - Integer.valueOf(item.getHuowu_status());
+            helper.setText(R.id.tv_lack_num,String.valueOf(num));
+        }
+    }
+
 }

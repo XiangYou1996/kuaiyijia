@@ -45,8 +45,6 @@ public class ProfitDetailActivity extends AppCompatActivity implements View.OnCl
     private LinearLayout profit_date_button_line;
     private LinearLayout profit_date_search_line;
     private ImageButton profitbacktodate;
-    private ImageButton profit_date_begin_bt;
-    private ImageButton profit_date_end_bt;
     private ImageButton profit_date_sr_bt;
     private DatePickerDialog dialog_pickDate;
     private final Calendar calendar = Calendar.getInstance();
@@ -154,7 +152,7 @@ public class ProfitDetailActivity extends AppCompatActivity implements View.OnCl
 
     void initView(){
         profit_search_edit = (EditText) findViewById(R.id.profit_search_edit);
-        profit_manage_sr_bt = (Button) findViewById(R.id.profit_manage_sr_bt);
+/*        profit_manage_sr_bt = (Button) findViewById(R.id.profit_manage_sr_bt);*/
         profit_detail_today_bt = (Button) findViewById(R.id.profit_detail_today_bt);
         profit_detail_nmonth_bt = (Button) findViewById(R.id.profit_detail_nmonth_bt);
         profit_detail_lmonth_bt = (Button) findViewById(R.id.profit_detail_lmonth_bt);
@@ -184,14 +182,12 @@ public class ProfitDetailActivity extends AppCompatActivity implements View.OnCl
         });
         // more 里面的
         profitbacktodate = (ImageButton) findViewById(R.id.profitbacktodate);
-        profit_date_begin_bt = (ImageButton) findViewById(R.id.profit_date_begin_bt);
-        profit_date_end_bt = (ImageButton) findViewById(R.id.profit_date_end_bt);
         profit_date_sr_bt = (ImageButton) findViewById(R.id.profit_date_sr_bt);
         profit_date_begin = (TextView) findViewById(R.id.profit_date_begin);
         profit_date_end = (TextView) findViewById(R.id.profit_date_end);
         profitbacktodate.setOnClickListener(this);
-        profit_date_begin_bt.setOnClickListener(this);
-        profit_date_end_bt.setOnClickListener(this);
+        profit_date_begin.setOnClickListener(this);
+        profit_date_end.setOnClickListener(this);
         profit_date_sr_bt.setOnClickListener(this);
 
     }
@@ -230,10 +226,10 @@ public class ProfitDetailActivity extends AppCompatActivity implements View.OnCl
                     findDataBetweenDate(begin_date,end_date, lastPageProfit.getPersonID());
                 }
                 break;
-            case R.id.profit_date_begin_bt:
+            case R.id.profit_date_begin:
                 setDate(0);
                 break;
-            case R.id.profit_date_end_bt:
+            case R.id.profit_date_end:
                 setDate(1);
                 break;
             case R.id.profit_detail_confirm_bt:

@@ -7,7 +7,7 @@
     <Button
         android:id="@+id/backtolast"
         android:layout_marginLeft="5dp"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="5dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="#333333"
@@ -17,7 +17,7 @@
         android:id="@+id/pm_station_add"
         android:layout_alignParentStart="true"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="60dp"
         android:orientation="vertical"
         android:background="#333333"
         android:gravity="center"
@@ -26,7 +26,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="添加岗位"
-            android:textSize="30dp"
+            android:textSize="20sp"
             android:textColor="@color/white" />
     </LinearLayout>
     <LinearLayout

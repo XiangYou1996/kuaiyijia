@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:id="@+id/line1"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/white">
-
         <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
             android:id="@+id/swipe_refresh"
             android:layout_width="match_parent"
@@ -17,7 +20,17 @@
                 android:layout_height="match_parent"
                 tools:itemCount="20"
                 tools:listitem="@layout/item_order" />
-
         </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
-</LinearLayout>
+    </LinearLayout>
+    <Button
+        android:id="@+id/going_order_bt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="25sp"
+        android:backgroundTint="#FB684C"
+        android:textColor="@color/white"
+        android:text="开单"
+        android:layout_alignParentBottom="true"></Button>
+</RelativeLayout>
+
 

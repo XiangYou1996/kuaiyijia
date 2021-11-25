@@ -7,7 +7,7 @@
     <Button
         android:id="@+id/backtolast"
         android:layout_marginLeft="5dp"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="5dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="#333333"
@@ -17,7 +17,7 @@
         android:id="@+id/web_branch_addition"
         android:layout_alignParentStart="true"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="60dp"
         android:orientation="vertical"
         android:background="#333333"
         android:gravity="center"
@@ -26,23 +26,25 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="网点详情"
-            android:textSize="30sp"
+            android:textSize="20sp"
             android:textColor="@color/white" />
     </LinearLayout>
     <TextView
         android:id="@+id/wb_info"
         android:layout_below="@+id/web_branch_addition"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="网点信息"
         android:textSize="30sp"
+        android:background="@drawable/circle_textview_style"
         android:textColor="@color/black"/>
     <LinearLayout
         android:id="@+id/wb_line1"
         android:layout_below="@+id/wb_info"
         android:layout_marginTop="20dp"
         android:orientation="horizontal"
-        android:layout_width="wrap_content"
+        android:background="@drawable/rectangle_textview_style"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <TextView
             android:layout_width="120dp"
@@ -65,7 +67,8 @@
         android:layout_below="@+id/wb_line1"
         android:orientation="horizontal"
         android:layout_marginTop="20dp"
-        android:layout_width="wrap_content"
+        android:background="@drawable/rectangle_textview_style"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <TextView
             android:layout_width="120dp"
@@ -88,7 +91,8 @@
         android:layout_below="@+id/wb_line2"
         android:orientation="horizontal"
         android:layout_marginTop="20dp"
-        android:layout_width="wrap_content"
+        android:background="@drawable/rectangle_textview_style"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <TextView
             android:layout_width="120dp"
@@ -111,7 +115,8 @@
         android:layout_below="@+id/wb_line3"
         android:layout_marginTop="20dp"
         android:orientation="horizontal"
-        android:layout_width="wrap_content"
+        android:background="@drawable/rectangle_textview_style"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <TextView
             android:layout_width="120dp"
@@ -134,7 +139,8 @@
         android:layout_below="@+id/wb_line4"
         android:layout_marginTop="20dp"
         android:orientation="horizontal"
-        android:layout_width="wrap_content"
+        android:background="@drawable/rectangle_textview_style"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <TextView
             android:layout_width="120dp"
@@ -154,15 +160,15 @@
     </LinearLayout>
 
 
-    <RelativeLayout
-        android:layout_marginTop="30dp"
+    <LinearLayout
+        android:layout_marginTop="20dp"
         android:id="@+id/wb_line6"
         android:layout_below="@+id/wb_line5"
-        android:orientation="horizontal"
+        android:orientation="vertical"
+        android:background="@drawable/rectangle_textview_style"
         android:layout_width="match_parent"
-        android:layout_height="100dp">
+        android:layout_height="wrap_content">
         <TextView
-            android:layout_marginTop="35dp"
             android:id="@+id/webbrancgt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -171,18 +177,20 @@
             android:textColor="@color/black" />
         <TextView
             android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="@dimen/dp_10"
             android:layout_toRightOf="@+id/webbrancgt"
             android:id="@+id/wb_detail_concretAddress"
             android:background="@drawable/edit_box_style"
             android:hint="请输入详细地址"
             android:textSize="25sp"
-            android:layout_width="250dp"
+            android:layout_width="match_parent"
             android:textColor="#000"
-            android:layout_height="match_parent"
+            android:layout_height="100dp"
             android:inputType="textMultiLine"
             android:gravity="left|top"
             android:imeOptions="actionDone"/>
-    </RelativeLayout>
+    </LinearLayout>
 
     <LinearLayout
         android:id="@+id/wb_line7"
@@ -198,7 +206,7 @@
             android:layout_height="wrap_content"
             android:text="修改"
             android:textSize="25sp"
-            android:background="#FB684C"
+            android:background="@drawable/shape_d85a2a_btn"
             android:textColor="#FCFCFC"
             android:layout_weight="1"/>
         <Button
@@ -209,7 +217,7 @@
             android:text="删除"
             android:textSize="25sp"
             android:textColor="#FCFCFC"
-            android:background="#ff0000"
+            android:background="@drawable/delete_btn_style"
             android:layout_weight="1"/>/>
         <Button
             android:id="@+id/wb_detail_confirm"
@@ -218,9 +226,9 @@
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
             android:text="确认"
-            android:background="#0000ff"
+            android:background="@drawable/small_button_style"
             android:textColor="#FCFCFC"
-            android:textSize="25dp"
+            android:textSize="25sp"
 
             android:layout_weight="1"/>/>
     </LinearLayout>

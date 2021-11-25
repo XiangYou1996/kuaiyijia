@@ -7,7 +7,7 @@
     <Button
         android:id="@+id/backtolast"
         android:layout_marginLeft="5dp"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="5dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="#333333"
@@ -17,7 +17,7 @@
         android:id="@+id/web_branch_addition"
         android:layout_alignParentStart="true"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="60dp"
         android:orientation="vertical"
         android:background="#333333"
         android:gravity="center"
@@ -26,23 +26,25 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="网点修改"
-            android:textSize="30dp"
+            android:textSize="20sp"
             android:textColor="@color/white" />
     </LinearLayout>
     <TextView
         android:id="@+id/wb_info"
         android:layout_below="@+id/web_branch_addition"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="网点信息"
-        android:textSize="25dp"
+        android:textSize="25sp"
+        android:background="@drawable/circle_textview_style"
         android:textColor="@color/black"/>
     <LinearLayout
         android:id="@+id/wb_line1"
         android:layout_below="@+id/wb_info"
         android:layout_marginTop="20dp"
         android:orientation="horizontal"
-        android:layout_width="wrap_content"
+        android:background="@drawable/rectangle_textview_style"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <TextView
             android:layout_width="120dp"
@@ -52,8 +54,10 @@
             android:textColor="@color/black" />
         <EditText
             android:id="@+id/wb_modify_name"
-            android:layout_width="250dp"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/edit_box_style"
             android:hint="请输入网点名称"
             android:textSize="20sp"
             android:inputType="text"
@@ -64,7 +68,8 @@
         android:layout_below="@+id/wb_line1"
         android:orientation="horizontal"
         android:layout_marginTop="20dp"
-        android:layout_width="wrap_content"
+        android:background="@drawable/rectangle_textview_style"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <TextView
             android:layout_width="120dp"
@@ -74,10 +79,12 @@
             android:textColor="@color/black" />
         <EditText
             android:id="@+id/wb_modify_abbreviation"
-            android:layout_width="250dp"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:hint="网点所在简称，例如：江北"
             android:textSize="20sp"
+            android:layout_weight="1"
+            android:background="@drawable/edit_box_style"
             android:inputType="text"
             android:imeOptions="actionNext"/>
     </LinearLayout>
@@ -86,7 +93,8 @@
         android:layout_below="@+id/wb_line2"
         android:orientation="horizontal"
         android:layout_marginTop="20dp"
-        android:layout_width="wrap_content"
+        android:background="@drawable/rectangle_textview_style"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <TextView
             android:layout_width="120dp"
@@ -96,9 +104,11 @@
             android:textColor="@color/black"/>
         <EditText
             android:id="@+id/wb_modify_tel"
-            android:layout_width="250dp"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:hint="请输入电话号码"
+            android:layout_weight="1"
+            android:background="@drawable/edit_box_style"
             android:textSize="20sp"
             android:inputType="number"
             android:imeOptions="actionNext"/>
@@ -108,7 +118,8 @@
         android:layout_below="@+id/wb_line3"
         android:layout_marginTop="20dp"
         android:orientation="horizontal"
-        android:layout_width="wrap_content"
+        android:background="@drawable/rectangle_textview_style"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <TextView
             android:layout_width="120dp"
@@ -118,9 +129,11 @@
             android:textColor="@color/black"/>
         <EditText
             android:id="@+id/wb_modify_person_name"
-            android:layout_width="250dp"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:hint="请输入联系人姓名"
+            android:layout_weight="1"
+            android:background="@drawable/edit_box_style"
             android:textSize="20sp"
             android:inputType="text"
             android:imeOptions="actionNext"/>
@@ -130,7 +143,8 @@
         android:layout_below="@+id/wb_line4"
         android:layout_marginTop="20dp"
         android:orientation="horizontal"
-        android:layout_width="wrap_content"
+        android:background="@drawable/rectangle_textview_style"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <TextView
             android:layout_width="120dp"
@@ -140,9 +154,11 @@
             android:textColor="@color/black"/>
         <EditText
             android:id="@+id/wb_modify_person_tel"
-            android:layout_width="250dp"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:hint="请输入联系人电话"
+            android:background="@drawable/edit_box_style"
             android:textSize="20sp"
             android:inputType="number"
             android:imeOptions="actionNext"/>
@@ -154,6 +170,7 @@
         android:id="@+id/wb_line6"
         android:layout_below="@+id/wb_line5"
         android:orientation="horizontal"
+        android:background="@drawable/rectangle_textview_style"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <TextView
@@ -191,8 +208,8 @@
         android:id="@+id/wb_modify_confirm"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginRight="0dp"
         android:textSize="20sp"
         android:text="确认修改"
         android:background="@drawable/big_button_style"

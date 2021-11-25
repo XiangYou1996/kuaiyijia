@@ -9,6 +9,7 @@
    <LinearLayout
        android:id="@+id/profit_person_search_line"
        android:orientation="horizontal"
+       android:background="@drawable/rectangle_textview_style"
        android:layout_width="match_parent"
        android:layout_height="wrap_content">
        <TextView
@@ -21,21 +22,22 @@
        <EditText
            android:id="@+id/profit_search_edit"
            android:layout_width="wrap_content"
-           android:layout_height="match_parent"
+           android:layout_height="wrap_content"
+           android:layout_marginRight="5dp"
            android:textSize="20sp"
            android:background="@drawable/edit_box_style"
            android:layout_weight="8"
            android:inputType="text"
            android:imeOptions="actionDone"/>
-       <Button
+       <TextView
            android:id="@+id/profit_manage_sr_bt"
-           android:layout_width="wrap_content"
-           android:layout_height="wrap_content"
-           android:layout_marginLeft="5dp"
-           android:background="@drawable/small_button_style"
+           android:layout_width="50dp"
+           android:layout_height="match_parent"
+           android:background="@drawable/shape_d85a2a_btn"
            android:textColor="@color/white"
+           android:gravity="center"
            android:text="搜索"
-           android:textSize="20sp"
+           android:textSize="15sp"
            android:layout_weight="1"/>
    </LinearLayout>
     <LinearLayout
@@ -45,6 +47,7 @@
         android:layout_height="50dp"
         android:orientation="horizontal"
         android:gravity="center"
+        android:background="@drawable/rectangle_textview_style"
         android:visibility="gone">
         <ImageButton
             android:id="@+id/profitbacktodate"
@@ -55,22 +58,23 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="开始"
-            android:textSize="22sp"
+            android:textSize="20sp"
             android:textColor="#000000" />
+
         <TextView
             android:id="@+id/profit_date_begin"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:textColor="#000000"
-            android:textSize="18sp"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:background="@drawable/edit_box_style"
             android:gravity="center"
-            android:background="@drawable/edit_box_style"/>
-        <ImageButton
+            android:textColor="#000000"
+            android:textSize="18sp" />
+        <!--<ImageButton
             android:id="@+id/profit_date_begin_bt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/profit_calender"/>
+            android:background="@drawable/profit_calender"/>-->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -80,17 +84,17 @@
         <TextView
             android:id="@+id/profit_date_end"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:textColor="#000000"
             android:textSize="18sp"
             android:gravity="center"
             android:layout_weight="1"
             android:background="@drawable/edit_box_style"/>
-        <ImageButton
+     <!--   <ImageButton
             android:id="@+id/profit_date_end_bt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/profit_calender"/>
+            android:background="@drawable/profit_calender"/>-->
         <ImageButton
             android:id="@+id/profit_date_sr_bt"
             android:layout_width="wrap_content"
@@ -104,6 +108,7 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:orientation="horizontal"
+        android:background="@drawable/rectangle_textview_style"
         android:visibility="visible">
         <Button
             android:id="@+id/profit_detail_today_bt"
@@ -114,17 +119,17 @@
             android:layout_weight="1"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
-            android:background="@color/white"/>
+            android:background="@drawable/rectangle_textview_style"/>
         <Button
             android:id="@+id/profit_detail_nmonth_bt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="本月"
             android:textSize="15sp"
+            android:background="@drawable/rectangle_textview_style"
             android:layout_weight="1"
             android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:background="@color/white"/>
+            android:layout_marginRight="10dp" />
         <Button
             android:id="@+id/profit_detail_lmonth_bt"
             android:layout_width="wrap_content"
@@ -134,7 +139,7 @@
             android:layout_weight="1"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
-            android:background="@color/white"/>
+            android:background="@drawable/rectangle_textview_style"/>
         <Button
             android:id="@+id/profit_detail_more_bt"
             android:layout_width="wrap_content"
@@ -144,10 +149,11 @@
             android:layout_weight="1"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
-            android:background="@color/white"/>
+            android:background="@drawable/rectangle_textview_style"/>
     </LinearLayout>
     <LinearLayout
         android:id="@+id/pli_line1"
+        android:background="@drawable/circle_textview_style"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center">

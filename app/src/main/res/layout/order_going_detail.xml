@@ -6,20 +6,20 @@
     <Button
         android:id="@+id/backtolast"
         android:layout_marginLeft="5dp"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="5dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="#333333"
+        android:background="#D85A2A"
         android:drawableLeft="@drawable/icon_back"
         />
     <TextView
         android:id="@+id/going_title"
-        android:background="#333333"
+        android:background="#D85A2A"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="60dp"
         android:text="未完成订单详情"
         android:textColor="@color/white"
-        android:textSize="25sp"
+        android:textSize="20sp"
 
         android:gravity="center">
     </TextView>
