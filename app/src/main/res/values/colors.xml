@@ -45,4 +45,5 @@
     <color name="exam_pass_tv_color">#F34448</color>
     <color name="exam_nostart_tv_color">#A0A3AD</color>
     <color name="exam_ing_tv_color">#36DC99</color>
+    <color name="gray">#C0C0C0</color>
 </resources>

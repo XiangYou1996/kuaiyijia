@@ -1,13 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:context=".UI.ActivityIndex">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:id="@+id/ll_index_top"
+        android:orientation="horizontal">
 
         <Button
+            android:layout_weight="1"
             android:id="@+id/bt_first"
             android:text="诚实货运（老顶坡小车市场）"
             android:gravity="left|center_vertical"
@@ -16,14 +21,149 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
         <Button
+            android:layout_weight="1"
             android:id="@+id/bt_second"
             android:text="江北"
             android:gravity="right|center_vertical"
             android:paddingRight="@dimen/dp_10"
             android:background="@color/white"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
     </LinearLayout>
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/bannerVp"
+        android:layout_below="@id/ll_index_top"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"/>
+    <LinearLayout
+        android:id="@+id/ll_index_search"
+        android:layout_below="@id/bannerVp"
+        android:background="@drawable/border"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <EditText
+            android:id="@+id/et_search"
+            android:layout_weight="8"
+            android:background="@null"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:hint="  请输入运单号查询"/>
+        <ImageButton
+            android:id="@+id/bt_search"
+            android:src="@drawable/icon_search"
+            android:background="@android:color/transparent"
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"/>
+        <ImageButton
+            android:id="@+id/bt_scan"
+            android:src="@drawable/icon_scan"
+            android:background="@android:color/transparent"
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"/>
+
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/ll_index_function"
+        android:layout_below="@id/ll_index_search"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="100dp">
+
+        <Button
+            android:id="@+id/bt_index_newOrder"
+            android:background="@drawable/border"
+            android:drawableTop="@drawable/icon_index_newOrder"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:padding="10dp"
+            android:layout_marginRight="4dp"
+            android:text="新运单"
+            android:textSize="15dp" />
+
+        <Button
+            android:id="@+id/bt_index_sendCar"
+            android:drawableTop="@drawable/icon_index_sendCar"
+            android:background="@drawable/border"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:padding="10dp"
+            android:layout_marginLeft="2dp"
+            android:layout_marginRight="2dp"
+            android:text="发运"
+            android:textSize="15dp"/>
+        <Button
+            android:id="@+id/bt_index_receiveGoods"
+            android:drawableTop="@drawable/icon_index_receiveGoods"
+            android:background="@drawable/border"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:padding="10dp"
+            android:layout_marginLeft="4dp"
+            android:text="收货"
+            android:textSize="15dp"/>
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/ll_index_function2"
+        android:layout_below="@id/ll_index_function"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="100dp">
+        <Button
+            android:id="@+id/bt_index_newBackOrder"
+            android:drawableTop="@drawable/icon_index_newBackOrder"
+            android:background="@drawable/border"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:padding="10dp"
+            android:layout_marginRight="4dp"
+            android:text="新退单"
+            android:textSize="15dp"/>
+        <Button
+            android:id="@+id/bt_index_getGoods"
+            android:drawableTop="@drawable/icon_incex_getGoods"
+            android:background="@drawable/border"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:padding="10dp"
+            android:layout_marginLeft="2dp"
+            android:layout_marginRight="2dp"
+            android:text="取货"
+            android:textSize="15dp"/>
+        <Button
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:background="@android:color/transparent"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+    <RelativeLayout
+        android:layout_below="@id/ll_index_function2"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:textColor="@color/black"
+            android:text="有3张运单进行中..."/>
+    </RelativeLayout>
+
 
 
 
