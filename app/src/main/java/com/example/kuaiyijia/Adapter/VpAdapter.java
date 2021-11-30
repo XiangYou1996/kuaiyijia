@@ -24,9 +24,11 @@ public class VpAdapter extends RecyclerView.Adapter<VpAdapter.VpViewHolder> {
         mContext = context;
         if (backgrounds == null) {
             backgrounds = new ArrayList<>();
+            backgrounds.add(R.drawable.banner_index_3);
             backgrounds.add(R.drawable.banner_index_1);
             backgrounds.add(R.drawable.banner_index_2);
             backgrounds.add(R.drawable.banner_index_3);
+            backgrounds.add(R.drawable.banner_index_1);
         }
     }
     @NonNull
@@ -38,7 +40,7 @@ public class VpAdapter extends RecyclerView.Adapter<VpAdapter.VpViewHolder> {
     @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(@NonNull VpViewHolder holder, int position) {
-        //holder.mTextView.setText("第  " + (position + 1) + " 界面");
+        holder.mTextView.setText("第  " + (position + 1) + " 界面");
         holder.mLinearLayout.setBackgroundResource(backgrounds.get(position));
     }
 
@@ -56,7 +58,7 @@ public class VpAdapter extends RecyclerView.Adapter<VpAdapter.VpViewHolder> {
         VpViewHolder(@NonNull View itemView) {
             super(itemView);
             mLinearLayout = itemView.findViewById(R.id.ll_h_v);
-            //mTextView = itemView.findViewById(R.id.tv_hv);
+            mTextView = itemView.findViewById(R.id.tv_hv);
         }
     }
 }
