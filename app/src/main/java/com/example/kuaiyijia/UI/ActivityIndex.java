@@ -17,7 +17,9 @@ import java.util.ArrayList;
 
 public class ActivityIndex extends AppCompatActivity {
 
+    private static final String TAG = "banner：";
     private int currentPosition;
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -25,11 +27,24 @@ public class ActivityIndex extends AppCompatActivity {
         setContentView(R.layout.activity_index);
 
         ViewPager2 viewPager2 = findViewById(R.id.bannerVp);
-        viewPager2.setCurrentItem(1);//从第一张图开始播放
+        viewPager2.setCurrentItem(1);
         VpAdapter adapter = new VpAdapter(this);
 
-        Log.d("111", Integer.toString(viewPager2.getCurrentItem()));
-        Log.d("222", Integer.toString(viewPager2.getScrollState()));
+        //自动连播
+        Thread mLoop = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                int currentItem = viewPager2.getCurrentItem();
+                viewPager2.setCurrentItem(currentItem + 1);
+                if (currentItem == 4) {
+                    Log.d(TAG, "thread: 到第4页了，设置page为1");
+                    viewPager2.setCurrentItem(1, false);
+                }
+                viewPager2.postDelayed(this, 2500);
+            }
+        });
+        viewPager2.postDelayed(mLoop, 2500);
+
         viewPager2.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
@@ -45,27 +60,17 @@ public class ActivityIndex extends AppCompatActivity {
             @Override
             public void onPageScrollStateChanged(int state) {
                 super.onPageScrollStateChanged(state);
-                //只有在空闲状态，才让自动滚动
-                /*
-                if (state == ViewPager2.SCROLL_STATE_IDLE) {
-                    Log.d("getItemCount()=", Integer.toString(adapter.getItemCount()));
-                    viewPager2.setCurrentItem(adapter.getItemCount() -2, false);
-                } else if (currentPosition == adapter.getItemCount() - 1) {
-                    Log.d("getItemCount2()=", Integer.toString(adapter.getItemCount()));
-                    viewPager2.setCurrentItem(1, false);
-                }
-                 */
                 if (currentPosition == 0) {
+                    Log.d(TAG, "onPageScrollStateChanged: 到第0页了，设置page为3");
                     viewPager2.setCurrentItem(adapter.getItemCount() -2, false);
+
                 } else if (currentPosition == adapter.getItemCount() - 1) {
+                    Log.d(TAG, "onPageScrollStateChanged: 到第4页了，设置page为1");
                     viewPager2.setCurrentItem(1, false);
+
                 }
             }
         });
-
-
-
-
 
         viewPager2.setAdapter(adapter);
     }
