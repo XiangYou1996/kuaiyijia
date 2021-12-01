@@ -5,12 +5,18 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 import androidx.viewpager2.widget.ViewPager2;
 
+import android.app.Dialog;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import com.example.kuaiyijia.Adapter.VpAdapter;
 import com.example.kuaiyijia.R;
@@ -30,6 +36,11 @@ public class ActivityIndex extends AppCompatActivity {
     private Button mBtnIndexNewBackOrder;
     private Button mBtnIndexGetGoods;
 
+    private Button mBtnDialogNetPoint1;
+    private Button mBtnDialogNetPoint2;
+    private Button mBtnDialogNetPoint3;
+    private Button mBtnDialogNetPoint4;
+
     private void initView() {
         mBtnSecond = findViewById(R.id.bt_second);
         mIBtnSearch = findViewById(R.id.bt_search);
@@ -40,12 +51,18 @@ public class ActivityIndex extends AppCompatActivity {
         mBtnIndexNewBackOrder = findViewById(R.id.bt_index_newBackOrder);
         mBtnIndexGetGoods = findViewById(R.id.bt_index_getGoods);
 
+        mBtnDialogNetPoint1 = findViewById(R.id.btn_dialog_netpoint1);
+        mBtnDialogNetPoint2 = findViewById(R.id.btn_dialog_netpoint2);
+        mBtnDialogNetPoint3 = findViewById(R.id.btn_dialog_netpoint3);
+        mBtnDialogNetPoint4 = findViewById(R.id.btn_dialog_netpoint4);
+
     }
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_index);
+        initView();
 
         ViewPager2 viewPager2 = findViewById(R.id.bannerVp);
         viewPager2.setCurrentItem(1);
@@ -100,7 +117,51 @@ public class ActivityIndex extends AppCompatActivity {
         mBtnSecond.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //弹出对话框
+                setDialog();
+                switch (v.getId()) {
+                    case R.id.btn_dialog_netpoint1:
+                        Toast.makeText(ActivityIndex.this, "江北", Toast.LENGTH_SHORT).show();
+                        mBtnSecond.setText("江北");
+                        break;
+                    case R.id.btn_dialog_netpoint2:
+                        Toast.makeText(ActivityIndex.this, "渝北两路", Toast.LENGTH_SHORT).show();
+                        mBtnSecond.setText("渝北两路");
+                        break;
+                    case R.id.btn_dialog_netpoint3:
+                        Toast.makeText(ActivityIndex.this, "大石坝", Toast.LENGTH_SHORT).show();
+                        mBtnSecond.setText("大石坝");
+                        break;
+                    case R.id.btn_dialog_netpoint4:
+                        Toast.makeText(ActivityIndex.this, "老顶坡", Toast.LENGTH_SHORT).show();
+                        mBtnSecond.setText("老顶坡");
+                        break;
+                }
+            }
+            private void setDialog() {
+                Dialog mChangNetPointDialog = new Dialog(ActivityIndex.this, R.style.BottomDialog);
+                mChangNetPointDialog.setTitle("更换当前网点");
+                LinearLayout root = (LinearLayout) LayoutInflater.from(ActivityIndex.this).inflate(
+                        R.layout.bottom_dialog, null);
+                //初始化视图
+                root.findViewById(R.id.btn_dialog_netpoint1).setOnClickListener(this);
+                root.findViewById(R.id.btn_dialog_netpoint2).setOnClickListener(this);
+                root.findViewById(R.id.btn_dialog_netpoint3).setOnClickListener(this);
+                root.findViewById(R.id.btn_dialog_netpoint4).setOnClickListener(this);
+                mChangNetPointDialog.setContentView(root);
+                Window dialogWindow = mChangNetPointDialog.getWindow();
+                dialogWindow.setGravity(Gravity.BOTTOM);
+//        dialogWindow.setWindowAnimations(R.style.dialogstyle); // 添加动画
+                WindowManager.LayoutParams lp = dialogWindow.getAttributes(); // 获取对话框当前的参数值
+                lp.x = 0; // 新位置X坐标
+                lp.y = 0; // 新位置Y坐标
+                lp.width = (int) getResources().getDisplayMetrics().widthPixels; // 宽度
+                root.measure(0, 0);
+                lp.height = root.getMeasuredHeight();
 
+                lp.alpha = 9f; // 透明度
+                dialogWindow.setAttributes(lp);
+                mChangNetPointDialog.show();
             }
         });
         //2.搜索

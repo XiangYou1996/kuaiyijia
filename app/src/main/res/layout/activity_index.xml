@@ -23,7 +23,7 @@
         <Button
             android:layout_weight="1"
             android:id="@+id/bt_second"
-            android:text="江北"
+            android:text="五里店"
             android:gravity="right|center_vertical"
             android:paddingRight="@dimen/dp_10"
             android:background="@color/white"
