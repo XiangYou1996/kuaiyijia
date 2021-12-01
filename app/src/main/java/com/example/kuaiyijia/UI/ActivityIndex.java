@@ -9,6 +9,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.Button;
+import android.widget.ImageButton;
 
 import com.example.kuaiyijia.Adapter.VpAdapter;
 import com.example.kuaiyijia.R;
@@ -19,7 +21,26 @@ public class ActivityIndex extends AppCompatActivity {
 
     private static final String TAG = "banner：";
     private int currentPosition;
+    private Button mBtnSecond;
+    private ImageButton mIBtnSearch;
+    private ImageButton mIBtnScan;
+    private Button mBtnIndexNewOrder;
+    private Button mBtnIndexSendCar;
+    private Button mBtnIndexReceiveGoods;
+    private Button mBtnIndexNewBackOrder;
+    private Button mBtnIndexGetGoods;
 
+    private void initView() {
+        mBtnSecond = findViewById(R.id.bt_second);
+        mIBtnSearch = findViewById(R.id.bt_search);
+        mIBtnScan = findViewById(R.id.bt_scan);
+        mBtnIndexNewOrder = findViewById(R.id.bt_index_newOrder);
+        mBtnIndexSendCar = findViewById(R.id.bt_index_sendCar);
+        mBtnIndexReceiveGoods = findViewById(R.id.bt_index_receiveGoods);
+        mBtnIndexNewBackOrder = findViewById(R.id.bt_index_newBackOrder);
+        mBtnIndexGetGoods = findViewById(R.id.bt_index_getGoods);
+
+    }
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -45,6 +66,7 @@ public class ActivityIndex extends AppCompatActivity {
         });
         viewPager2.postDelayed(mLoop, 2500);
 
+        //banner滑动监听，设置无限连播
         viewPager2.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
@@ -71,7 +93,65 @@ public class ActivityIndex extends AppCompatActivity {
                 }
             }
         });
-
         viewPager2.setAdapter(adapter);
+
+        //按钮事件
+        //1.更换当前网点
+        mBtnSecond.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+        //2.搜索
+        mIBtnSearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+        //3.扫码
+        mIBtnScan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+        //4.fun1 新运单
+        mBtnIndexNewOrder.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+        //5.fun2 发运
+        mBtnIndexSendCar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+        //6.fun3 收货
+        mBtnIndexReceiveGoods.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+        //7.fun4 新退单
+        mBtnIndexNewBackOrder.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+        //8.fun5 取货
+        mBtnIndexGetGoods.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
     }
 }
