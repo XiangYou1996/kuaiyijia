@@ -113,11 +113,11 @@ public class ActivityIndex extends AppCompatActivity {
             public void onPageScrollStateChanged(int state) {
                 super.onPageScrollStateChanged(state);
                 if (currentPosition == 0) {
-                    Log.d(TAG, "onPageScrollStateChanged: 到第0页了，设置page为3");
+//                    Log.d(TAG, "onPageScrollStateChanged: 到第0页了，设置page为3");
                     viewPager2.setCurrentItem(adapter.getItemCount() -2, false);
 
                 } else if (currentPosition == adapter.getItemCount() - 1) {
-                    Log.d(TAG, "onPageScrollStateChanged: 到第4页了，设置page为1");
+                    //Log.d(TAG, "onPageScrollStateChanged: 到第4页了，设置page为1");
                     viewPager2.setCurrentItem(1, false);
 
                 }
@@ -150,6 +150,31 @@ public class ActivityIndex extends AppCompatActivity {
                         mBtnSecond.setText("老顶坡");
                         break;
                 }
+            }
+            private void setDialog() {
+                Dialog mChangNetPointDialog = new Dialog(ActivityIndex.this, R.style.BottomDialog);
+                mChangNetPointDialog.setTitle("更换当前网点");
+                LinearLayout root = (LinearLayout) LayoutInflater.from(ActivityIndex.this).inflate(
+                        R.layout.bottom_dialog, null);
+                //初始化视图
+                root.findViewById(R.id.btn_dialog_netpoint1).setOnClickListener(this);
+                root.findViewById(R.id.btn_dialog_netpoint2).setOnClickListener(this);
+                root.findViewById(R.id.btn_dialog_netpoint3).setOnClickListener(this);
+                root.findViewById(R.id.btn_dialog_netpoint4).setOnClickListener(this);
+                mChangNetPointDialog.setContentView(root);
+                Window dialogWindow = mChangNetPointDialog.getWindow();
+                dialogWindow.setGravity(Gravity.BOTTOM);
+//        dialogWindow.setWindowAnimations(R.style.dialogstyle); // 添加动画
+                WindowManager.LayoutParams lp = dialogWindow.getAttributes(); // 获取对话框当前的参数值
+                lp.x = 0; // 新位置X坐标
+                lp.y = 0; // 新位置Y坐标
+                lp.width = (int) getResources().getDisplayMetrics().widthPixels; // 宽度
+                root.measure(0, 0);
+                lp.height = root.getMeasuredHeight();
+
+                lp.alpha = 9f; // 透明度
+                dialogWindow.setAttributes(lp);
+                mChangNetPointDialog.show();
             }
 
         });
@@ -204,31 +229,6 @@ public class ActivityIndex extends AppCompatActivity {
         });
 
 
-    }
-    private void setDialog() {
-        Dialog mChangNetPointDialog = new Dialog(ActivityIndex.this, R.style.BottomDialog);
-        mChangNetPointDialog.setTitle("更换当前网点");
-        LinearLayout root = (LinearLayout) LayoutInflater.from(ActivityIndex.this).inflate(
-                R.layout.bottom_dialog, null);
-        //初始化视图
-        root.findViewById(R.id.btn_dialog_netpoint1).setOnClickListener(this);
-        root.findViewById(R.id.btn_dialog_netpoint2).setOnClickListener(this);
-        root.findViewById(R.id.btn_dialog_netpoint3).setOnClickListener(this);
-        root.findViewById(R.id.btn_dialog_netpoint4).setOnClickListener(this);
-        mChangNetPointDialog.setContentView(root);
-        Window dialogWindow = mChangNetPointDialog.getWindow();
-        dialogWindow.setGravity(Gravity.BOTTOM);
-//        dialogWindow.setWindowAnimations(R.style.dialogstyle); // 添加动画
-        WindowManager.LayoutParams lp = dialogWindow.getAttributes(); // 获取对话框当前的参数值
-        lp.x = 0; // 新位置X坐标
-        lp.y = 0; // 新位置Y坐标
-        lp.width = (int) getResources().getDisplayMetrics().widthPixels; // 宽度
-        root.measure(0, 0);
-        lp.height = root.getMeasuredHeight();
-
-        lp.alpha = 9f; // 透明度
-        dialogWindow.setAttributes(lp);
-        mChangNetPointDialog.show();
     }
 
     private void handlerSearch(View v) {
