@@ -1,33 +1,44 @@
 package com.example.kuaiyijia.UI;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.viewpager.widget.ViewPager;
 import androidx.viewpager2.widget.ViewPager2;
 
+import android.app.AlertDialog;
 import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
 import com.example.kuaiyijia.Adapter.VpAdapter;
 import com.example.kuaiyijia.R;
+import com.example.kuaiyijia.UI.orderManage.AddOrderActivity;
+import com.example.kuaiyijia.Utils.GetJson;
 import com.yzq.zxinglibrary.android.CaptureActivity;
 import com.yzq.zxinglibrary.bean.ZxingConfig;
 import com.yzq.zxinglibrary.common.Constant;
 
-import java.sql.SQLException;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class ActivityIndex extends AppCompatActivity {
@@ -47,10 +58,27 @@ public class ActivityIndex extends AppCompatActivity {
     private Button mBtnIndexNewBackOrder;
     private Button mBtnIndexGetGoods;
 
-    private Button mBtnDialogNetPoint1;
-    private Button mBtnDialogNetPoint2;
-    private Button mBtnDialogNetPoint3;
-    private Button mBtnDialogNetPoint4;
+    private TextView mTvOrderingNum;
+
+    private final String mHost_url = "https://www.kegmall.cn";
+    private final String mUrlString = "https://www.kegmall.cn/bin/iface/ikegmall.jsp";
+    private String mMethod;
+    private ArrayList<String> mNetPointName = new ArrayList<>();
+
+
+    private Handler mHandler = new Handler() {
+        @Override
+        public void handleMessage(@NonNull Message msg) {
+            super.handleMessage(msg);
+            switch (msg.what) {
+                case 1:
+                    String orderingNum = msg.getData().getString("OrderingNum");
+                    Log.d(TAG, "handleMessage: OrderingNum" + orderingNum);
+                    mTvOrderingNum.setText("有" + orderingNum + "张运单进行中...");
+            }
+        }
+    };
+    private Intent mIntentAddOrder;
 
 
     private void initView() {
@@ -63,19 +91,18 @@ public class ActivityIndex extends AppCompatActivity {
         mBtnIndexReceiveGoods = findViewById(R.id.bt_index_receiveGoods);
         mBtnIndexNewBackOrder = findViewById(R.id.bt_index_newBackOrder);
         mBtnIndexGetGoods = findViewById(R.id.bt_index_getGoods);
-
-        mBtnDialogNetPoint1 = findViewById(R.id.btn_dialog_netpoint1);
-        mBtnDialogNetPoint2 = findViewById(R.id.btn_dialog_netpoint2);
-        mBtnDialogNetPoint3 = findViewById(R.id.btn_dialog_netpoint3);
-        mBtnDialogNetPoint4 = findViewById(R.id.btn_dialog_netpoint4);
+        mTvOrderingNum = findViewById(R.id.tv_ordering_num);
 
     }
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_index);
         initView();
+        mMethod = "POST";
+        mIntentAddOrder = new Intent(this, AddOrderActivity.class);
 
         ViewPager2 viewPager2 = findViewById(R.id.bannerVp);
         viewPager2.setCurrentItem(1);
@@ -88,7 +115,7 @@ public class ActivityIndex extends AppCompatActivity {
                 int currentItem = viewPager2.getCurrentItem();
                 viewPager2.setCurrentItem(currentItem + 1);
                 if (currentItem == 4) {
-                    Log.d(TAG, "thread: 到第4页了，设置page为1");
+                    //Log.d(TAG, "thread: 到第4页了，设置page为1");
                     viewPager2.setCurrentItem(1, false);
                 }
                 viewPager2.postDelayed(this, 2500);
@@ -106,7 +133,7 @@ public class ActivityIndex extends AppCompatActivity {
             @Override
             public void onPageSelected(int position) {
                 currentPosition = position;
-                Log.d("currentpage", Integer.toString(currentPosition));
+                //Log.d("currentpage", Integer.toString(currentPosition));
             }
 
             @Override
@@ -125,58 +152,30 @@ public class ActivityIndex extends AppCompatActivity {
         });
         viewPager2.setAdapter(adapter);
 
+        getNetPointName();
+
         //按钮事件
         //1.更换当前网点
         mBtnSecond.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //弹出对话框
-                setDialog();
-                switch (v.getId()) {
-                    case R.id.btn_dialog_netpoint1:
-                        Toast.makeText(ActivityIndex.this, "江北", Toast.LENGTH_SHORT).show();
-                        mBtnSecond.setText("江北");
-                        break;
-                    case R.id.btn_dialog_netpoint2:
-                        Toast.makeText(ActivityIndex.this, "渝北两路", Toast.LENGTH_SHORT).show();
-                        mBtnSecond.setText("渝北两路");
-                        break;
-                    case R.id.btn_dialog_netpoint3:
-                        Toast.makeText(ActivityIndex.this, "大石坝", Toast.LENGTH_SHORT).show();
-                        mBtnSecond.setText("大石坝");
-                        break;
-                    case R.id.btn_dialog_netpoint4:
-                        Toast.makeText(ActivityIndex.this, "老顶坡", Toast.LENGTH_SHORT).show();
-                        mBtnSecond.setText("老顶坡");
-                        break;
-                }
+                setAlertDialog();
             }
-            private void setDialog() {
-                Dialog mChangNetPointDialog = new Dialog(ActivityIndex.this, R.style.BottomDialog);
-                mChangNetPointDialog.setTitle("更换当前网点");
-                LinearLayout root = (LinearLayout) LayoutInflater.from(ActivityIndex.this).inflate(
-                        R.layout.bottom_dialog, null);
-                //初始化视图
-                root.findViewById(R.id.btn_dialog_netpoint1).setOnClickListener(this);
-                root.findViewById(R.id.btn_dialog_netpoint2).setOnClickListener(this);
-                root.findViewById(R.id.btn_dialog_netpoint3).setOnClickListener(this);
-                root.findViewById(R.id.btn_dialog_netpoint4).setOnClickListener(this);
-                mChangNetPointDialog.setContentView(root);
-                Window dialogWindow = mChangNetPointDialog.getWindow();
-                dialogWindow.setGravity(Gravity.BOTTOM);
-//        dialogWindow.setWindowAnimations(R.style.dialogstyle); // 添加动画
-                WindowManager.LayoutParams lp = dialogWindow.getAttributes(); // 获取对话框当前的参数值
-                lp.x = 0; // 新位置X坐标
-                lp.y = 0; // 新位置Y坐标
-                lp.width = (int) getResources().getDisplayMetrics().widthPixels; // 宽度
-                root.measure(0, 0);
-                lp.height = root.getMeasuredHeight();
-
-                lp.alpha = 9f; // 透明度
-                dialogWindow.setAttributes(lp);
-                mChangNetPointDialog.show();
+            private void setAlertDialog() {
+                AlertDialog.Builder builder = new AlertDialog.Builder(ActivityIndex.this);
+                String[] mNetPointNameList = mNetPointName.toArray(new String[mNetPointName.size()]);
+                builder.setTitle("更换当前网点")
+                        .setItems(mNetPointNameList, new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                // The 'which' argument contains the index position
+                                // of the selected item
+                                // 在这里根据所点击的序号，向后台发送数据选择新的网点名称
+                            }
+                        });
+                AlertDialog dialog = builder.create();
+                dialog.show();
+                Log.d(TAG, "setAlertDialog:  ");
             }
-
         });
         //2.搜索
         mIBtnSearch.setOnClickListener(new View.OnClickListener() {
@@ -196,7 +195,27 @@ public class ActivityIndex extends AppCompatActivity {
         mBtnIndexNewOrder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                // 1. 选择目标网点
+                setAlertDialog();
 
+            }
+            private void setAlertDialog() {
+                AlertDialog.Builder builder = new AlertDialog.Builder(ActivityIndex.this);
+                String[] mNetPointNameList = mNetPointName.toArray(new String[mNetPointName.size()]);
+                builder.setTitle("选择目标网点")
+                        .setItems(mNetPointNameList, new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                // The 'which' argument contains the index position
+                                // of the selected item
+                                // 在这里根据所点击的序号，记下目标网点
+
+                                // 2. 跳转填写新运单页面
+                                startActivity(mIntentAddOrder);
+                            }
+                        });
+                AlertDialog dialog = builder.create();
+                dialog.show();
+                Log.d(TAG, "setAlertDialog:  ");
             }
         });
         //5.fun2 发运
@@ -227,8 +246,36 @@ public class ActivityIndex extends AppCompatActivity {
 
             }
         });
-
-
+        //9.订单数量
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    Message msgOrderingNum = new Message();
+                    String mPostStr = "{\"method\": \"queryj\",\"sqlid\": \"Tms_GetNewBillCount\",\"hybid\": 10,\"onlyone\": 1}";
+                    String jsonRaw = new GetJson(mUrlString, mPostStr, mMethod).result;
+                    ArrayList<String> url = new ArrayList<>();
+                    Log.d(TAG, "onClick: Json = "+jsonRaw);
+                    //把从后端接口拿到的json字符串转为Java中的JSONObject对象
+                    JSONObject jo1 = JSON.parseObject(jsonRaw);
+                    //有几条数据就循环多少次
+                    for (int i = 0; i < jo1.getInteger("recordcount"); i++) {
+                        //从所有数据中取出data
+                        JSONObject data = jo1.getJSONObject("data");
+                        //取出data中的url
+                        url.add(data.getString("ydcount"));
+                    }
+                    msgOrderingNum.what = 1;
+                    Bundle bOrderingNum = new Bundle();
+                    bOrderingNum.putString("OrderingNum", url.get(0));
+                    msgOrderingNum.setData(bOrderingNum);
+                    mHandler.sendMessage(msgOrderingNum);
+                    System.out.println(url);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }).start();
     }
 
     private void handlerSearch(View v) {
@@ -265,5 +312,32 @@ public class ActivityIndex extends AppCompatActivity {
 
             }
         }
+    }
+    public void getNetPointName(){
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    String mPostStr = "{\"method\": \"queryj\",\"sqlid\": \"Tms_GetHybSelect\",\"phybid\":10765,\"hybid\": 0,\"thybid\": 0,\"pagenumber\": 1,\"pagesize\": 10}";
+                    String jsonRaw = new GetJson(mUrlString, mPostStr, mMethod).result;
+                    Log.d(TAG, "onClick: Json = "+jsonRaw);
+                    //把从后端接口拿到的json字符串转为Java中的JSONObject对象
+                    JSONObject jo1 = JSON.parseObject(jsonRaw);
+                    //有几条数据就循环多少次
+                    for (int i = 0; i < jo1.getInteger("recordcount"); i++) {
+                        //从所有数据中取出data
+                        JSONArray data = jo1.getJSONArray("data");
+                        //取出第i个data
+                        JSONObject jo2 = (JSONObject) data.get(i);
+                        //取出data中的url
+                        mNetPointName.add(jo2.getString("sname"));
+                    }
+                    System.out.println(mNetPointName);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }).start();
+
     }
 }

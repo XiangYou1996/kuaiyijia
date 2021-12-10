@@ -14,42 +14,34 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.example.kuaiyijia.R;
 import com.example.kuaiyijia.Utils.GetJson;
 
 import java.io.IOException;
-import java.io.InputStream;
 import java.net.URL;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
 
 public class VpAdapter extends RecyclerView.Adapter<VpAdapter.VpViewHolder> {
     private Context mContext;
-    private String mImg_str_url;
     private ArrayList<Drawable> da;
     private String TAG = "VpAdapter";
-    private final String mUrlString;
+
+    private String mHost_url = "https://www.kegmall.cn";
+    private final String mUrlString = "https://www.kegmall.cn/bin/iface/ikegmall.jsp";
     private final String mPostStr;
     private final String mMethod;
+
     private Thread mT1 = null;
 
     public VpAdapter(Context context) {
         mContext = context;
-        mImg_str_url = "https://www.kegmall.cn";
-        mUrlString = "https://www.kegmall.cn/bin/iface/ikegmall.jsp";
         mPostStr = "{\"method\": \"queryj\",\"sqlid\": \"Tms_GetAdList\",\"type\": 2}";
         mMethod = "POST";
         if (da == null) {
             da = new ArrayList<>();
             mT1 = new Thread(new Runnable() {
-
                 private int mRecordcount;
-
                 @Override
                 public void run() {
                     try {
@@ -66,11 +58,11 @@ public class VpAdapter extends RecyclerView.Adapter<VpAdapter.VpViewHolder> {
                         }
 
                         //这里要加入额定数据量+2的数量，第一页放最后一张图，最后一页要放第一张图（为了自动轮播）
-                        da.add(loadImageFromNetwork(mImg_str_url+url.get(mRecordcount-1)));
+                        da.add(loadImageFromNetwork(mHost_url +url.get(mRecordcount-1)));
                         for (int i = 0; i < mRecordcount; i++) {
-                            da.add(loadImageFromNetwork(mImg_str_url+url.get(i)));
+                            da.add(loadImageFromNetwork(mHost_url +url.get(i)));
                         }
-                        da.add(loadImageFromNetwork(mImg_str_url+url.get(0)));
+                        da.add(loadImageFromNetwork(mHost_url +url.get(0)));
 
                         System.out.println(url);
                     } catch (IOException e) {

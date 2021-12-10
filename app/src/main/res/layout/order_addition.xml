@@ -17,7 +17,7 @@
         android:background="#D85A2A"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:text="添加订单"
+        android:text="新增运单"
         android:textColor="@color/white"
         android:textSize="20sp"
         android:gravity="center">

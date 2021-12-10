@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".UI.ActivityIndex">
 
     <LinearLayout
@@ -159,11 +160,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <TextView
-            android:layout_width="wrap_content"
+            android:id="@+id/tv_ordering_num"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="20dp"
             android:textColor="@color/black"
-            android:text="有3张运单进行中..."/>
+            android:text="有 张运单进行中..."/>
     </RelativeLayout>
 
 
