@@ -28,6 +28,17 @@
     <string name="tab_text_4">扫描不全</string>
     <string name="tab_text_5">滞留订单</string>
 
+    <string name="tips_text_1">未查询到数据</string>
+    <string name="tips_text_2">运单列表</string>
+    <string name="tips_text_3">退单列表</string>
+
+    <string name="waybill_list_nav_1">进行中</string>
+    <string name="waybill_list_nav_2">已完成</string>
+    <string name="waybill_list_nav_3">已取消</string>
+    <string name="waybill_list_nav_4">全部</string>
+    <string name="waybill_list_nav_5">筛选</string>
+
+
     <string-array name="area">
         <item>南坪</item>
         <item>沙坪坝</item>
@@ -50,4 +61,13 @@
     </string-array>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_filter">filterActivity</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
 </resources>

@@ -4,18 +4,100 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/AndroidProject/kuaiyijia/app/src/main/res/drawable-v24/common_dialog_loading_bg.xml" value="0.2557291666666667" />
+        <entry key="..\:/AndroidProject/kuaiyijia/app/src/main/res/drawable/edit_box_style.xml" value="0.38229166666666664" />
+        <entry key="..\:/AndroidProject/kuaiyijia/app/src/main/res/drawable/ic_baseline_looks_one_24.xml" value="0.38229166666666664" />
+        <entry key="..\:/AndroidProject/kuaiyijia/app/src/main/res/drawable/icon_notification_send.xml" value="0.38229166666666664" />
+        <entry key="..\:/AndroidProject/kuaiyijia/app/src/main/res/drawable/icon_ongoing.xml" value="2.4285714285714284" />
+        <entry key="..\:/AndroidProject/kuaiyijia/app/src/main/res/drawable/small_button_style.xml" value="0.22083333333333333" />
         <entry key="..\:/AndroidProject/kuaiyijia/app/src/main/res/layout/activity_add_freight.xml" value="0.23958333333333334" />
         <entry key="..\:/AndroidProject/kuaiyijia/app/src/main/res/layout/activity_banci_layout.xml" value="0.3183876811594203" />
         <entry key="..\:/AndroidProject/kuaiyijia/app/src/main/res/layout/activity_binding_freightctivity.xml" value="0.3183876811594203" />
         <entry key="..\:/AndroidProject/kuaiyijia/app/src/main/res/layout/activity_car_detail.xml" value="0.3183876811594203" />
         <entry key="..\:/AndroidProject/kuaiyijia/app/src/main/res/layout/activity_car_modify.xml" value="0.3183876811594203" />
+        <entry key="..\:/AndroidProject/kuaiyijia/app/src/main/res/layout/activity_main.xml" value="0.3183876811594203" />
+        <entry key="..\:/AndroidProject/kuaiyijia/app/src/main/res/layout/activity_profit_detail.xml" value="0.25" />
         <entry key="..\:/AndroidProject/kuaiyijia/app/src/main/res/layout/activity_register.xml" value="0.23958333333333334" />
+        <entry key="..\:/AndroidProject/kuaiyijia/app/src/main/res/layout/activity_waybill_list.xml" value="0.25" />
+        <entry key="..\:/AndroidProject/kuaiyijia/app/src/main/res/layout/activity_waybill_list_nav.xml" value="0.3183876811594203" />
+        <entry key="..\:/AndroidProject/kuaiyijia/app/src/main/res/layout/activity_web_branch_add.xml" value="0.2046875" />
+        <entry key="..\:/AndroidProject/kuaiyijia/app/src/main/res/layout/activity_yunjia_nodata.xml" value="0.36614583333333334" />
+        <entry key="..\:/AndroidProject/kuaiyijia/app/src/main/res/layout/all_fragment.xml" value="0.36614583333333334" />
+        <entry key="..\:/AndroidProject/kuaiyijia/app/src/main/res/layout/canceled_fragment.xml" value="0.36614583333333334" />
+        <entry key="..\:/AndroidProject/kuaiyijia/app/src/main/res/layout/cars_list_item.xml" value="0.36614583333333334" />
+        <entry key="..\:/AndroidProject/kuaiyijia/app/src/main/res/layout/content_main.xml" value="0.3183876811594203" />
+        <entry key="..\:/AndroidProject/kuaiyijia/app/src/main/res/layout/fenrun_xiugai.xml" value="0.36614583333333334" />
+        <entry key="..\:/AndroidProject/kuaiyijia/app/src/main/res/layout/filter_fragment.xml" value="0.36614583333333334" />
+        <entry key="..\:/AndroidProject/kuaiyijia/app/src/main/res/layout/filterdialog_fragment.xml" value="0.25" />
+        <entry key="..\:/AndroidProject/kuaiyijia/app/src/main/res/layout/finished_fragment.xml" value="0.36614583333333334" />
+        <entry key="..\:/AndroidProject/kuaiyijia/app/src/main/res/layout/finished_order_item.xml" value="0.36614583333333334" />
+        <entry key="..\:/AndroidProject/kuaiyijia/app/src/main/res/layout/fragment_carmanage.xml" value="0.36614583333333334" />
+        <entry key="..\:/AndroidProject/kuaiyijia/app/src/main/res/layout/fragment_fenrun.xml" value="0.36614583333333334" />
+        <entry key="..\:/AndroidProject/kuaiyijia/app/src/main/res/layout/fragment_filterdialog.xml" value="0.33" />
+        <entry key="..\:/AndroidProject/kuaiyijia/app/src/main/res/layout/fragment_finishorder.xml" value="0.36614583333333334" />
+        <entry key="..\:/AndroidProject/kuaiyijia/app/src/main/res/layout/fragment_nodata.xml" value="0.36614583333333334" />
+        <entry key="..\:/AndroidProject/kuaiyijia/app/src/main/res/layout/fragment_order_layout.xml" value="0.36614583333333334" />
+        <entry key="..\:/AndroidProject/kuaiyijia/app/src/main/res/layout/fragment_order_main.xml" value="0.36614583333333334" />
+        <entry key="..\:/AndroidProject/kuaiyijia/app/src/main/res/layout/fragment_ordergoing.xml" value="0.36614583333333334" />
+        <entry key="..\:/AndroidProject/kuaiyijia/app/src/main/res/layout/fragment_ordermanage.xml" value="0.36614583333333334" />
+        <entry key="..\:/AndroidProject/kuaiyijia/app/src/main/res/layout/fragment_personmanage.xml" value="0.2046875" />
+        <entry key="..\:/AndroidProject/kuaiyijia/app/src/main/res/layout/fragment_route_manage.xml" value="0.36614583333333334" />
+        <entry key="..\:/AndroidProject/kuaiyijia/app/src/main/res/layout/fragment_yunjia.xml" value="0.2046875" />
+        <entry key="..\:/AndroidProject/kuaiyijia/app/src/main/res/layout/item_order.xml" value="0.36614583333333334" />
+        <entry key="..\:/AndroidProject/kuaiyijia/app/src/main/res/layout/item_route_table.xml" value="0.36614583333333334" />
+        <entry key="..\:/AndroidProject/kuaiyijia/app/src/main/res/layout/item_search.xml" value="0.36614583333333334" />
+        <entry key="..\:/AndroidProject/kuaiyijia/app/src/main/res/layout/item_time_table.xml" value="0.36614583333333334" />
+        <entry key="..\:/AndroidProject/kuaiyijia/app/src/main/res/layout/layout_activity_index.xml" value="0.2046875" />
+        <entry key="..\:/AndroidProject/kuaiyijia/app/src/main/res/layout/myspinnerdropoutstyle.xml" value="0.2046875" />
+        <entry key="..\:/AndroidProject/kuaiyijia/app/src/main/res/layout/myspinnerstyle.xml" value="0.2046875" />
+        <entry key="..\:/AndroidProject/kuaiyijia/app/src/main/res/layout/nav_header_main.xml" value="0.2046875" />
+        <entry key="..\:/AndroidProject/kuaiyijia/app/src/main/res/layout/ongoing_fragment.xml" value="0.36614583333333334" />
+        <entry key="..\:/AndroidProject/kuaiyijia/app/src/main/res/layout/ongoing_waybill.xml" value="0.36614583333333334" />
+        <entry key="..\:/AndroidProject/kuaiyijia/app/src/main/res/layout/order_addition.xml" value="0.2046875" />
+        <entry key="..\:/AndroidProject/kuaiyijia/app/src/main/res/layout/order_daishukuan_item.xml" value="0.2046875" />
+        <entry key="..\:/AndroidProject/kuaiyijia/app/src/main/res/layout/order_finished_detailed.xml" value="0.2046875" />
+        <entry key="..\:/AndroidProject/kuaiyijia/app/src/main/res/layout/order_going_detail.xml" value="0.33" />
+        <entry key="..\:/AndroidProject/kuaiyijia/app/src/main/res/layout/order_item.xml" value="0.2046875" />
+        <entry key="..\:/AndroidProject/kuaiyijia/app/src/main/res/layout/order_item_retention.xml" value="0.2046875" />
+        <entry key="..\:/AndroidProject/kuaiyijia/app/src/main/res/layout/order_item_scanlack.xml" value="0.2046875" />
+        <entry key="..\:/AndroidProject/kuaiyijia/app/src/main/res/layout/phone_number_editbox.xml" value="0.2046875" />
+        <entry key="..\:/AndroidProject/kuaiyijia/app/src/main/res/layout/pm_person_list_item.xml" value="0.2046875" />
+        <entry key="..\:/AndroidProject/kuaiyijia/app/src/main/res/layout/pm_station_list_item.xml" value="0.2046875" />
+        <entry key="..\:/AndroidProject/kuaiyijia/app/src/main/res/layout/popup_time_select_layout.xml" value="0.2046875" />
+        <entry key="..\:/AndroidProject/kuaiyijia/app/src/main/res/layout/profit_detail_list_item.xml" value="0.2046875" />
+        <entry key="..\:/AndroidProject/kuaiyijia/app/src/main/res/layout/profit_detailmore_list_item.xml" value="0.2046875" />
+        <entry key="..\:/AndroidProject/kuaiyijia/app/src/main/res/layout/query_branches.xml" value="0.5" />
+        <entry key="..\:/AndroidProject/kuaiyijia/app/src/main/res/layout/query_branches_detail.xml" value="0.33" />
+        <entry key="..\:/AndroidProject/kuaiyijia/app/src/main/res/layout/query_detail_fragment.xml" value="0.36614583333333334" />
+        <entry key="..\:/AndroidProject/kuaiyijia/app/src/main/res/layout/query_fragment.xml" value="0.33" />
+        <entry key="..\:/AndroidProject/kuaiyijia/app/src/main/res/layout/query_line.xml" value="0.36614583333333334" />
+        <entry key="..\:/AndroidProject/kuaiyijia/app/src/main/res/layout/query_line_detail.xml" value="0.36614583333333334" />
+        <entry key="..\:/AndroidProject/kuaiyijia/app/src/main/res/layout/query_people.xml" value="0.5" />
+        <entry key="..\:/AndroidProject/kuaiyijia/app/src/main/res/layout/query_people_detail.xml" value="0.36614583333333334" />
+        <entry key="..\:/AndroidProject/kuaiyijia/app/src/main/res/layout/quickreceive.xml" value="0.15307971014492755" />
+        <entry key="..\:/AndroidProject/kuaiyijia/app/src/main/res/layout/scancargo.xml" value="0.2046875" />
+        <entry key="..\:/AndroidProject/kuaiyijia/app/src/main/res/layout/scancarload.xml" value="0.2046875" />
         <entry key="..\:/AndroidProject/kuaiyijia/app/src/main/res/layout/searchinformation_layout.xml" value="0.3183876811594203" />
+        <entry key="..\:/AndroidProject/kuaiyijia/app/src/main/res/layout/waybill_list_nav.xml" value="0.3183876811594203" />
         <entry key="..\:/AndroidProject/kuaiyijia/app/src/main/res/layout/web_branch_manage.xml" value="0.3183876811594203" />
         <entry key="..\:/AndroidProject/kuaiyijia/app/src/main/res/layout/web_list_item.xml" value="0.3183876811594203" />
+        <entry key="..\:/AndroidProject/kuaiyijia/app/src/main/res/layout/yunjia__all__fragment.xml" value="0.32382246376811596" />
+        <entry key="..\:/AndroidProject/kuaiyijia/app/src/main/res/layout/yunjia__canceled__fragment.xml" value="0.3183876811594203" />
+        <entry key="..\:/AndroidProject/kuaiyijia/app/src/main/res/layout/yunjia__filtering__fragment.xml" value="0.3183876811594203" />
+        <entry key="..\:/AndroidProject/kuaiyijia/app/src/main/res/layout/yunjia__finished__fragment.xml" value="0.3183876811594203" />
+        <entry key="..\:/AndroidProject/kuaiyijia/app/src/main/res/layout/yunjia__finished_fragment.xml" value="0.32382246376811596" />
+        <entry key="..\:/AndroidProject/kuaiyijia/app/src/main/res/layout/yunjia__ongoing_fragment.xml" value="0.3183876811594203" />
+        <entry key="..\:/AndroidProject/kuaiyijia/app/src/main/res/layout/yunjia_fragment.xml" value="0.36614583333333334" />
+        <entry key="..\:/AndroidProject/kuaiyijia/app/src/main/res/layout/yunjia_ongoing_details.xml" value="0.33" />
+        <entry key="..\:/AndroidProject/kuaiyijia/app/src/main/res/layout/yunjia_ongoing_fragment.xml" value="0.36614583333333334" />
+        <entry key="..\:/AndroidProject/kuaiyijia/app/src/main/res/layout/yunjia_ongoing_waybill.xml" value="0.36614583333333334" />
         <entry key="..\:/AndroidProject/kuaiyijia/app/src/main/res/layout/yunjia_xiugai_layout.xml" value="0.3183876811594203" />
         <entry key="..\:/AndroidProject/kuaiyijia/app/src/main/res/layout/zhuangchema.xml" value="0.3183876811594203" />
+        <entry key="..\:/AndroidProject/kuaiyijia/app/src/main/res/menu/activity_main_drawer.xml" value="0.36614583333333334" />
+        <entry key="..\:/AndroidProject/kuaiyijia/app/src/main/res/menu/activity_waybill_list.xml" value="0.36614583333333334" />
+        <entry key="..\:/AndroidProject/kuaiyijia/app/src/main/res/menu/activity_waybill_list_nav.xml" value="0.36614583333333334" />
+        <entry key="..\:/AndroidProject/kuaiyijia/app/src/main/res/menu/main.xml" value="0.36614583333333334" />
         <entry key="..\:/AndroidProject/kuaiyijia/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.2557291666666667" />
+        <entry key="..\:/AndroidProject/kuaiyijia/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.38229166666666664" />
         <entry key="..\:/AndroidProject/kuaiyijia/app/src/main/res/mipmap-anydpi-v26/ic_personinfo.xml" value="0.3640625" />
       </map>
     </option>

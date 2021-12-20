@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="运单筛选"
+        android:textAlignment="center"
+        android:textSize="18sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/returnpartieskey"
+            android:layout_width="85dp"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="退货方"
+            android:textSize="18sp" />
+
+        <EditText
+            android:id="@+id/returnpartiesvulue"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/dp_4"
+            android:background="@drawable/edit_box_style"
+            android:ems="10"
+            android:inputType="text"
+            android:minHeight="48dp"
+            tools:ignore="SpeakableTextPresentCheck" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/shippingkey"
+            android:layout_width="85dp"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="托运方"
+            android:textSize="18sp" />
+
+        <EditText
+            android:id="@+id/shippingvalue"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/dp_4"
+            android:background="@drawable/edit_box_style"
+            android:ems="10"
+            android:inputType="text"
+            android:minHeight="48dp"
+            tools:ignore="SpeakableTextPresentCheck" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/waybill_idkey"
+            android:layout_width="85dp"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="单号"
+            android:textSize="18sp" />
+
+        <EditText
+            android:id="@+id/waybill_idvalue"
+            android:layout_width="300dp"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/dp_4"
+            android:background="@drawable/edit_box_style"
+            android:ems="10"
+            android:inputType="text"
+            android:minHeight="48dp"
+            tools:ignore="SpeakableTextPresentCheck" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/waybill_dateBeginkey"
+            android:layout_width="85dp"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="开始日期"
+            android:textSize="18sp" />
+
+        <LinearLayout
+            android:layout_width="300dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/edit_box_style"
+            android:orientation="horizontal"
+            android:layout_margin="@dimen/dp_4">
+
+
+            <EditText
+                android:id="@+id/waybill_dateBeginvalue"
+                android:layout_width="250dp"
+                android:layout_height="match_parent"
+                android:ems="10"
+                android:inputType="text"
+                android:minHeight="48dp"
+                tools:ignore="SpeakableTextPresentCheck" />
+
+            <ImageButton
+                android:id="@+id/begin_date"
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+                android:backgroundTint="@color/white"
+                android:src="@drawable/date"
+                tools:ignore="SpeakableTextPresentCheck" />
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/waybill_dateendkey"
+            android:layout_width="85dp"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="结束日期"
+            android:textSize="18sp" />
+
+        <LinearLayout
+            android:layout_width="300dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/edit_box_style"
+            android:orientation="horizontal"
+            android:layout_margin="@dimen/dp_4">
+
+            <EditText
+                android:id="@+id/waybill_dateendvalue"
+                android:layout_width="250dp"
+                android:layout_height="match_parent"
+                android:ems="10"
+                android:inputType="text"
+                android:minHeight="48dp"
+                tools:ignore="SpeakableTextPresentCheck" />
+
+            <ImageButton
+                android:id="@+id/end_date"
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+                android:backgroundTint="@color/white"
+                android:src="@drawable/date"
+                tools:ignore="SpeakableTextPresentCheck" />
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/yes"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/color_f9a105"
+        android:text="确定"
+        android:textColor="@color/white" />
+
+    <Button
+        android:id="@+id/no"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/color_f9a105"
+        android:text="取消"
+        android:textColor="@color/white" />
+
+
+</LinearLayout>

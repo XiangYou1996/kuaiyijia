@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/waybill_list_navigation"
+    app:startDestination="@id/yunjia_All_Fragment">
+    <fragment
+        android:id="@+id/yunjia_Canceled_Fragment"
+        android:name="com.example.kuaiyijia.UI.yunJIa.Yunjia_Canceled_Fragment"
+        android:label="yunjia__canceled__fragment"
+        tools:layout="@layout/yunjia__canceled__fragment" />
+    <fragment
+        android:id="@+id/yunjia_All_Fragment"
+        android:name="com.example.kuaiyijia.UI.yunJIa.Yunjia_All_Fragment"
+        android:label="yunjia__all__fragment"
+        tools:layout="@layout/yunjia__all__fragment" />
+    <fragment
+        android:id="@+id/yunjia_Filtering_Fragment"
+        android:name="com.example.kuaiyijia.UI.yunJIa.Yunjia_Filtering_Fragment"
+        android:label="yunjia__filtering__fragment"
+        tools:layout="@layout/yunjia__filtering__fragment" />
+    <fragment
+        android:id="@+id/yunjia_OngoingFragment"
+        android:name="com.example.kuaiyijia.UI.yunJIa.Yunjia_OngoingFragment"
+        android:label="yunjia__ongoing_fragment"
+        tools:layout="@layout/yunjia__ongoing_fragment" />
+    <fragment
+        android:id="@+id/yunjia_FinishedFragment"
+        android:name="com.example.kuaiyijia.UI.yunJIa.Yunjia_FinishedFragment"
+        android:label="yunjia__finished_fragment"
+        tools:layout="@layout/yunjia__finished_fragment" />
+</navigation>

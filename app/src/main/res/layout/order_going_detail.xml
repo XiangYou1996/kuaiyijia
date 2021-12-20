@@ -12,16 +12,16 @@
         android:background="#D85A2A"
         android:drawableLeft="@drawable/icon_back"
         />
+
     <TextView
         android:id="@+id/going_title"
-        android:background="#D85A2A"
         android:layout_width="match_parent"
         android:layout_height="60dp"
+        android:background="#D85A2A"
+        android:gravity="center"
         android:text="未完成订单详情"
         android:textColor="@color/white"
-        android:textSize="20sp"
-
-        android:gravity="center">
+        android:textSize="20sp">
     </TextView>
     <TextView
         android:id="@+id/going_re_station"

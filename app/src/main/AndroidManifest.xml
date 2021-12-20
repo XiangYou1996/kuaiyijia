@@ -38,7 +38,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Kuaiyijia">
-        <activity android:name=".UI.PersoninfoModify.PersoninfoActivity"></activity>
+        <activity android:name=".UI.PersoninfoModify.PersoninfoActivity" />
         <activity android:name=".UI.FreightBinding.AddFreightActivity" />
         <activity android:name=".UI.FreightBinding.BindingFreightActivity" />
         <activity android:name=".UI.LoginRegister.RegisterActivity" />
