@@ -65,14 +65,22 @@
         <entry key="..\:/AndroidProject/kuaiyijia/app/src/main/res/layout/popup_time_select_layout.xml" value="0.2046875" />
         <entry key="..\:/AndroidProject/kuaiyijia/app/src/main/res/layout/profit_detail_list_item.xml" value="0.2046875" />
         <entry key="..\:/AndroidProject/kuaiyijia/app/src/main/res/layout/profit_detailmore_list_item.xml" value="0.2046875" />
+        <entry key="..\:/AndroidProject/kuaiyijia/app/src/main/res/layout/profit_list_item.xml" value="0.29791666666666666" />
         <entry key="..\:/AndroidProject/kuaiyijia/app/src/main/res/layout/query_branches.xml" value="0.5" />
         <entry key="..\:/AndroidProject/kuaiyijia/app/src/main/res/layout/query_branches_detail.xml" value="0.33" />
+        <entry key="..\:/AndroidProject/kuaiyijia/app/src/main/res/layout/query_cartype.xml" value="0.5" />
         <entry key="..\:/AndroidProject/kuaiyijia/app/src/main/res/layout/query_detail_fragment.xml" value="0.36614583333333334" />
         <entry key="..\:/AndroidProject/kuaiyijia/app/src/main/res/layout/query_fragment.xml" value="0.33" />
+        <entry key="..\:/AndroidProject/kuaiyijia/app/src/main/res/layout/query_freight.xml" value="0.5" />
+        <entry key="..\:/AndroidProject/kuaiyijia/app/src/main/res/layout/query_freight_detail.xml" value="0.33" />
+        <entry key="..\:/AndroidProject/kuaiyijia/app/src/main/res/layout/query_goods_freight.xml" value="0.5" />
+        <entry key="..\:/AndroidProject/kuaiyijia/app/src/main/res/layout/query_goods_package.xml" value="0.5" />
+        <entry key="..\:/AndroidProject/kuaiyijia/app/src/main/res/layout/query_goodsfreight_detail.xml" value="0.34322916666666664" />
         <entry key="..\:/AndroidProject/kuaiyijia/app/src/main/res/layout/query_line.xml" value="0.36614583333333334" />
         <entry key="..\:/AndroidProject/kuaiyijia/app/src/main/res/layout/query_line_detail.xml" value="0.36614583333333334" />
         <entry key="..\:/AndroidProject/kuaiyijia/app/src/main/res/layout/query_people.xml" value="0.5" />
         <entry key="..\:/AndroidProject/kuaiyijia/app/src/main/res/layout/query_people_detail.xml" value="0.36614583333333334" />
+        <entry key="..\:/AndroidProject/kuaiyijia/app/src/main/res/layout/query_waybill.xml" value="0.34322916666666664" />
         <entry key="..\:/AndroidProject/kuaiyijia/app/src/main/res/layout/quickreceive.xml" value="0.15307971014492755" />
         <entry key="..\:/AndroidProject/kuaiyijia/app/src/main/res/layout/scancargo.xml" value="0.2046875" />
         <entry key="..\:/AndroidProject/kuaiyijia/app/src/main/res/layout/scancarload.xml" value="0.2046875" />
